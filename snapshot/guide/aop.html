@@ -199,21 +199,20 @@ function addJsClass() {
 <span class="keyword">import</span> <span class="include">java.util</span>.*;
 
 <span class="annotation">@Singleton</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>,<span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">Object</span> intercept(MethodInvocationContext&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; context) {
         Optional&lt;<span class="predefined-type">Map</span>.Entry&lt;<span class="predefined-type">String</span>, MutableArgumentValue&lt;?&gt;&gt;&gt; nullParam = context.getParameters()
-                .entrySet()
-                .stream()
-                .filter(entry -&gt; {
-                    MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
-                    <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
-                })
-                .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="keyword">if</span>( nullParam.isPresent() ) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span>+nullParam.get().getKey()+<span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
-        }
-        <span class="keyword">else</span> {
+            .entrySet()
+            .stream()
+            .filter(entry -&gt; {
+                MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
+                <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
+            })
+            .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">if</span> (nullParam.isPresent()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span> + nullParam.get().getKey() + <span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
+        } <span class="keyword">else</span> {
             <span class="keyword">return</span> context.proceed(); <i class="conum" data-value="4"></i><b>(4)</b>
         }
     }
@@ -477,7 +476,7 @@ Since Micronaut is compile time, generally the advice should be packaged in a de
 </table>
 </div>
 <div class="paragraph">
-<p>To now use this introduction advice in an application you simply annotation your abstract classes or interfaces with <code>@Stub</code>:</p>
+<p>To now use this introduction advice in an application you simply annotate your abstract classes or interfaces with <code>@Stub</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">StubExample.java</div>
@@ -681,7 +680,7 @@ assertNull(stubExample.getDate());</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    compile "io.micronaut.configurations:redis-lettuce:1.0.0-SNAPSHOT"
+    compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut.configurations:redis-lettuce</span><span class="delimiter">&quot;</span></span>
     ...
 }</code></pre>
 </div>
@@ -853,7 +852,7 @@ assertNull(stubExample.getDate());</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <code>@Retryable</code> annotation is used try catch <code>ServiceUnavailableException</code> and retry creating the driver before failing startup.</td>
+<td>The <code>@Retryable</code> annotation is used to catch <code>ServiceUnavailableException</code> and retry creating the driver before failing startup.</td>
 </tr>
 </table>
 </div>
@@ -959,7 +958,7 @@ Remember that the scope of the bean has an impact on behaviour. a <code>@Singlet
 <h2 id="_programmatically_scheduling_tasks">Programmatically Scheduling Tasks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you wish to programmatically schedule tasks, then you can use the <a href="../api/io/micronaut/scheduled/TaskScheduler.html">TaskScheduler</a> bean which can be injected as follows:</p>
+<p>If you wish to programmatically schedule tasks, then you can use the <a href="../api/io/micronaut/scheduling/TaskScheduler.html">TaskScheduler</a> bean which can be injected as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">

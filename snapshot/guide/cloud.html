@@ -271,6 +271,16 @@ function addJsClass() {
 <td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.cloudfoundry.org">Cloud Foundry</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.CLOUD_FOUNDRY)</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#AZURE">AZURE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://azure.microsoft.com">Microsoft Azure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.AZURE)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#IBM">IBM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.ibm.com/cloud/">IBM Cloud</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.IBM)</code></p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -346,7 +356,7 @@ Flowable.fromPublisher(
 </div>
 </div>
 <div class="paragraph">
-<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServiceInstance.html">EmbeddedServiceInstance</a> interface:</p>
+<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a> interface:</p>
 </div>
 <div class="listingblock">
 <div class="title">Obtaining Metadata for a Local Server</div>
@@ -372,7 +382,7 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <p>As you can see, Micronaut features a robust system for externalizing and adapting configuration to the environment inspired by similar approaches found in Grails and Spring Boot.</p>
 </div>
 <div class="paragraph">
-<p>However, what if you want to Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
+<p>However, what if you want two Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="../api/io/micronaut/discovery/config/ConfigurationClient.html">ConfigurationClient</a> interface has a single method called <code>getPropertySources</code> that can be implemented to read and resolve configuration from distributed sources.</p>
@@ -429,17 +439,17 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <div class="paragraph">
 <p>To enable distributed configuration, similar to Spring Boot and Grails, you need to create a <code>src/main/resources/bootstrap.yml</code> configuration file and configure Consul as well as enable the configuration client:</p>
 </div>
-<div class="listingblock yaml">
+<div class="listingblock">
 <div class="title">bootstrap.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>micronaut:
-    application:
-        name: hello-world
-    config-client:
-        enabled: true
-consul:
-    client:
-        defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
+    <span class="key">application</span>:
+        <span class="key">name</span>: <span class="string"><span class="content">hello-world</span></span>
+    <span class="key">config-client</span>:
+        <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">consul</span>:
+    <span class="key">client</span>:
+        <span class="key">defaultZone</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -570,7 +580,7 @@ EOF</code></pre>
 <h2 id="_storing_configuration_as_file_references">Storing Configuration as File References</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Another option popular option is to <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
+<p>Another option popular option is <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
 </div>
 <div class="paragraph">
 <p>You can setup a Git repository that contains files like <code>application.yml</code>, <code>hello-world-test.json</code> etc. and the contents of these files are cloned to Consul.</p>
@@ -721,7 +731,7 @@ EOF</code></pre>
 <p>To register a Micronaut application with Consul simply add the necessary <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a>. A minimal example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title">Auto Registering with Consul</div>
+<div class="title">Auto Registering with Consul (application.yml)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
     <span class="key">application</span>:
@@ -772,7 +782,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <p>The <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a> class features a range of customization options for altering how an instance registers with Consul. You can customize the tags, the retry attempts, the fail fast behaviour and so on.</p>
 </div>
 <div class="paragraph">
-<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Eureka client, including read timeout, proxy configuration and so on.</p>
+<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Consul client, including read timeout, proxy configuration and so on.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -815,7 +825,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="type">interface</span> <span class="class">HelloClient</span>{
         ...
 }</code></pre>
@@ -827,7 +837,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@Inject</span>
 RxHttpClient httpClient;</code></pre>
 </div>
@@ -863,7 +873,7 @@ RxHttpClient httpClient;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a></p>
+<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a>.</p>
 </div>
 </div>
 </div>
@@ -888,7 +898,7 @@ RxHttpClient httpClient;</code></pre>
 <h2 id="_starting_eureka">Starting Eureka</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The quickest was to start a Eureka server is to use to use <a href="https://spring.io/guides/gs/service-registration-and-discovery/#initial">Spring Boot&#8217;s Eureka starters</a>.</p>
+<p>The quickest way to start a Eureka server is to use to use <a href="https://spring.io/guides/gs/service-registration-and-discovery/#initial">Spring Boot&#8217;s Eureka starters</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -911,7 +921,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>The process to register a Micronaut application with Eureka is very similar to with Consul, as seen in the previous section, simply add the necessary <a href="../api/io/micronaut/discovery/eureka/EurekaConfiguration.html">EurekaConfiguration</a>. A minimal example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title">Auto Registering with Eureka</div>
+<div class="title">Auto Registering with Eureka (application.yml)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
     <span class="key">application</span>:
@@ -1005,14 +1015,14 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="type">interface</span> <span class="class">HelloClient</span>{
-        ...
+    ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Since Kubernetes itself assumes responsibility for tasks such as health checks, load balancing and so on there is no need to since <a href="../api/io/micronaut/health/HeartbeatEvent.html">HeartbeatEvent</a> instances and so on.</p>
+<p>Since Kubernetes itself assumes responsibility for tasks such as health checks, load balancing and so on there is no need to send <a href="../api/io/micronaut/health/HeartbeatEvent.html">HeartbeatEvent</a> instances and so on.</p>
 </div>
 
 
@@ -1029,7 +1039,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>When <a href="#serviceDiscovery">discovering services</a> from Consul, Eureka or other Service Discovery servers the <a href="../api/io/micronaut/discovery/DiscoveryClient.html">DiscoveryClient</a> will emits a list of available <a href="../api/io/micronaut/discovery/ServiceInstance.html">ServiceInstance</a>.</p>
 </div>
 <div class="paragraph">
-<p>Micronaut by default will automatically perform Round Robin client-side load balancing using the servers in this list. This combined with <a href="#retryAdvice">Retry Advice</a> adds extra resiliency to your Microservice infrastructure.</p>
+<p>Micronaut by default will automatically perform Round Robin client-side load balancing using the servers in this list. This combined with <a href="#retry">Retry Advice</a> adds extra resiliency to your Microservice infrastructure.</p>
 </div>
 <div class="paragraph">
 <p>The load balancing itself is handled by the <a href="../api/io/micronaut/http/client/LoadBalancer.html">LoadBalancer</a> interface which defines a  <a href="../api/io/micronaut/http/client/LoadBalancer.html#select--">LoadBalancer.select()</a> method that returns a <code>Publisher</code> that emits a <a href="../api/io/micronaut/discovery/ServiceInstance.html">ServiceInstance</a>.</p>
@@ -1090,7 +1100,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 </div>
 </div>
 <div class="paragraph">
-<p>Each discovered client can also be configured under <code>ribbon.clients</code>. For example given a <code>@Client(id="hello-world")</code> you can configure Ribbon settings with:</p>
+<p>Each discovered client can also be configured under <code>ribbon.clients</code>. For example given a <code>@Client(id = "hello-world")</code> you can configure Ribbon settings with:</p>
 </div>
 <div class="listingblock">
 <div class="title">Per Client Ribbon Settings</div>
@@ -1120,7 +1130,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>When operating Microservices in production it can be challenging to troubleshoot interactions between Microservices in a distributed architecture.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://zipkin.io">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
+<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://www.jaegertracing.io/">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
 </div>
 <div class="paragraph">
 <p>Micronaut features integration with both Zipkin and Jaeger (via the Open Tracing API).</p>
@@ -1208,7 +1218,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
 <div class="paragraph">
-<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilters">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
+<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilter">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
 </div>
 </div>
 </div>
@@ -1297,7 +1307,7 @@ Or alternatively if you have the Micronaut CLI installed you can configure Zipki
 <h2 id="_customizing_the_zipkin_sender">Customizing the Zipkin Sender</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default a <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
+<p>By default an <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
 </div>
 <div class="paragraph">
 <p>It is unlikely that sending spans to localhost will be suitable for production deployment so you generally will want to configure the location of one or many Zipkin servers for production:</p>
@@ -1367,7 +1377,7 @@ In production, setting <code>TRACING_ZIPKIN_URLS</code> environment variable wit
 
 
 <div class="paragraph">
-<p><a href="https://www.jaegertracing.io">Jaeger</a> is a another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
+<p><a href="https://www.jaegertracing.io">Jaeger</a> is another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
 </div>
 <div class="sect1">
 <h2 id="_running_jaeger">Running Jaeger</h2>

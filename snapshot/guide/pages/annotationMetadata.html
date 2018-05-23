@@ -137,7 +137,7 @@ function addJsClass() {
 <div class="title">Lookup Bean Definitions by Stereotype</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">BeanContext</span> beanContext = ... <span class="comment">// obtain the bean context</span>
-Collection&lt;BeanDefinition definitions =
+Collection&lt;BeanDefinition&gt; definitions =
     beanContext.getBeanDefinitions(Qualfiers.byStereotype(Controller.class))
 
 <span class="keyword">for</span>(BeanDefinition definition : definitions) {

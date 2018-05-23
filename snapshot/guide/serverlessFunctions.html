@@ -647,6 +647,14 @@ For further information on the use of <code>@FunctionClient</code>, please see <
 }</code></pre>
 </div>
 </div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In order to run the function as a web application, you will need an HTTP server, such as the <code>http-server-netty</code> dependency</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Create a <a href="../api/io/micronaut/function/client/FunctionClient.html">@FunctionClient</a> interface as shown below:</p>
 </div>
@@ -714,17 +722,17 @@ For further information on the use of <code>@FunctionClient</code>, please see <
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -745,7 +753,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Packaging a Function as a JAR</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ./gradlew shadowJar</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -754,7 +762,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Executing a function via the CLI</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
 </div>
 </div>
 
@@ -823,17 +831,17 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Example build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -853,7 +861,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew shadowJar</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 </div>
@@ -900,7 +908,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 </div>
@@ -990,7 +998,7 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -998,8 +1006,8 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew invoke
-Hello, Fred</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew invoke
+Hello, Fred</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1158,7 +1166,7 @@ math.multiplier = <span class="integer">2</span>
 <p>In the above case a function named <code>hello</code> is mapped to the remote lambda function called <code>hello-world</code>. You can define multiple named functions under the <code>aws.lambda.functions</code> configuration. Each is configured by <a href="../api/io/micronaut/function/client/aws/AWSInvokeRequestDefinition.html">AWSInvokeRequestDefinition</a> that allows setting any property on the underlying <code>com.amazonaws.services.lambda.model.InvokeRequest</code>.</p>
 </div>
 <div class="paragraph">
-<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code> to configure credentials. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
+<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code>. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>

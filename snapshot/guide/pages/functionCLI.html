@@ -124,17 +124,17 @@ function addJsClass() {
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -155,7 +155,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Packaging a Function as a JAR</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ./gradlew shadowJar</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -164,7 +164,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Executing a function via the CLI</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
 </div>
 </div>
 

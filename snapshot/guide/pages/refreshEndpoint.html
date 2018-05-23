@@ -119,14 +119,14 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>The refresh endpoint will refresh the application state, causing all <a href="../apiio.micronaut.runtime.context.scope.Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
+<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
 </div>
 <div class="paragraph">
 <p>To execute the refresh endpoint, send a POST request to /refresh.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl -X POST http://localhost:8080/refresh</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl -X POST http://localhost:8080/refresh</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -134,7 +134,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl -X POST http://localhost:8080/refresh -H 'Content-Type: application/json' -d '{"force": true}'</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl -X POST http://localhost:8080/refresh -H 'Content-Type: application/json' -d '{&quot;force&quot;: true}'</code></pre>
 </div>
 </div>
 <div class="sect1">

@@ -309,7 +309,7 @@ JWT is an <a href="https://tools.ietf.org/html/rfc7519">IETF standard</a> which 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.jwt.bearer.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/reader/BearerTokenReader.html">BearerTokenReader</a> is enabled by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/jwt/bearer/BearerTokenReader.html">BearerTokenReader</a> is enabled by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.jwt.bearer.headerName</code></p></td>
@@ -550,7 +550,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0MjI5OTU5MjIsInN1YiI6Imppb
 
     RSAOAEPEncryptionConfiguration(<span class="annotation">@Value</span>(<span class="string"><span class="delimiter">'</span><span class="content">${pem.path}</span><span class="delimiter">'</span></span>) <span class="predefined-type">String</span> pemPath) {
         Optional&lt;<span class="predefined-type">KeyPair</span>&gt; keyPair = KeyPairProvider.keyPair(pemPath)
-        <span class="keyword">if</span> ( keyPair.isPresent() ) {
+        <span class="keyword">if</span> (keyPair.isPresent()) {
             <span class="local-variable">this</span>.rsaPublicKey = (<span class="predefined-type">RSAPublicKey</span>) keyPair.get().getPublic()
             <span class="local-variable">this</span>.rsaPrivateKey = (<span class="predefined-type">RSAPrivateKey</span>) keyPair.get().getPrivate()
         }

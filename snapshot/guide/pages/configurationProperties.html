@@ -122,7 +122,7 @@ function addJsClass() {
 <p>Like Spring Boot and Grails, you can create type safe configuration by creating classes that are annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is an efficient as possible with minimal impact on startup time.</p>
+<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is as efficient as possible with minimal impact on startup time.</p>
 </div>
 <div class="paragraph">
 <p>An example of a configuration class can be seen below:</p>
@@ -156,7 +156,7 @@ function addJsClass() {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -186,7 +186,7 @@ function addJsClass() {
 <span class="type">class</span> <span class="class">EngineImpl</span> <span class="directive">implements</span> Engine {
     <span class="directive">final</span> EngineConfig config
 
-    EngineImpl(EngineConfig config) { <i class="conum" data-value="4"></i><b>(4)</b>
+    EngineImpl(EngineConfig config) { <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="local-variable">this</span>.config = config
     }
 
@@ -195,11 +195,23 @@ function addJsClass() {
         <span class="keyword">return</span> config.cylinders
     }
 
-    <span class="predefined-type">String</span> start() { <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="predefined-type">String</span> start() { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>config.manufacturer<span class="inline-delimiter">}</span></span><span class="content"> Engine Starting V</span><span class="inline"><span class="inline-delimiter">${</span>config.cylinders<span class="inline-delimiter">}</span></span><span class="content"> [rodLength=</span><span class="inline"><span class="inline-delimiter">${</span>config.crankShaft.rodLength.orElse(<span class="float">6.0d</span>)<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Inject the <code>EngineConfig</code> bean</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the configuration properties</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Configuration values can then be supplied from one of the <a href="../api/io/micronaut/context/env/PropertySource.html">PropertySource</a> instances. For example:</p>
@@ -256,7 +268,7 @@ println(vehicle.start())</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>

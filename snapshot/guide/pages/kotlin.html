@@ -128,7 +128,7 @@ function addJsClass() {
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Learn more about kapt and its features from the <a href="https://kotlinlang.org/docs/reference/kapt.htm">official documentation.</a>
+Learn more about kapt and its features from the <a href="https://kotlinlang.org/docs/reference/kapt.html">official documentation.</a>
 </td>
 </tr>
 </table>
@@ -163,9 +163,9 @@ repositories {
 dependencies {
     compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jetbrains.kotlin:kotlin-stdlib-jdk8:</span><span class="inline"><span class="inline-delimiter">$</span>kotlinVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
     compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jetbrains.kotlin:kotlin-reflect:</span><span class="inline"><span class="inline-delimiter">$</span>kotlinVersion</span><span class="delimiter">&quot;</span></span>
-    kapt <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java:</span><span class="inline"><span class="inline-delimiter">$</span>projectVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    kapt <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
 
-    kaptTest <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java:</span><span class="inline"><span class="inline-delimiter">$</span>projectVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+    kaptTest <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
 }
 
 test {
@@ -197,11 +197,11 @@ compileTestKotlin {
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Add the <code>inject-java</code> dependency under the <code>kapt</code> scope, so classes in src/main are processed</td>
+<td>Add the <code>inject-java</code> dependency under the <code>kapt</code> scope, so classes in <code>src/main</code> are processed</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Add the <code>inject-java</code> dependency under the <code>kaptTest</code> scope, so classes in src/test are processed.</td>
+<td>Add the <code>inject-java</code> dependency under the <code>kaptTest</code> scope, so classes in <code>src/test</code> are processed.</td>
 </tr>
 </table>
 </div>
@@ -210,7 +210,7 @@ compileTestKotlin {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">~ ./gradlew run</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew run</code></pre>
 </div>
 </div>
 <div class="paragraph">

@@ -197,7 +197,7 @@ See the section on <a href="#threadPools">Configuring Thread Pools</a> for infor
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut cannot know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
+When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut can not know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
 </td>
 </tr>
 </table>

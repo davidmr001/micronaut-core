@@ -258,7 +258,7 @@ math.multiplier = <span class="integer">2</span>
 <p>In the above case a function named <code>hello</code> is mapped to the remote lambda function called <code>hello-world</code>. You can define multiple named functions under the <code>aws.lambda.functions</code> configuration. Each is configured by <a href="../api/io/micronaut/function/client/aws/AWSInvokeRequestDefinition.html">AWSInvokeRequestDefinition</a> that allows setting any property on the underlying <code>com.amazonaws.services.lambda.model.InvokeRequest</code>.</p>
 </div>
 <div class="paragraph">
-<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code> to configure credentials. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
+<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code>. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>

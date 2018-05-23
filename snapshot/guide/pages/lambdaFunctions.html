@@ -173,17 +173,17 @@ function addJsClass() {
 <div class="listingblock">
 <div class="title">Example build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -203,7 +203,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew shadowJar</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 </div>
@@ -250,7 +250,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 </div>
@@ -340,7 +340,7 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -348,8 +348,8 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew invoke
-Hello, Fred</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew invoke
+Hello, Fred</code></pre>
 </div>
 </div>
 <div class="paragraph">

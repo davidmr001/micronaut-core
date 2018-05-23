@@ -139,10 +139,10 @@ function addJsClass() {
 <p>Although it is recommended to following a non-blocking approach, in particular when making remote calls to other microservices, Micronaut acknowledges the fact that in real world scenarios developers encounter situations where the need arises to interface with blocking APIs and in order to facilitate this features blocking operation detection.</p>
 </div>
 <div class="paragraph">
-<p>If you controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
+<p>If your controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
 </div>
 <div class="paragraph">
-<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method is a pre-configured I/O thread pool.</p>
+<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method in a pre-configured I/O thread pool.</p>
 </div>
 <div class="paragraph">
 <p>This thread pool by default is a caching, unbound thread pool. However, you may wish to configure the nature of the thread pool. For example the following configuration will configure the I/O thread pool as a fixed thread pool with 75 threads (similar to what a traditional blocking server such as Tomcat uses in the thread per connection model):</p>
@@ -195,7 +195,7 @@ function addJsClass() {
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>.</td>
+<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -343,7 +343,7 @@ See the section on <a href="#threadPools">Configuring Thread Pools</a> for infor
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut cannot know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
+When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut can not know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
 </td>
 </tr>
 </table>
@@ -366,7 +366,7 @@ When returning a Reactive type, the type of reactive type has an impact on the r
 <p>In fact, the defaults in the <a href="../api/io/micronaut/http/annotation/Controller.html">Controller</a> annotation specify that the controllers in Micronaut consume and produce JSON by default.</p>
 </div>
 <div class="paragraph">
-<p>In order do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
+<p>In order to do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
 </div>
 <div class="sect1">
 <h2 id="_binding_using_reactive_frameworks">Binding using Reactive Frameworks</h2>

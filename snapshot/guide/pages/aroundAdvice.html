@@ -137,21 +137,20 @@ function addJsClass() {
 <span class="keyword">import</span> <span class="include">java.util</span>.*;
 
 <span class="annotation">@Singleton</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>,<span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">Object</span> intercept(MethodInvocationContext&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; context) {
         Optional&lt;<span class="predefined-type">Map</span>.Entry&lt;<span class="predefined-type">String</span>, MutableArgumentValue&lt;?&gt;&gt;&gt; nullParam = context.getParameters()
-                .entrySet()
-                .stream()
-                .filter(entry -&gt; {
-                    MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
-                    <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
-                })
-                .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="keyword">if</span>( nullParam.isPresent() ) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span>+nullParam.get().getKey()+<span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
-        }
-        <span class="keyword">else</span> {
+            .entrySet()
+            .stream()
+            .filter(entry -&gt; {
+                MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
+                <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
+            })
+            .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">if</span> (nullParam.isPresent()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span> + nullParam.get().getKey() + <span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
+        } <span class="keyword">else</span> {
             <span class="keyword">return</span> context.proceed(); <i class="conum" data-value="4"></i><b>(4)</b>
         }
     }

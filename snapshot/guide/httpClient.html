@@ -175,7 +175,7 @@ function addJsClass() {
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Regardless whether you choose to use Micronaut&#8217;s HTTP server, you may wish to the Micronaut HTTP client in your application since it is a feature-rich client implementation
+Regardless whether you choose to use Micronaut&#8217;s HTTP server, you may wish to use the Micronaut HTTP client in your application since it is a feature-rich client implementation
 </td>
 </tr>
 </table>
@@ -666,7 +666,7 @@ assertEquals(
 <p>If some of the properties of the object need to be in the URI being posted to you can use a URI template.</p>
 </div>
 <div class="paragraph">
-<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of `Book. For example:</p>
+<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of <code>Book</code>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Sending a JSON body with a URI template</div>
@@ -814,7 +814,7 @@ MultipartBody requestBody = MultipartBody.builder()     <i class="conum" data-va
 </tbody>
 </table>
 <div class="paragraph">
-<p>In ordering to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
+<p>In order to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Streaming JSON on the Server</div>
@@ -959,7 +959,7 @@ headlineStream.subscribe(<span class="keyword">new</span> Subscriber&lt;Headline
 <p>The above example sets of <code>readTimeout</code> property of the <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> class.</p>
 </div>
 <div class="paragraph">
-<p>If you wish to have a separate configuration per client then there are a couple of options. An optional that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
+<p>If you wish to have a separate configuration per client then there are a couple of options. An option that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example given an injected client for a service called <code>hello</code> using <code>@Client</code>:</p>
@@ -1196,7 +1196,7 @@ Notice in the above example we override the <code>save</code> method. This is ne
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/http/HttpResponse.html">HttpResponse</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An <a href="../api/io/micronaut/http/HttpResponse.html">HttpResponse</a> and optional response body type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Single&lt;HttpResponse<a href="#String">[String]</a>&gt; hello()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single&lt;HttpResponse&lt;&lt;String&gt;&gt;&gt; hello()</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.reactive-streams.org/reactive-streams-1.0.2-javadoc/org/reactivestreams/Publisher.html">Publisher</a></p></td>
@@ -1507,7 +1507,7 @@ If the customization offered by <code>JacksonFeatures</code> is not enough, you 
 <p>Using the <a href="../api/io/micronaut/retry/annotation/Fallback.html">@Fallback</a> annotation you can declare a fallback implementation of a client that will be picked up and used once all possible retries have been exhausted.</p>
 </div>
 <div class="paragraph">
-<p>In fact the mechanism is not strictly linked to Retry, you can declare any cass as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
+<p>In fact the mechanism is not strictly linked to Retry, you can declare any class as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
 </div>
 <div class="paragraph">
 <p>To illustrate this consider again the <code>PetOperations</code> interface declared earlier. You can define a <code>PetFallback</code> class that will be called in the case of failure:</p>

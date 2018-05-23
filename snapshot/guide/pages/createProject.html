@@ -214,13 +214,13 @@ function addJsClass() {
 <div class="listingblock">
 <div class="title">Starting a Gradle project</div>
 <div class="content">
-<pre>&gt; ./gradlew run</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew run</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Starting a Maven project</div>
 <div class="content">
-<pre>&gt; ./mvnw compile exec:exec</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw compile exec:exec</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -257,7 +257,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features groovy, spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features groovy, spock</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -271,7 +271,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features kotlin, spek</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features kotlin, spek</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -282,11 +282,11 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 <div class="sect2">
 <h3 id="_build_tool">Build Tool</h3>
 <div class="paragraph">
-<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via thw <code>build</code> flag:</p>
+<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via the <code>build</code> flag:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-maven-app -build maven</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-maven-app -build maven</code></pre>
 </div>
 </div>
 </div>
@@ -367,7 +367,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-function hello-world -lang java -test spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-function hello-world -lang java -test spock</code></pre>
 </div>
 </div>
 </div>
@@ -383,7 +383,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 </div>
@@ -394,7 +394,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 <div class="paragraph">

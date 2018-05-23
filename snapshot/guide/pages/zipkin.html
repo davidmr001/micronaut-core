@@ -181,7 +181,7 @@ Or alternatively if you have the Micronaut CLI installed you can configure Zipki
 <h2 id="_customizing_the_zipkin_sender">Customizing the Zipkin Sender</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default a <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
+<p>By default an <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
 </div>
 <div class="paragraph">
 <p>It is unlikely that sending spans to localhost will be suitable for production deployment so you generally will want to configure the location of one or many Zipkin servers for production:</p>

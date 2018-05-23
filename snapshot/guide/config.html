@@ -187,7 +187,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 <p>In addition, Micronaut will make its best effort to detect the current environment. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
 </div>
 <div class="paragraph">
-<p>Additional active environments can be specified using the <code>micronaut.environments</code> system property of the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
+<p>Additional active environments can be specified using the <code>micronaut.environments</code> system property or the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Specifying environments</div>
@@ -222,7 +222,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
         PropertySource.of(
                 <span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>,
                 CollectionUtils.mapOf(
-                        <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.host</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>,
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.host</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>,
                     <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.port</span><span class="delimiter">&quot;</span></span>, <span class="integer">8080</span>
                 )
         ),
@@ -366,7 +366,7 @@ assertEquals(
 <p>Like Spring Boot and Grails, you can create type safe configuration by creating classes that are annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is an efficient as possible with minimal impact on startup time.</p>
+<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is as efficient as possible with minimal impact on startup time.</p>
 </div>
 <div class="paragraph">
 <p>An example of a configuration class can be seen below:</p>
@@ -400,7 +400,7 @@ assertEquals(
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -430,7 +430,7 @@ assertEquals(
 <span class="type">class</span> <span class="class">EngineImpl</span> <span class="directive">implements</span> Engine {
     <span class="directive">final</span> EngineConfig config
 
-    EngineImpl(EngineConfig config) { <i class="conum" data-value="4"></i><b>(4)</b>
+    EngineImpl(EngineConfig config) { <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="local-variable">this</span>.config = config
     }
 
@@ -439,11 +439,23 @@ assertEquals(
         <span class="keyword">return</span> config.cylinders
     }
 
-    <span class="predefined-type">String</span> start() { <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="predefined-type">String</span> start() { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>config.manufacturer<span class="inline-delimiter">}</span></span><span class="content"> Engine Starting V</span><span class="inline"><span class="inline-delimiter">${</span>config.cylinders<span class="inline-delimiter">}</span></span><span class="content"> [rodLength=</span><span class="inline"><span class="inline-delimiter">${</span>config.crankShaft.rodLength.orElse(<span class="float">6.0d</span>)<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Inject the <code>EngineConfig</code> bean</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the configuration properties</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Configuration values can then be supplied from one of the <a href="../api/io/micronaut/context/env/PropertySource.html">PropertySource</a> instances. For example:</p>
@@ -500,7 +512,7 @@ println(vehicle.start())</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -634,10 +646,10 @@ println(vehicle.start())</code></pre>
         Optional&lt;<span class="predefined-type">Integer</span>&gt; day = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">day</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; month = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">month</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; year = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">year</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
-        <span class="keyword">if</span> ( day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent() ) {
+        <span class="keyword">if</span> (day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent()) {
             <span class="keyword">try</span> {
                 <span class="keyword">return</span> Optional.of(LocalDate.of(year.get(), month.get(), day.get())) <i class="conum" data-value="2"></i><b>(2)</b>
-            } <span class="keyword">catch</span> ( DateTimeException e ) {
+            } <span class="keyword">catch</span> (DateTimeException e) {
                 context.reject(object, e) <i class="conum" data-value="3"></i><b>(3)</b>
                 <span class="keyword">return</span> Optional.empty()
             }

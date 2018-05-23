@@ -131,7 +131,7 @@ function addJsClass() {
 <p>Using the <a href="../api/io/micronaut/retry/annotation/Fallback.html">@Fallback</a> annotation you can declare a fallback implementation of a client that will be picked up and used once all possible retries have been exhausted.</p>
 </div>
 <div class="paragraph">
-<p>In fact the mechanism is not strictly linked to Retry, you can declare any cass as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
+<p>In fact the mechanism is not strictly linked to Retry, you can declare any class as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
 </div>
 <div class="paragraph">
 <p>To illustrate this consider again the <code>PetOperations</code> interface declared earlier. You can define a <code>PetFallback</code> class that will be called in the case of failure:</p>

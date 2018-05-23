@@ -601,7 +601,7 @@ assertEquals(
 <p>If some of the properties of the object need to be in the URI being posted to you can use a URI template.</p>
 </div>
 <div class="paragraph">
-<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of `Book. For example:</p>
+<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of <code>Book</code>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Sending a JSON body with a URI template</div>
@@ -749,7 +749,7 @@ MultipartBody requestBody = MultipartBody.builder()     <i class="conum" data-va
 </tbody>
 </table>
 <div class="paragraph">
-<p>In ordering to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
+<p>In order to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Streaming JSON on the Server</div>
@@ -894,7 +894,7 @@ headlineStream.subscribe(<span class="keyword">new</span> Subscriber&lt;Headline
 <p>The above example sets of <code>readTimeout</code> property of the <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> class.</p>
 </div>
 <div class="paragraph">
-<p>If you wish to have a separate configuration per client then there are a couple of options. An optional that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
+<p>If you wish to have a separate configuration per client then there are a couple of options. An option that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example given an injected client for a service called <code>hello</code> using <code>@Client</code>:</p>

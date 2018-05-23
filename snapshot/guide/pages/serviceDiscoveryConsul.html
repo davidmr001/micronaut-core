@@ -151,7 +151,7 @@ function addJsClass() {
 <p>To register a Micronaut application with Consul simply add the necessary <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a>. A minimal example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title">Auto Registering with Consul</div>
+<div class="title">Auto Registering with Consul (application.yml)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
     <span class="key">application</span>:
@@ -202,7 +202,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <p>The <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a> class features a range of customization options for altering how an instance registers with Consul. You can customize the tags, the retry attempts, the fail fast behaviour and so on.</p>
 </div>
 <div class="paragraph">
-<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Eureka client, including read timeout, proxy configuration and so on.</p>
+<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Consul client, including read timeout, proxy configuration and so on.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -245,7 +245,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="type">interface</span> <span class="class">HelloClient</span>{
         ...
 }</code></pre>
@@ -257,7 +257,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@Inject</span>
 RxHttpClient httpClient;</code></pre>
 </div>
@@ -293,7 +293,7 @@ RxHttpClient httpClient;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a></p>
+<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a>.</p>
 </div>
 </div>
 </div>

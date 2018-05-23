@@ -141,7 +141,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -149,7 +149,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-demo-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-demo-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -170,7 +170,7 @@ function addJsClass() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app example.my-demo-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app example.my-demo-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -220,10 +220,10 @@ Throughout the user guide, references to CLI features/commands have been provide
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn
 | Starting interactive mode...
 | Enter a command name to run. Use TAB for completion:
-mn&gt;</pre>
+mn&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -236,13 +236,13 @@ mn&gt;</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; help
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; help
 Usage (optionals marked with *):'
 mn [target] [arguments]*'
 
 | Examples:
 $ mn create-app my-app
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -250,14 +250,14 @@ $ mn create-app my-app
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; help create-app
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; help create-app
 | Command: create-app
 | Description:
 Creates an application
 
 | Usage:
 create-app [NAME]
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -265,7 +265,7 @@ create-app [NAME]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; list-profiles
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; list-profiles
 | Available Profiles
 --------------------
 * function-aws - The function profile for AWS Lambda
@@ -273,7 +273,7 @@ create-app [NAME]
 * function - The function profile
 * federation - The federation profile
 * service - The service profile
-* base - The base profile</pre>
+* base - The base profile</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -281,7 +281,7 @@ create-app [NAME]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; profile-info service
 Profile: service
 --------------------
 The service profile
@@ -299,7 +299,7 @@ Provided Features:
 * discovery-consul - Adds support for Service Discovery with Consul (https://www.consul.io)
 * hibernate-jpa - Adds support for Hibernate/JPA
 * mongo-gorm - Configures GORM for MongoDB for Groovy applications
-...</pre>
+...</code></pre>
 </div>
 </div>
 </div>
@@ -413,13 +413,13 @@ Provided Features:
 <div class="listingblock">
 <div class="title">Starting a Gradle project</div>
 <div class="content">
-<pre>&gt; ./gradlew run</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew run</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Starting a Maven project</div>
 <div class="content">
-<pre>&gt; ./mvnw compile exec:exec</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw compile exec:exec</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -456,7 +456,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features groovy, spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features groovy, spock</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -470,7 +470,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features kotlin, spek</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features kotlin, spek</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -481,11 +481,11 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 <div class="sect2">
 <h3 id="_build_tool">Build Tool</h3>
 <div class="paragraph">
-<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via thw <code>build</code> flag:</p>
+<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via the <code>build</code> flag:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-maven-app -build maven</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-maven-app -build maven</code></pre>
 </div>
 </div>
 </div>
@@ -566,7 +566,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-function hello-world -lang java -test spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-function hello-world -lang java -test spock</code></pre>
 </div>
 </div>
 </div>
@@ -582,7 +582,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 </div>
@@ -593,7 +593,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -686,7 +686,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-project</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-project</code></pre>
 </div>
 </div>
 
@@ -705,7 +705,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-demo-app -features mongo-reactive</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-demo-app -features mongo-reactive</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -713,7 +713,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn profile-info service
 Profile: service
 --------------------
 The service profile
@@ -746,7 +746,7 @@ Provided Features:
 * spock - Adds support for the Spock testing framework
 * groovy - Adds support for Groovy in the application
 * security-session - Adds support for Session based Authentication
-* tracing-zipkin - Adds support for distributed tracing with Zipkin (https://zipkin.io)</pre>
+* tracing-zipkin - Adds support for distributed tracing with Zipkin (https://zipkin.io)</code></pre>
 </div>
 </div>
 
@@ -765,7 +765,7 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; profile-info service
 Profile: service
 --------------------
 The service profile
@@ -780,7 +780,7 @@ Provided Commands:
 
 Provided Features:
 --------------------
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -839,8 +839,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-bean EmailService
-| Rendered template Bean.java to destination src/main/java/example/EmailService.java</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-bean EmailService
+| Rendered template Bean.java to destination src/main/java/example/EmailService.java</code></pre>
 </div>
 </div>
 </div>
@@ -878,8 +878,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-job UpdateFeeds -lang groovy
-| Rendered template Job.groovy to destination src/main/groovy/example/UpdateFeedsJob.groovy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-job UpdateFeeds -lang groovy
+| Rendered template Job.groovy to destination src/main/groovy/example/UpdateFeedsJob.groovy</code></pre>
 </div>
 </div>
 </div>
@@ -925,9 +925,9 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-controller Book
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-controller Book
 | Rendered template Controller.java to destination src/main/java/example/BookController.java
-| Rendered template ControllerTest.java to destination src/test/java/example/BookControllerTest.java</pre>
+| Rendered template ControllerTest.java to destination src/test/java/example/BookControllerTest.java</code></pre>
 </div>
 </div>
 </div>
@@ -965,8 +965,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-client Book
-| Rendered template Client.java to destination src/main/java/example/BookClient.java</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-client Book
+| Rendered template Client.java to destination src/main/java/example/BookClient.java</code></pre>
 </div>
 </div>
 </div>

@@ -169,10 +169,10 @@ function addJsClass() {
         Optional&lt;<span class="predefined-type">Integer</span>&gt; day = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">day</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; month = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">month</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; year = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">year</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
-        <span class="keyword">if</span> ( day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent() ) {
+        <span class="keyword">if</span> (day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent()) {
             <span class="keyword">try</span> {
                 <span class="keyword">return</span> Optional.of(LocalDate.of(year.get(), month.get(), day.get())) <i class="conum" data-value="2"></i><b>(2)</b>
-            } <span class="keyword">catch</span> ( DateTimeException e ) {
+            } <span class="keyword">catch</span> (DateTimeException e) {
                 context.reject(object, e) <i class="conum" data-value="3"></i><b>(3)</b>
                 <span class="keyword">return</span> Optional.empty()
             }

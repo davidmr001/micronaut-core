@@ -122,7 +122,7 @@ function addJsClass() {
 <p>Handling of file uploads has special treatment in Micronaut. Support is provided for streaming of uploads in a non-blocking manner through streaming uploads or completed uploads.</p>
 </div>
 <div class="paragraph">
-<p>To receive data from a multipart request, set the consumes argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
+<p>To receive data from a multipart request, set the <code>consumes</code> argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -229,7 +229,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p>Route arguments that are not publishers will cause the route execution to be delayed until the upload has finished. The received data will attempt to be converted to the requested type. Conversions to a <code>String</code> or <code>byte[]</code> are supported by default. In addition, the file can be converted to a POJO if a media type codec has been registered that supports the media type of the file. A media type codec is included by default that allows conversion of JSON files to POJOs.</p>
 </div>
 <div class="paragraph">
-<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
+<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -303,7 +303,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p><a href="../api/io/micronaut/http/multipart/StreamingFileUpload.html">StreamingFileUpload</a></p>
 </li>
 <li>
-<p><a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
+<p><a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
 </li>
 <li>
 <p>Any POJO assuming a media codec is found that supports the content type</p>

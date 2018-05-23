@@ -131,7 +131,7 @@ function addJsClass() {
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> Publisher&lt;AuthenticationResponse&gt; authenticate(AuthenticationRequest authenticationRequest) {
-        <span class="keyword">if</span> ( authenticationRequest.getIdentity().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>) &amp;&amp; authenticationRequest.getSecret().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>) ) {
+        <span class="keyword">if</span> (authenticationRequest.getIdentity().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>) &amp;&amp; authenticationRequest.getSecret().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>)) {
             <span class="keyword">return</span> Flowable.just(<span class="keyword">new</span> UserDetails(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;()));
         }
         <span class="keyword">return</span> Flowable.just(<span class="keyword">new</span> AuthenticationFailed());

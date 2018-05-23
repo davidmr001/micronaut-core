@@ -342,7 +342,7 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>The <a href="../api/io/micronaut/http/annotation/Controller.html">@Controller</a> annotation used in the previous section is one of <a href="../api/io/micronaut/web/router/annotation/package-summary.html">several annotations</a> that allow you to control the construction of HTTP routes.</p>
+<p>The <a href="../api/io/micronaut/http/annotation/Controller.html">@Controller</a> annotation used in the previous section is one of <a href="../api/io/micronaut/http/annotation/package-summary.html">several annotations</a> that allow you to control the construction of HTTP routes.</p>
 </div>
 <div class="sect1">
 <h2 id="_uri_paths">URI Paths</h2>
@@ -390,7 +390,7 @@ function addJsClass() {
 </tbody>
 </table>
 <div class="paragraph">
-<p>The value of the <code>@Controller</code> annotation is a <a href="https://tools.ietf.org/html/rfc6570">RFC-6570 URI template</a> you can therefore embed URI variables within the path using the syntax defined the by the URI template specification.</p>
+<p>The value of the <code>@Controller</code> annotation is a <a href="https://tools.ietf.org/html/rfc6570">RFC-6570 URI template</a> you can therefore embed URI variables within the path using the syntax defined by the URI template specification.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -436,7 +436,7 @@ Many other frameworks, including Spring, implement the URI template specificatio
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <a href="../api/io/micronaut/web/router/annotation/Get.html">Get</a> annotation is used to map the method to an HTTP <a href="../api/io/micronaut/http/HttpMethod.html#GET">GET</a> with a URI variable embedded in the URI called <code>number</code></td>
+<td>The <a href="../api/io/micronaut/http/annotation/Get.html">Get</a> annotation is used to map the method to an HTTP <a href="../api/io/micronaut/http/HttpMethod.html#GET">GET</a> with a URI variable embedded in the URI called <code>number</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -735,7 +735,7 @@ Unfortunately due to type erasure a Java method lambda reference cannot be used 
 <h2 id="_binding_annotations">Binding Annotations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can customize the name of the variable bound with the <a href="../api/io/micronaut/http/annotation/Parameter.html">@Parameter</a> annotation which accepts a value which is the name of the URI variable or request parameter to bind from.</p>
+<p>You can customize the name of the variable bound with the <a href="../api/io/micronaut/context/annotation/Parameter.html">@Parameter</a> annotation which accepts a value which is the name of the URI variable or request parameter to bind from.</p>
 </div>
 <div class="paragraph">
 <p>In addition, there are other annotations within the <a href="../api/io/micronaut/http/annotation/package-summary.html">io.micronaut.http.annotation</a> package to bind from different sources.</p>
@@ -774,7 +774,7 @@ Unfortunately due to type erasure a Java method lambda reference cannot be used 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Header String contentType</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/http/annotation/Parameter.html">@Parameter</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/annotation/Parameter.html">@Parameter</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Bindings from a request URI variable or request parameter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Parameter String myParam</code></p></td>
 </tr>
@@ -1096,10 +1096,10 @@ Nonetheless you can change the <code>Content-Type</code> of the response with th
 <p>Although it is recommended to following a non-blocking approach, in particular when making remote calls to other microservices, Micronaut acknowledges the fact that in real world scenarios developers encounter situations where the need arises to interface with blocking APIs and in order to facilitate this features blocking operation detection.</p>
 </div>
 <div class="paragraph">
-<p>If you controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
+<p>If your controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
 </div>
 <div class="paragraph">
-<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method is a pre-configured I/O thread pool.</p>
+<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method in a pre-configured I/O thread pool.</p>
 </div>
 <div class="paragraph">
 <p>This thread pool by default is a caching, unbound thread pool. However, you may wish to configure the nature of the thread pool. For example the following configuration will configure the I/O thread pool as a fixed thread pool with 75 threads (similar to what a traditional blocking server such as Tomcat uses in the thread per connection model):</p>
@@ -1152,7 +1152,7 @@ Nonetheless you can change the <code>Content-Type</code> of the response with th
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>.</td>
+<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -1300,7 +1300,7 @@ See the section on <a href="#threadPools">Configuring Thread Pools</a> for infor
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut cannot know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
+When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut can not know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
 </td>
 </tr>
 </table>
@@ -1323,7 +1323,7 @@ When returning a Reactive type, the type of reactive type has an impact on the r
 <p>In fact, the defaults in the <a href="../api/io/micronaut/http/annotation/Controller.html">Controller</a> annotation specify that the controllers in Micronaut consume and produce JSON by default.</p>
 </div>
 <div class="paragraph">
-<p>In order do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
+<p>In order to do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
 </div>
 <div class="sect1">
 <h2 id="_binding_using_reactive_frameworks">Binding using Reactive Frameworks</h2>
@@ -1643,9 +1643,9 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-A few things to note about the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation. Two id@entical Error annotations that are
-global cannot be declared. Two identical Error annotations that are non-global cannot be declared in the same controller.
-If an Error annotation with the same parameter exists as global and another as a local, the local one will take precedence.
+A few things to note about the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation. Two identical <code>@Error</code> annotations that are
+global cannot be declared. Two identical <code>@Error</code> annotations that are non-global cannot be declared in the same controller.
+If an <code>@Error</code> annotation with the same parameter exists as global and another as a local, the local one will take precedence.
 </td>
 </tr>
 </table>
@@ -1687,7 +1687,7 @@ If an Error annotation with the same parameter exists as global and another as a
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-To avoid denial of service attacks collection types and arrays created during binding are limited by the setting <code>jackson.arraySizeThreshold</code> in <code>application.yml</code>
+To avoid denial of service attacks, collection types and arrays created during binding are limited by the setting <code>jackson.arraySizeThreshold</code> in <code>application.yml</code>
 </td>
 </tr>
 </table>
@@ -1708,7 +1708,7 @@ To avoid denial of service attacks collection types and arrays created during bi
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see from the example above, this approach allows you to use features as support for <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a> types and restrict the parameters to be bound (When using POJOs you must be careful to use Jackson annotations to exclude properties that should not be bound).</p>
+<p>As you can see from the example above, this approach allows you to use features such as support for <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a> types and restrict the parameters to be bound (When using POJOs you must be careful to use Jackson annotations to exclude properties that should not be bound).</p>
 </div>
 
 
@@ -1725,7 +1725,7 @@ To avoid denial of service attacks collection types and arrays created during bi
 <p>Handling of file uploads has special treatment in Micronaut. Support is provided for streaming of uploads in a non-blocking manner through streaming uploads or completed uploads.</p>
 </div>
 <div class="paragraph">
-<p>To receive data from a multipart request, set the consumes argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
+<p>To receive data from a multipart request, set the <code>consumes</code> argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1832,7 +1832,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p>Route arguments that are not publishers will cause the route execution to be delayed until the upload has finished. The received data will attempt to be converted to the requested type. Conversions to a <code>String</code> or <code>byte[]</code> are supported by default. In addition, the file can be converted to a POJO if a media type codec has been registered that supports the media type of the file. A media type codec is included by default that allows conversion of JSON files to POJOs.</p>
 </div>
 <div class="paragraph">
-<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
+<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1906,7 +1906,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p><a href="../api/io/micronaut/http/multipart/StreamingFileUpload.html">StreamingFileUpload</a></p>
 </li>
 <li>
-<p><a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
+<p><a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
 </li>
 <li>
 <p>Any POJO assuming a media codec is found that supports the content type</p>
@@ -2071,15 +2071,14 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 
     <span class="annotation">@Get</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>)
     <span class="directive">public</span> Publisher&lt;<span class="predefined-type">Event</span>&lt;Headline&gt;&gt; index() { <i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="predefined-type">String</span><span class="type">[]</span> versions = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{ <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">2.0</span><span class="delimiter">&quot;</span></span> }; <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="predefined-type">String</span><span class="type">[]</span> versions = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">2.0</span><span class="delimiter">&quot;</span></span>}; <i class="conum" data-value="2"></i><b>(2)</b>
 
         <span class="keyword">return</span> Flowable.generate(() -&gt; <span class="integer">0</span>, (i, emitter) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
-            <span class="keyword">if</span>(i &lt; versions.length) {
+            <span class="keyword">if</span> (i &lt; versions.length) {
                 emitter.onNext( <i class="conum" data-value="4"></i><b>(4)</b>
-                        <span class="predefined-type">Event</span>.of(<span class="keyword">new</span> Headline(<span class="string"><span class="delimiter">&quot;</span><span class="content">Micronaut </span><span class="delimiter">&quot;</span></span>+versions[i]+<span class="string"><span class="delimiter">&quot;</span><span class="content"> Released</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Come and get it</span><span class="delimiter">&quot;</span></span>))
+                    <span class="predefined-type">Event</span>.of(<span class="keyword">new</span> Headline(<span class="string"><span class="delimiter">&quot;</span><span class="content">Micronaut </span><span class="delimiter">&quot;</span></span> + versions[i] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> Released</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Come and get it</span><span class="delimiter">&quot;</span></span>))
                 );
-            }
-            <span class="keyword">else</span> {
+            } <span class="keyword">else</span> {
                 emitter.onComplete(); <i class="conum" data-value="5"></i><b>(5)</b>
             }
             <span class="keyword">return</span> ++i;
@@ -2198,7 +2197,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 
     Flowable&lt;<span class="predefined-type">Boolean</span>&gt; trace(HttpRequest&lt;?&gt; request) {
         <span class="keyword">return</span> Flowable.fromCallable(() -&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
-            <span class="keyword">if</span>(LOG.isDebugEnabled()) {
+            <span class="keyword">if</span> (LOG.isDebugEnabled()) {
                 LOG.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">Tracing request: </span><span class="delimiter">&quot;</span></span> + request.getUri());
             }
             <span class="comment">// trace logic here, potentially performing I/O </span><i class="conum" data-value="2"></i><b>(2)</b>
@@ -2331,7 +2330,7 @@ The examples use RxJava, however you can use any reactive framework that support
 <div class="ulist">
 <ul>
 <li>
-<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances</p>
+<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances.</p>
 </li>
 <li>
 <p>Redis sessions - In this case <a href="https://redis.io">Redis</a> is used to store sessions and non-blocking I/O is used to read/write sessions to Redis.</p>
@@ -2384,7 +2383,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <p>How the <a href="../api/io/micronaut/session/Session.html">Session</a> is resolved can be configured with <a href="../api/io/micronaut/session/http/HttpSessionConfiguration.html">HttpSessionConfiguration</a>.</p>
 </div>
 <div class="paragraph">
-<p>By default sessions are resolved using a <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
+<p>By default sessions are resolved using an <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
 </div>
 <div class="paragraph">
 <p>If you wish to disable either header resolution or cookie resolution you can via configuration in <code>application.yml</code>:</p>
@@ -2426,7 +2425,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 
     <span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/{name}</span><span class="delimiter">&quot;</span></span>)
     Cart addItem(Session session, <span class="annotation">@NotBlank</span> <span class="predefined-type">String</span> name) { <i class="conum" data-value="2"></i><b>(2)</b>
-        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(()-&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(() -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
             Cart newCart = <span class="keyword">new</span> Cart();
             session.put(ATTR_CART, newCart); <i class="conum" data-value="4"></i><b>(4)</b>
             <span class="keyword">return</span> newCart;
@@ -2469,7 +2468,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/clear</span><span class="delimiter">&quot;</span></span>)
 <span class="type">void</span> clearCart(<span class="annotation">@Nullable</span> Session session) {
-    <span class="keyword">if</span>(session != <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (session != <span class="predefined-constant">null</span>) {
         session.remove(ATTR_CART);
     }
 }</code></pre>
@@ -2492,12 +2491,12 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="listingblock">
 <div class="title">Retrieving the AUTHORIZATION_INFO header</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
 HttpResponse&lt;Cart&gt; response = httpClient.exchange(HttpRequest.GET(<span class="string"><span class="delimiter">'</span><span class="content">/shopping/cart</span><span class="delimiter">'</span></span>), Cart) <i class="conum" data-value="1"></i><b>(1)</b>
                                         .blockingFirst()
 Cart cart = response.body()
 
-<span class="key">then</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
 response.header(HttpHeaders.AUTHORIZATION_INFO) != <span class="predefined-constant">null</span> <i class="conum" data-value="2"></i><b>(2)</b>
 cart != <span class="predefined-constant">null</span>
 cart.items.isEmpty()</code></pre>
@@ -2556,7 +2555,7 @@ cart = response.body()</code></pre>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Get</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@SessionValue</span>(ATTR_CART) <i class="conum" data-value="1"></i><b>(1)</b>
 Cart viewCart(<span class="annotation">@SessionValue</span> <span class="annotation">@Nullable</span> Cart cart) { <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="keyword">if</span>(cart == <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (cart == <span class="predefined-constant">null</span>) {
         cart = <span class="keyword">new</span> Cart();
     }
     <span class="keyword">return</span> cart;
@@ -2776,7 +2775,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 
 
 <div class="paragraph">
-<p>Micronaut supports CORS(<a href="https://www.w3.org/TR/cors/">Cross Origin Resource Sharing</a>) out of the box. By default, CORS requests will be rejected. To enable processing of CORS requests, modify your configuration. For example with <code>application.yml</code>:</p>
+<p>Micronaut supports CORS (<a href="https://www.w3.org/TR/cors/">Cross Origin Resource Sharing</a>) out of the box. By default, CORS requests will be rejected. To enable processing of CORS requests, modify your configuration. For example with <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">CORS Configuration Example</div>

@@ -540,7 +540,7 @@ You can supply <code>--build maven</code> if you wish to create a Maven based bu
 </div>
 </div>
 <div class="paragraph">
-<p>By default the Micronaut HTTP server is configured to run on a random port, but you can alter that be adding the following configuration to <code>src/main/resources/application.yml</code>:</p>
+<p>By default the Micronaut HTTP server is configured to run on a random port, but you can alter that by adding the following configuration to <code>src/main/resources/application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -550,7 +550,7 @@ You can supply <code>--build maven</code> if you wish to create a Maven based bu
 </div>
 </div>
 <div class="paragraph">
-<p>In order to create a service that responds to "Hello World" you first need a controller. The following in an example of a controller written in Java and located in <code>src/main/java/example/helloworld</code>:</p>
+<p>In order to create a service that responds to "Hello World" you first need a controller. The following is an example of a controller written in Java and located in <code>src/main/java/example/helloworld</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">src/main/java/example/helloworld/HelloController.java</div>
@@ -883,7 +883,7 @@ Hello World</code></pre>
 <p>Micronaut implements the <a href="http://javax-inject.github.io/javax-inject/">JSR-330 (javax.inject) - Dependency Injection for Java</a> specification hence to use Micronaut you simply use the <a href="https://docs.oracle.com/javaee/6/api/javax/inject/package-summary.html">annotations provided by javax.inject</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following is a simply example:</p>
+<p>The following is a simple example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1008,7 +1008,7 @@ println( vehicle.start() )</code></pre>
 <p>The <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> is a container object for all your bean definitions (it also implements <a href="../api/io/micronaut/context/BeanDefinitionRegistry.html">BeanDefinitionRegistry</a>).</p>
 </div>
 <div class="paragraph">
-<p>It is also the point of initialization for Micronaut. Generally speaking however, you don&#8217;t have to interact directly with the <code>BeanContext</code> API and can simply use <code>javax.inject</code> annotations and the annotations defined within <a href="../api/io/micronaut/context/annotation/index.html">io.micronaut.context.annotation</a> package for your dependency injection needs.</p>
+<p>It is also the point of initialization for Micronaut. Generally speaking however, you don&#8217;t have to interact directly with the <code>BeanContext</code> API and can simply use <code>javax.inject</code> annotations and the annotations defined within <a href="../api/io/micronaut/context/annotation/package-summary.html">io.micronaut.context.annotation</a> package for your dependency injection needs.</p>
 </div>
 
 
@@ -1045,7 +1045,7 @@ println( vehicle.start() )</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Optional&lt;Engine&gt;</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterable.html">java.util.Iterable</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html">java.lang.Iterable</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An <code>Iterable</code> or subtype of <code>Iterable</code> (example <code>List</code>, <code>Collection</code> etc.)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iterable&lt;Engine&gt;</code></p></td>
 </tr>
@@ -1775,7 +1775,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <p>One significant difference between Micronaut&#8217;s Dependency Injection system and Spring is the way beans can be replaced.</p>
 </div>
 <div class="paragraph">
-<p>With Spring beans have names and you can effectively override another bean just be creating a bean with the same name regardless of the type of the bean. Spring is also has the notion of bean registration order, hence in Spring Boot you have <code>@AutoConfigureBefore</code> and <code>@AutoConfigureAfter</code> the control how beans override each other.</p>
+<p>With Spring beans have names and you can effectively override another bean just be creating a bean with the same name regardless of the type of the bean. Spring also has the notion of bean registration order, hence in Spring Boot you have <code>@AutoConfigureBefore</code> and <code>@AutoConfigureAfter</code> the control how beans override each other.</p>
 </div>
 <div class="paragraph">
 <p>This strategy leads to difficult to debug problems in cases where:</p>
@@ -1791,7 +1791,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 </ul>
 </div>
 <div class="paragraph">
-<p>To avoid these problems, the design of Micornaut DI has no concept of bean names or load order. Beans have a type and a <a href="../api/io/micronaut/context/Qualifier.html">Qualifier</a>. You cannot override a bean of a completely different type with another.</p>
+<p>To avoid these problems, the design of Micronaut DI has no concept of bean names or load order. Beans have a type and a <a href="../api/io/micronaut/context/Qualifier.html">Qualifier</a>. You cannot override a bean of a completely different type with another.</p>
 </div>
 <div class="paragraph">
 <p>However, one feature that the Spring way of doing things enables is that it allows overriding existing beans to customize behaviour.</p>
@@ -2075,7 +2075,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <div class="title">Lookup Bean Definitions by Stereotype</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">BeanContext</span> beanContext = ... <span class="comment">// obtain the bean context</span>
-Collection&lt;BeanDefinition definitions =
+Collection&lt;BeanDefinition&gt; definitions =
     beanContext.getBeanDefinitions(Qualfiers.byStereotype(Controller.class))
 
 <span class="keyword">for</span>(BeanDefinition definition : definitions) {
@@ -2285,7 +2285,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 <p>In addition, Micronaut will make its best effort to detect the current environment. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
 </div>
 <div class="paragraph">
-<p>Additional active environments can be specified using the <code>micronaut.environments</code> system property of the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
+<p>Additional active environments can be specified using the <code>micronaut.environments</code> system property or the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Specifying environments</div>
@@ -2320,7 +2320,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
         PropertySource.of(
                 <span class="string"><span class="delimiter">&quot;</span><span class="content">test</span><span class="delimiter">&quot;</span></span>,
                 CollectionUtils.mapOf(
-                        <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.host</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>,
+                    <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.host</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">foo</span><span class="delimiter">&quot;</span></span>,
                     <span class="string"><span class="delimiter">&quot;</span><span class="content">micronaut.server.port</span><span class="delimiter">&quot;</span></span>, <span class="integer">8080</span>
                 )
         ),
@@ -2464,7 +2464,7 @@ assertEquals(
 <p>Like Spring Boot and Grails, you can create type safe configuration by creating classes that are annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is an efficient as possible with minimal impact on startup time.</p>
+<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is as efficient as possible with minimal impact on startup time.</p>
 </div>
 <div class="paragraph">
 <p>An example of a configuration class can be seen below:</p>
@@ -2498,7 +2498,7 @@ assertEquals(
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -2528,7 +2528,7 @@ assertEquals(
 <span class="type">class</span> <span class="class">EngineImpl</span> <span class="directive">implements</span> Engine {
     <span class="directive">final</span> EngineConfig config
 
-    EngineImpl(EngineConfig config) { <i class="conum" data-value="4"></i><b>(4)</b>
+    EngineImpl(EngineConfig config) { <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="local-variable">this</span>.config = config
     }
 
@@ -2537,11 +2537,23 @@ assertEquals(
         <span class="keyword">return</span> config.cylinders
     }
 
-    <span class="predefined-type">String</span> start() { <i class="conum" data-value="5"></i><b>(5)</b>
+    <span class="predefined-type">String</span> start() { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>config.manufacturer<span class="inline-delimiter">}</span></span><span class="content"> Engine Starting V</span><span class="inline"><span class="inline-delimiter">${</span>config.cylinders<span class="inline-delimiter">}</span></span><span class="content"> [rodLength=</span><span class="inline"><span class="inline-delimiter">${</span>config.crankShaft.rodLength.orElse(<span class="float">6.0d</span>)<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>
     }
 }</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Inject the <code>EngineConfig</code> bean</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the configuration properties</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Configuration values can then be supplied from one of the <a href="../api/io/micronaut/context/env/PropertySource.html">PropertySource</a> instances. For example:</p>
@@ -2598,7 +2610,7 @@ println(vehicle.start())</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>@ConfigProperties</code> annotation takes the configuration prefix</td>
+<td>The <code>@ConfigurationProperties</code> annotation takes the configuration prefix</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -2732,10 +2744,10 @@ println(vehicle.start())</code></pre>
         Optional&lt;<span class="predefined-type">Integer</span>&gt; day = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">day</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; month = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">month</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
         Optional&lt;<span class="predefined-type">Integer</span>&gt; year = ConversionService.SHARED.convert(object.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">year</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Integer</span>.class)
-        <span class="keyword">if</span> ( day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent() ) {
+        <span class="keyword">if</span> (day.isPresent() &amp;&amp; month.isPresent() &amp;&amp; year.isPresent()) {
             <span class="keyword">try</span> {
                 <span class="keyword">return</span> Optional.of(LocalDate.of(year.get(), month.get(), day.get())) <i class="conum" data-value="2"></i><b>(2)</b>
-            } <span class="keyword">catch</span> ( DateTimeException e ) {
+            } <span class="keyword">catch</span> (DateTimeException e) {
                 context.reject(object, e) <i class="conum" data-value="3"></i><b>(3)</b>
                 <span class="keyword">return</span> Optional.empty()
             }
@@ -2997,21 +3009,20 @@ assertEquals(
 <span class="keyword">import</span> <span class="include">java.util</span>.*;
 
 <span class="annotation">@Singleton</span>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>,<span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">NotNullInterceptor</span> <span class="directive">implements</span> MethodInterceptor&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
     <span class="annotation">@Override</span>
     <span class="directive">public</span> <span class="predefined-type">Object</span> intercept(MethodInvocationContext&lt;<span class="predefined-type">Object</span>, <span class="predefined-type">Object</span>&gt; context) {
         Optional&lt;<span class="predefined-type">Map</span>.Entry&lt;<span class="predefined-type">String</span>, MutableArgumentValue&lt;?&gt;&gt;&gt; nullParam = context.getParameters()
-                .entrySet()
-                .stream()
-                .filter(entry -&gt; {
-                    MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
-                    <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
-                })
-                .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
-        <span class="keyword">if</span>( nullParam.isPresent() ) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span>+nullParam.get().getKey()+<span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
-        }
-        <span class="keyword">else</span> {
+            .entrySet()
+            .stream()
+            .filter(entry -&gt; {
+                MutableArgumentValue&lt;?&gt; argumentValue = entry.getValue();
+                <span class="keyword">return</span> Objects.isNull(argumentValue.getValue());
+            })
+            .findFirst(); <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">if</span> (nullParam.isPresent()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Null parameter [</span><span class="delimiter">&quot;</span></span> + nullParam.get().getKey() + <span class="string"><span class="delimiter">&quot;</span><span class="content">] not allowed</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="3"></i><b>(3)</b>
+        } <span class="keyword">else</span> {
             <span class="keyword">return</span> context.proceed(); <i class="conum" data-value="4"></i><b>(4)</b>
         }
     }
@@ -3275,7 +3286,7 @@ Since Micronaut is compile time, generally the advice should be packaged in a de
 </table>
 </div>
 <div class="paragraph">
-<p>To now use this introduction advice in an application you simply annotation your abstract classes or interfaces with <code>@Stub</code>:</p>
+<p>To now use this introduction advice in an application you simply annotate your abstract classes or interfaces with <code>@Stub</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">StubExample.java</div>
@@ -3479,7 +3490,7 @@ assertNull(stubExample.getDate());</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    compile "io.micronaut.configurations:redis-lettuce:1.0.0-SNAPSHOT"
+    compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut.configurations:redis-lettuce</span><span class="delimiter">&quot;</span></span>
     ...
 }</code></pre>
 </div>
@@ -3651,7 +3662,7 @@ assertNull(stubExample.getDate());</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <code>@Retryable</code> annotation is used try catch <code>ServiceUnavailableException</code> and retry creating the driver before failing startup.</td>
+<td>The <code>@Retryable</code> annotation is used to catch <code>ServiceUnavailableException</code> and retry creating the driver before failing startup.</td>
 </tr>
 </table>
 </div>
@@ -3757,7 +3768,7 @@ Remember that the scope of the bean has an impact on behaviour. a <code>@Singlet
 <h2 id="_programmatically_scheduling_tasks">Programmatically Scheduling Tasks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you wish to programmatically schedule tasks, then you can use the <a href="../api/io/micronaut/scheduled/TaskScheduler.html">TaskScheduler</a> bean which can be injected as follows:</p>
+<p>If you wish to programmatically schedule tasks, then you can use the <a href="../api/io/micronaut/scheduling/TaskScheduler.html">TaskScheduler</a> bean which can be injected as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -4037,7 +4048,7 @@ Micronaut&#8217;s version of <a href="../api/io/micronaut/spring/tx/annotation/T
 
 
 <div class="paragraph">
-<p>The <a href="../api/io/micronaut/http/annotation/Controller.html">@Controller</a> annotation used in the previous section is one of <a href="../api/io/micronaut/web/router/annotation/package-summary.html">several annotations</a> that allow you to control the construction of HTTP routes.</p>
+<p>The <a href="../api/io/micronaut/http/annotation/Controller.html">@Controller</a> annotation used in the previous section is one of <a href="../api/io/micronaut/http/annotation/package-summary.html">several annotations</a> that allow you to control the construction of HTTP routes.</p>
 </div>
 <div class="sect1">
 <h2 id="_uri_paths">URI Paths</h2>
@@ -4085,7 +4096,7 @@ Micronaut&#8217;s version of <a href="../api/io/micronaut/spring/tx/annotation/T
 </tbody>
 </table>
 <div class="paragraph">
-<p>The value of the <code>@Controller</code> annotation is a <a href="https://tools.ietf.org/html/rfc6570">RFC-6570 URI template</a> you can therefore embed URI variables within the path using the syntax defined the by the URI template specification.</p>
+<p>The value of the <code>@Controller</code> annotation is a <a href="https://tools.ietf.org/html/rfc6570">RFC-6570 URI template</a> you can therefore embed URI variables within the path using the syntax defined by the URI template specification.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4131,7 +4142,7 @@ Many other frameworks, including Spring, implement the URI template specificatio
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <a href="../api/io/micronaut/web/router/annotation/Get.html">Get</a> annotation is used to map the method to an HTTP <a href="../api/io/micronaut/http/HttpMethod.html#GET">GET</a> with a URI variable embedded in the URI called <code>number</code></td>
+<td>The <a href="../api/io/micronaut/http/annotation/Get.html">Get</a> annotation is used to map the method to an HTTP <a href="../api/io/micronaut/http/HttpMethod.html#GET">GET</a> with a URI variable embedded in the URI called <code>number</code></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -4430,7 +4441,7 @@ Unfortunately due to type erasure a Java method lambda reference cannot be used 
 <h2 id="_binding_annotations">Binding Annotations</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can customize the name of the variable bound with the <a href="../api/io/micronaut/http/annotation/Parameter.html">@Parameter</a> annotation which accepts a value which is the name of the URI variable or request parameter to bind from.</p>
+<p>You can customize the name of the variable bound with the <a href="../api/io/micronaut/context/annotation/Parameter.html">@Parameter</a> annotation which accepts a value which is the name of the URI variable or request parameter to bind from.</p>
 </div>
 <div class="paragraph">
 <p>In addition, there are other annotations within the <a href="../api/io/micronaut/http/annotation/package-summary.html">io.micronaut.http.annotation</a> package to bind from different sources.</p>
@@ -4469,7 +4480,7 @@ Unfortunately due to type erasure a Java method lambda reference cannot be used 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Header String contentType</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/http/annotation/Parameter.html">@Parameter</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/annotation/Parameter.html">@Parameter</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Bindings from a request URI variable or request parameter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Parameter String myParam</code></p></td>
 </tr>
@@ -4791,10 +4802,10 @@ Nonetheless you can change the <code>Content-Type</code> of the response with th
 <p>Although it is recommended to following a non-blocking approach, in particular when making remote calls to other microservices, Micronaut acknowledges the fact that in real world scenarios developers encounter situations where the need arises to interface with blocking APIs and in order to facilitate this features blocking operation detection.</p>
 </div>
 <div class="paragraph">
-<p>If you controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
+<p>If your controller method returns a non-blocking type such as an RxJava <code>Observable</code> or a <code>CompletableFuture</code> then Micronaut will use the Event loop thread to subscribe to the result.</p>
 </div>
 <div class="paragraph">
-<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method is a pre-configured I/O thread pool.</p>
+<p>If however you return any other type then Micronaut will execute your <code>@Controller</code> method in a pre-configured I/O thread pool.</p>
 </div>
 <div class="paragraph">
 <p>This thread pool by default is a caching, unbound thread pool. However, you may wish to configure the nature of the thread pool. For example the following configuration will configure the I/O thread pool as a fixed thread pool with 75 threads (similar to what a traditional blocking server such as Tomcat uses in the thread per connection model):</p>
@@ -4847,7 +4858,7 @@ Nonetheless you can change the <code>Content-Type</code> of the response with th
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>.</td>
+<td>The <a href="../api/io/micronaut/http/annotation/Post.html">Post</a> annotation is used with a <a href="../api/io/micronaut/http/MediaType.html">MediaType</a> of <code>text/plain</code> (the default is <code>application/json</code>).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -4995,7 +5006,7 @@ See the section on <a href="#threadPools">Configuring Thread Pools</a> for infor
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut cannot know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
+When returning a Reactive type, the type of reactive type has an impact on the response returned. For example, when returning a <a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Flowable.html">Flowable</a>, Micronaut can not know the size of the response, so <code>Transfer-Encoding</code> type of <code>Chunked</code> is used. Whilst for types that emit a single result such as <code><a href="http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Single.html">Single</a></code> the <code>Content-Length</code> header will be populated.
 </td>
 </tr>
 </table>
@@ -5018,7 +5029,7 @@ When returning a Reactive type, the type of reactive type has an impact on the r
 <p>In fact, the defaults in the <a href="../api/io/micronaut/http/annotation/Controller.html">Controller</a> annotation specify that the controllers in Micronaut consume and produce JSON by default.</p>
 </div>
 <div class="paragraph">
-<p>In order do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
+<p>In order to do so in a non-blocking manner Micronaut builds on the <a href="https://github.com/FasterXML/jackson">Jackson</a> Asynchronous JSON parsing API and Netty such that the reading of incoming JSON is done in a non-blocking manner.</p>
 </div>
 <div class="sect1">
 <h2 id="_binding_using_reactive_frameworks">Binding using Reactive Frameworks</h2>
@@ -5338,9 +5349,9 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-A few things to note about the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation. Two id@entical Error annotations that are
-global cannot be declared. Two identical Error annotations that are non-global cannot be declared in the same controller.
-If an Error annotation with the same parameter exists as global and another as a local, the local one will take precedence.
+A few things to note about the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation. Two identical <code>@Error</code> annotations that are
+global cannot be declared. Two identical <code>@Error</code> annotations that are non-global cannot be declared in the same controller.
+If an <code>@Error</code> annotation with the same parameter exists as global and another as a local, the local one will take precedence.
 </td>
 </tr>
 </table>
@@ -5382,7 +5393,7 @@ If an Error annotation with the same parameter exists as global and another as a
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-To avoid denial of service attacks collection types and arrays created during binding are limited by the setting <code>jackson.arraySizeThreshold</code> in <code>application.yml</code>
+To avoid denial of service attacks, collection types and arrays created during binding are limited by the setting <code>jackson.arraySizeThreshold</code> in <code>application.yml</code>
 </td>
 </tr>
 </table>
@@ -5403,7 +5414,7 @@ To avoid denial of service attacks collection types and arrays created during bi
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see from the example above, this approach allows you to use features as support for <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a> types and restrict the parameters to be bound (When using POJOs you must be careful to use Jackson annotations to exclude properties that should not be bound).</p>
+<p>As you can see from the example above, this approach allows you to use features such as support for <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">Optional</a> types and restrict the parameters to be bound (When using POJOs you must be careful to use Jackson annotations to exclude properties that should not be bound).</p>
 </div>
 
 
@@ -5420,7 +5431,7 @@ To avoid denial of service attacks collection types and arrays created during bi
 <p>Handling of file uploads has special treatment in Micronaut. Support is provided for streaming of uploads in a non-blocking manner through streaming uploads or completed uploads.</p>
 </div>
 <div class="paragraph">
-<p>To receive data from a multipart request, set the consumes argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
+<p>To receive data from a multipart request, set the <code>consumes</code> argument of the method annotation to <a href="../api/io/micronaut/http/MediaType.html#MULTIPART_FORM_DATA">MULTIPART_FORM_DATA</a>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5527,7 +5538,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p>Route arguments that are not publishers will cause the route execution to be delayed until the upload has finished. The received data will attempt to be converted to the requested type. Conversions to a <code>String</code> or <code>byte[]</code> are supported by default. In addition, the file can be converted to a POJO if a media type codec has been registered that supports the media type of the file. A media type codec is included by default that allows conversion of JSON files to POJOs.</p>
 </div>
 <div class="paragraph">
-<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
+<p>If requirements dictate you must have knowledge about the metadata of the file being received, a special class called <a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a> has been created that has methods to retrieve the data of the file, but also has file information like the content type and file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5601,7 +5612,7 @@ Data can only be retrieved from a <a href="../api/io/micronaut/http/multipart/Pa
 <p><a href="../api/io/micronaut/http/multipart/StreamingFileUpload.html">StreamingFileUpload</a></p>
 </li>
 <li>
-<p><a href="../api/io/micronaut/http/server/netty/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
+<p><a href="../api/io/micronaut/http/multipart/CompletedFileUpload.html">CompletedFileUpload</a></p>
 </li>
 <li>
 <p>Any POJO assuming a media codec is found that supports the content type</p>
@@ -5766,15 +5777,14 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 
     <span class="annotation">@Get</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/</span><span class="delimiter">&quot;</span></span>)
     <span class="directive">public</span> Publisher&lt;<span class="predefined-type">Event</span>&lt;Headline&gt;&gt; index() { <i class="conum" data-value="1"></i><b>(1)</b>
-        <span class="predefined-type">String</span><span class="type">[]</span> versions = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{ <span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">2.0</span><span class="delimiter">&quot;</span></span> }; <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="predefined-type">String</span><span class="type">[]</span> versions = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">2.0</span><span class="delimiter">&quot;</span></span>}; <i class="conum" data-value="2"></i><b>(2)</b>
 
         <span class="keyword">return</span> Flowable.generate(() -&gt; <span class="integer">0</span>, (i, emitter) -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
-            <span class="keyword">if</span>(i &lt; versions.length) {
+            <span class="keyword">if</span> (i &lt; versions.length) {
                 emitter.onNext( <i class="conum" data-value="4"></i><b>(4)</b>
-                        <span class="predefined-type">Event</span>.of(<span class="keyword">new</span> Headline(<span class="string"><span class="delimiter">&quot;</span><span class="content">Micronaut </span><span class="delimiter">&quot;</span></span>+versions[i]+<span class="string"><span class="delimiter">&quot;</span><span class="content"> Released</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Come and get it</span><span class="delimiter">&quot;</span></span>))
+                    <span class="predefined-type">Event</span>.of(<span class="keyword">new</span> Headline(<span class="string"><span class="delimiter">&quot;</span><span class="content">Micronaut </span><span class="delimiter">&quot;</span></span> + versions[i] + <span class="string"><span class="delimiter">&quot;</span><span class="content"> Released</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Come and get it</span><span class="delimiter">&quot;</span></span>))
                 );
-            }
-            <span class="keyword">else</span> {
+            } <span class="keyword">else</span> {
                 emitter.onComplete(); <i class="conum" data-value="5"></i><b>(5)</b>
             }
             <span class="keyword">return</span> ++i;
@@ -5893,7 +5903,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 
     Flowable&lt;<span class="predefined-type">Boolean</span>&gt; trace(HttpRequest&lt;?&gt; request) {
         <span class="keyword">return</span> Flowable.fromCallable(() -&gt; { <i class="conum" data-value="1"></i><b>(1)</b>
-            <span class="keyword">if</span>(LOG.isDebugEnabled()) {
+            <span class="keyword">if</span> (LOG.isDebugEnabled()) {
                 LOG.debug(<span class="string"><span class="delimiter">&quot;</span><span class="content">Tracing request: </span><span class="delimiter">&quot;</span></span> + request.getUri());
             }
             <span class="comment">// trace logic here, potentially performing I/O </span><i class="conum" data-value="2"></i><b>(2)</b>
@@ -6026,7 +6036,7 @@ The examples use RxJava, however you can use any reactive framework that support
 <div class="ulist">
 <ul>
 <li>
-<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances</p>
+<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances.</p>
 </li>
 <li>
 <p>Redis sessions - In this case <a href="https://redis.io">Redis</a> is used to store sessions and non-blocking I/O is used to read/write sessions to Redis.</p>
@@ -6079,7 +6089,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <p>How the <a href="../api/io/micronaut/session/Session.html">Session</a> is resolved can be configured with <a href="../api/io/micronaut/session/http/HttpSessionConfiguration.html">HttpSessionConfiguration</a>.</p>
 </div>
 <div class="paragraph">
-<p>By default sessions are resolved using a <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
+<p>By default sessions are resolved using an <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
 </div>
 <div class="paragraph">
 <p>If you wish to disable either header resolution or cookie resolution you can via configuration in <code>application.yml</code>:</p>
@@ -6121,7 +6131,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 
     <span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/{name}</span><span class="delimiter">&quot;</span></span>)
     Cart addItem(Session session, <span class="annotation">@NotBlank</span> <span class="predefined-type">String</span> name) { <i class="conum" data-value="2"></i><b>(2)</b>
-        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(()-&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(() -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
             Cart newCart = <span class="keyword">new</span> Cart();
             session.put(ATTR_CART, newCart); <i class="conum" data-value="4"></i><b>(4)</b>
             <span class="keyword">return</span> newCart;
@@ -6164,7 +6174,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/clear</span><span class="delimiter">&quot;</span></span>)
 <span class="type">void</span> clearCart(<span class="annotation">@Nullable</span> Session session) {
-    <span class="keyword">if</span>(session != <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (session != <span class="predefined-constant">null</span>) {
         session.remove(ATTR_CART);
     }
 }</code></pre>
@@ -6187,12 +6197,12 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="listingblock">
 <div class="title">Retrieving the AUTHORIZATION_INFO header</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
 HttpResponse&lt;Cart&gt; response = httpClient.exchange(HttpRequest.GET(<span class="string"><span class="delimiter">'</span><span class="content">/shopping/cart</span><span class="delimiter">'</span></span>), Cart) <i class="conum" data-value="1"></i><b>(1)</b>
                                         .blockingFirst()
 Cart cart = response.body()
 
-<span class="key">then</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
 response.header(HttpHeaders.AUTHORIZATION_INFO) != <span class="predefined-constant">null</span> <i class="conum" data-value="2"></i><b>(2)</b>
 cart != <span class="predefined-constant">null</span>
 cart.items.isEmpty()</code></pre>
@@ -6251,7 +6261,7 @@ cart = response.body()</code></pre>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Get</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@SessionValue</span>(ATTR_CART) <i class="conum" data-value="1"></i><b>(1)</b>
 Cart viewCart(<span class="annotation">@SessionValue</span> <span class="annotation">@Nullable</span> Cart cart) { <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="keyword">if</span>(cart == <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (cart == <span class="predefined-constant">null</span>) {
         cart = <span class="keyword">new</span> Cart();
     }
     <span class="keyword">return</span> cart;
@@ -6471,7 +6481,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 
 
 <div class="paragraph">
-<p>Micronaut supports CORS(<a href="https://www.w3.org/TR/cors/">Cross Origin Resource Sharing</a>) out of the box. By default, CORS requests will be rejected. To enable processing of CORS requests, modify your configuration. For example with <code>application.yml</code>:</p>
+<p>Micronaut supports CORS (<a href="https://www.w3.org/TR/cors/">Cross Origin Resource Sharing</a>) out of the box. By default, CORS requests will be rejected. To enable processing of CORS requests, modify your configuration. For example with <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">CORS Configuration Example</div>
@@ -6906,7 +6916,7 @@ If either <code>srcstorepass</code> or <code>alias</code> are not the same as de
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Regardless whether you choose to use Micronaut&#8217;s HTTP server, you may wish to the Micronaut HTTP client in your application since it is a feature-rich client implementation
+Regardless whether you choose to use Micronaut&#8217;s HTTP server, you may wish to use the Micronaut HTTP client in your application since it is a feature-rich client implementation
 </td>
 </tr>
 </table>
@@ -7397,7 +7407,7 @@ assertEquals(
 <p>If some of the properties of the object need to be in the URI being posted to you can use a URI template.</p>
 </div>
 <div class="paragraph">
-<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of `Book. For example:</p>
+<p>For example imagine you have a class <code>Book</code> that has a property called <code>title</code>. You can represent the <code>title</code> property in the URI template and then populate it from an instance of <code>Book</code>. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Sending a JSON body with a URI template</div>
@@ -7545,7 +7555,7 @@ MultipartBody requestBody = MultipartBody.builder()     <i class="conum" data-va
 </tbody>
 </table>
 <div class="paragraph">
-<p>In ordering to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
+<p>In order to do JSON streaming you should on the server side declare a controller method that returns a <code>application/x-json-stream</code> of JSON objects. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Streaming JSON on the Server</div>
@@ -7690,7 +7700,7 @@ headlineStream.subscribe(<span class="keyword">new</span> Subscriber&lt;Headline
 <p>The above example sets of <code>readTimeout</code> property of the <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> class.</p>
 </div>
 <div class="paragraph">
-<p>If you wish to have a separate configuration per client then there are a couple of options. An optional that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
+<p>If you wish to have a separate configuration per client then there are a couple of options. An option that fits nicely with <a href="#serviceDiscovery">Service Discovery</a> is to define a named bean that is a subclass of <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a>.</p>
 </div>
 <div class="paragraph">
 <p>For example given an injected client for a service called <code>hello</code> using <code>@Client</code>:</p>
@@ -7927,7 +7937,7 @@ Notice in the above example we override the <code>save</code> method. This is ne
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/http/HttpResponse.html">HttpResponse</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An <a href="../api/io/micronaut/http/HttpResponse.html">HttpResponse</a> and optional response body type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Single&lt;HttpResponse<a href="#String">[String]</a>&gt; hello()</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single&lt;HttpResponse&lt;&lt;String&gt;&gt;&gt; hello()</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.reactive-streams.org/reactive-streams-1.0.2-javadoc/org/reactivestreams/Publisher.html">Publisher</a></p></td>
@@ -8238,7 +8248,7 @@ If the customization offered by <code>JacksonFeatures</code> is not enough, you 
 <p>Using the <a href="../api/io/micronaut/retry/annotation/Fallback.html">@Fallback</a> annotation you can declare a fallback implementation of a client that will be picked up and used once all possible retries have been exhausted.</p>
 </div>
 <div class="paragraph">
-<p>In fact the mechanism is not strictly linked to Retry, you can declare any cass as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
+<p>In fact the mechanism is not strictly linked to Retry, you can declare any class as <a href="../api/io/micronaut/retry/annotation/Recoverable.html">@Recoverable</a> and if a method call fails (or, in the case of reactive types, an error is emitted) a class annotated with <code>@Fallback</code> will be searched for.</p>
 </div>
 <div class="paragraph">
 <p>To illustrate this consider again the <code>PetOperations</code> interface declared earlier. You can define a <code>PetFallback</code> class that will be called in the case of failure:</p>
@@ -8594,6 +8604,16 @@ For information on how to customize the Hystrix thread pool, group and propertie
 <td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.cloudfoundry.org">Cloud Foundry</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.CLOUD_FOUNDRY)</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#AZURE">AZURE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://azure.microsoft.com">Microsoft Azure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.AZURE)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#IBM">IBM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.ibm.com/cloud/">IBM Cloud</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.IBM)</code></p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -8669,7 +8689,7 @@ Flowable.fromPublisher(
 </div>
 </div>
 <div class="paragraph">
-<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServiceInstance.html">EmbeddedServiceInstance</a> interface:</p>
+<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a> interface:</p>
 </div>
 <div class="listingblock">
 <div class="title">Obtaining Metadata for a Local Server</div>
@@ -8695,7 +8715,7 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <p>As you can see, Micronaut features a robust system for externalizing and adapting configuration to the environment inspired by similar approaches found in Grails and Spring Boot.</p>
 </div>
 <div class="paragraph">
-<p>However, what if you want to Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
+<p>However, what if you want two Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="../api/io/micronaut/discovery/config/ConfigurationClient.html">ConfigurationClient</a> interface has a single method called <code>getPropertySources</code> that can be implemented to read and resolve configuration from distributed sources.</p>
@@ -8752,17 +8772,17 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <div class="paragraph">
 <p>To enable distributed configuration, similar to Spring Boot and Grails, you need to create a <code>src/main/resources/bootstrap.yml</code> configuration file and configure Consul as well as enable the configuration client:</p>
 </div>
-<div class="listingblock yaml">
+<div class="listingblock">
 <div class="title">bootstrap.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>micronaut:
-    application:
-        name: hello-world
-    config-client:
-        enabled: true
-consul:
-    client:
-        defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
+    <span class="key">application</span>:
+        <span class="key">name</span>: <span class="string"><span class="content">hello-world</span></span>
+    <span class="key">config-client</span>:
+        <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">consul</span>:
+    <span class="key">client</span>:
+        <span class="key">defaultZone</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8893,7 +8913,7 @@ EOF</code></pre>
 <h2 id="_storing_configuration_as_file_references">Storing Configuration as File References</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Another option popular option is to <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
+<p>Another option popular option is <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
 </div>
 <div class="paragraph">
 <p>You can setup a Git repository that contains files like <code>application.yml</code>, <code>hello-world-test.json</code> etc. and the contents of these files are cloned to Consul.</p>
@@ -9044,7 +9064,7 @@ EOF</code></pre>
 <p>To register a Micronaut application with Consul simply add the necessary <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a>. A minimal example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title">Auto Registering with Consul</div>
+<div class="title">Auto Registering with Consul (application.yml)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
     <span class="key">application</span>:
@@ -9095,7 +9115,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <p>The <a href="../api/io/micronaut/discovery/consul/ConsulConfiguration.html">ConsulConfiguration</a> class features a range of customization options for altering how an instance registers with Consul. You can customize the tags, the retry attempts, the fail fast behaviour and so on.</p>
 </div>
 <div class="paragraph">
-<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Eureka client, including read timeout, proxy configuration and so on.</p>
+<p>Notice too that <code>ConsulConfiguration</code> extends <a href="../api/io/micronaut/discovery/client/DiscoveryClientConfiguration.html">DiscoveryClientConfiguration</a>  which in turn extends <a href="../api/io/micronaut/http/client/HttpClientConfiguration.html">HttpClientConfiguration</a> allowing you to customize the settings for the Consul client, including read timeout, proxy configuration and so on.</p>
 </div>
 <div class="paragraph">
 <p>For example:</p>
@@ -9138,7 +9158,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="type">interface</span> <span class="class">HelloClient</span>{
         ...
 }</code></pre>
@@ -9150,7 +9170,7 @@ You could also simply set <code>consul.client.host</code> and <code>consul.clien
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@Inject</span>
 RxHttpClient httpClient;</code></pre>
 </div>
@@ -9186,7 +9206,7 @@ RxHttpClient httpClient;</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a></p>
+<p>With this configuration option in place Consul will assume responsibility of invoking the Micronaut applications <a href="#healthEndpoint">Health Endpoint</a>.</p>
 </div>
 </div>
 </div>
@@ -9211,7 +9231,7 @@ RxHttpClient httpClient;</code></pre>
 <h2 id="_starting_eureka">Starting Eureka</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The quickest was to start a Eureka server is to use to use <a href="https://spring.io/guides/gs/service-registration-and-discovery/#initial">Spring Boot&#8217;s Eureka starters</a>.</p>
+<p>The quickest way to start a Eureka server is to use to use <a href="https://spring.io/guides/gs/service-registration-and-discovery/#initial">Spring Boot&#8217;s Eureka starters</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -9234,7 +9254,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>The process to register a Micronaut application with Eureka is very similar to with Consul, as seen in the previous section, simply add the necessary <a href="../api/io/micronaut/discovery/eureka/EurekaConfiguration.html">EurekaConfiguration</a>. A minimal example can be seen below:</p>
 </div>
 <div class="listingblock">
-<div class="title">Auto Registering with Eureka</div>
+<div class="title">Auto Registering with Eureka (application.yml)</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
     <span class="key">application</span>:
@@ -9328,14 +9348,14 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <div class="listingblock">
 <div class="title">Using @Client to Discover Services</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id=<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Client</span>(id = <span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>)
 <span class="type">interface</span> <span class="class">HelloClient</span>{
-        ...
+    ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Since Kubernetes itself assumes responsibility for tasks such as health checks, load balancing and so on there is no need to since <a href="../api/io/micronaut/health/HeartbeatEvent.html">HeartbeatEvent</a> instances and so on.</p>
+<p>Since Kubernetes itself assumes responsibility for tasks such as health checks, load balancing and so on there is no need to send <a href="../api/io/micronaut/health/HeartbeatEvent.html">HeartbeatEvent</a> instances and so on.</p>
 </div>
 
 
@@ -9352,7 +9372,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>When <a href="#serviceDiscovery">discovering services</a> from Consul, Eureka or other Service Discovery servers the <a href="../api/io/micronaut/discovery/DiscoveryClient.html">DiscoveryClient</a> will emits a list of available <a href="../api/io/micronaut/discovery/ServiceInstance.html">ServiceInstance</a>.</p>
 </div>
 <div class="paragraph">
-<p>Micronaut by default will automatically perform Round Robin client-side load balancing using the servers in this list. This combined with <a href="#retryAdvice">Retry Advice</a> adds extra resiliency to your Microservice infrastructure.</p>
+<p>Micronaut by default will automatically perform Round Robin client-side load balancing using the servers in this list. This combined with <a href="#retry">Retry Advice</a> adds extra resiliency to your Microservice infrastructure.</p>
 </div>
 <div class="paragraph">
 <p>The load balancing itself is handled by the <a href="../api/io/micronaut/http/client/LoadBalancer.html">LoadBalancer</a> interface which defines a  <a href="../api/io/micronaut/http/client/LoadBalancer.html#select--">LoadBalancer.select()</a> method that returns a <code>Publisher</code> that emits a <a href="../api/io/micronaut/discovery/ServiceInstance.html">ServiceInstance</a>.</p>
@@ -9413,7 +9433,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 </div>
 </div>
 <div class="paragraph">
-<p>Each discovered client can also be configured under <code>ribbon.clients</code>. For example given a <code>@Client(id="hello-world")</code> you can configure Ribbon settings with:</p>
+<p>Each discovered client can also be configured under <code>ribbon.clients</code>. For example given a <code>@Client(id = "hello-world")</code> you can configure Ribbon settings with:</p>
 </div>
 <div class="listingblock">
 <div class="title">Per Client Ribbon Settings</div>
@@ -9443,7 +9463,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>When operating Microservices in production it can be challenging to troubleshoot interactions between Microservices in a distributed architecture.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://zipkin.io">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
+<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://www.jaegertracing.io/">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
 </div>
 <div class="paragraph">
 <p>Micronaut features integration with both Zipkin and Jaeger (via the Open Tracing API).</p>
@@ -9531,7 +9551,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
 <div class="paragraph">
-<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilters">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
+<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilter">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
 </div>
 </div>
 </div>
@@ -9620,7 +9640,7 @@ Or alternatively if you have the Micronaut CLI installed you can configure Zipki
 <h2 id="_customizing_the_zipkin_sender">Customizing the Zipkin Sender</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default a <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
+<p>By default an <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
 </div>
 <div class="paragraph">
 <p>It is unlikely that sending spans to localhost will be suitable for production deployment so you generally will want to configure the location of one or many Zipkin servers for production:</p>
@@ -9690,7 +9710,7 @@ In production, setting <code>TRACING_ZIPKIN_URLS</code> environment variable wit
 
 
 <div class="paragraph">
-<p><a href="https://www.jaegertracing.io">Jaeger</a> is a another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
+<p><a href="https://www.jaegertracing.io">Jaeger</a> is another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
 </div>
 <div class="sect1">
 <h2 id="_running_jaeger">Running Jaeger</h2>
@@ -10298,6 +10318,14 @@ For further information on the use of <code>@FunctionClient</code>, please see <
 }</code></pre>
 </div>
 </div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In order to run the function as a web application, you will need an HTTP server, such as the <code>http-server-netty</code> dependency</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Create a <a href="../api/io/micronaut/function/client/FunctionClient.html">@FunctionClient</a> interface as shown below:</p>
 </div>
@@ -10365,17 +10393,17 @@ For further information on the use of <code>@FunctionClient</code>, please see <
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -10396,7 +10424,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Packaging a Function as a JAR</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; ./gradlew shadowJar</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10405,7 +10433,7 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Executing a function via the CLI</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">&gt; java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ java -jar build/libs/math-function-0.1-all.jar -d '{value: 3}'</code></pre>
 </div>
 </div>
 
@@ -10474,17 +10502,17 @@ shadowJar {
 <div class="listingblock">
 <div class="title">Example build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="gradle">buildscript {
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
     repositories {
-        maven { url &quot;https://plugins.gradle.org/m2/&quot; } <i class="conum" data-value="1"></i><b>(1)</b>
+        maven { url <span class="string"><span class="delimiter">&quot;</span><span class="content">https://plugins.gradle.org/m2/</span><span class="delimiter">&quot;</span></span> } <i class="conum" data-value="1"></i><b>(1)</b>
     }
     dependencies {
-        classpath &quot;com.github.jengelman.gradle.plugins:shadow:2.0.4&quot;
+        classpath <span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.jengelman.gradle.plugins:shadow:2.0.4</span><span class="delimiter">&quot;</span></span>
 ...
     }
 }
 
-apply plugin:&quot;com.github.johnrengelman.shadow&quot;
+apply <span class="key">plugin</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">com.github.johnrengelman.shadow</span><span class="delimiter">&quot;</span></span>
 
 shadowJar {
     mergeServiceFiles()
@@ -10504,7 +10532,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew shadowJar</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew shadowJar</code></pre>
 </div>
 </div>
 </div>
@@ -10551,7 +10579,7 @@ shadowJar {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 </div>
@@ -10641,7 +10669,7 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10649,8 +10677,8 @@ task invoke(<span class="key">type</span>: AWSLambdaInvokeTask) {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew invoke
-Hello, Fred</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew invoke
+Hello, Fred</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10809,7 +10837,7 @@ math.multiplier = <span class="integer">2</span>
 <p>In the above case a function named <code>hello</code> is mapped to the remote lambda function called <code>hello-world</code>. You can define multiple named functions under the <code>aws.lambda.functions</code> configuration. Each is configured by <a href="../api/io/micronaut/function/client/aws/AWSInvokeRequestDefinition.html">AWSInvokeRequestDefinition</a> that allows setting any property on the underlying <code>com.amazonaws.services.lambda.model.InvokeRequest</code>.</p>
 </div>
 <div class="paragraph">
-<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code> to configure credentials. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
+<p>To configure credentials for invoking the function you can either define a <code>~/.aws/credentials</code> file or use <code>application.yml</code>. Micronaut registers a <a href="../api/io/micronaut/configurations/aws/EnvironmentAWSCredentialsProvider.html">EnvironmentAWSCredentialsProvider</a> that resolves AWS credentials from the Micronaut <a href="#environments">Environment</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -11140,7 +11168,7 @@ For GORM for Hibernate you should not have both the <code>hibernate-jpa</code> a
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre>compile "io.micronaut.configuration:hibernate-jpa"</pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut.configuration:hibernate-jpa</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11268,7 +11296,7 @@ For GORM for Hibernate you should not have both the <code>hibernate-jpa</code> a
 <p>Each class you wish to be a GORM entity should be annotated with the <code>grails.gorm.annotation.Entity</code> annotation.</p>
 </li>
 <li>
-<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present.</p>
+<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present. You can also add the <code>@Transactional</code> annotation to the class.</p>
 </li>
 <li>
 <p>By default Micronaut will scan for entities relative to your <code>Application</code> class. If you wish to customize this specify additional packages via the <a href="../api/io/micronaut/context/ApplicationContextBuilder.html">ApplicationContextBuilder</a> when starting your application.</p>
@@ -11433,7 +11461,7 @@ The <code>mongodb.uri</code> follows the <a href="https://docs.mongodb.com/manua
 <p>Each class you wish to be a GORM entity should be annotated with the <code>grails.gorm.annotation.Entity</code> annotation.</p>
 </li>
 <li>
-<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present.</p>
+<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present. You can also add the <code>@Transactional</code> annotation to the class.</p>
 </li>
 <li>
 <p>By default Micronaut will scan for entities relative to your <code>Application</code> class. If you wish to customize this specify additional packages via the <a href="../api/io/micronaut/context/ApplicationContextBuilder.html">ApplicationContextBuilder</a> when starting your application.</p>
@@ -11593,7 +11621,7 @@ You can also create a <a href="../api/io/micronaut/context/event/BeanCreatedEven
 <p>Each class you wish to be a GORM entity should be annotated with the <code>grails.gorm.annotation.Entity</code> annotation.</p>
 </li>
 <li>
-<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present.</p>
+<p>Each method that interacts with GORM should be annotated with GORM&#8217;s <code>grails.gorm.transactions.Transactional</code> to ensure a session is present. You can also add the <code>@Transactional</code> annotation to the class.</p>
 </li>
 <li>
 <p>By default Micronaut will scan for entities relative to your <code>Application</code> class. If you wish to customize this specify additional packages via the <a href="../api/io/micronaut/context/ApplicationContextBuilder.html">ApplicationContextBuilder</a> when starting your application.</p>
@@ -11808,7 +11836,7 @@ The Lettuce driver&#8217;s <code>StatefulRedisConnection</code> interface is des
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut.configuration:cassandra:</span><span class="inline"><span class="inline-delimiter">${</span>projectVersion<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut.configuration:cassandra</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12317,7 +12345,7 @@ mn&gt;</code></pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Learn more about kapt and its features from the <a href="https://kotlinlang.org/docs/reference/kapt.htm">official documentation.</a>
+Learn more about kapt and its features from the <a href="https://kotlinlang.org/docs/reference/kapt.html">official documentation.</a>
 </td>
 </tr>
 </table>
@@ -12352,9 +12380,9 @@ repositories {
 dependencies {
     compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jetbrains.kotlin:kotlin-stdlib-jdk8:</span><span class="inline"><span class="inline-delimiter">$</span>kotlinVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
     compile <span class="string"><span class="delimiter">&quot;</span><span class="content">org.jetbrains.kotlin:kotlin-reflect:</span><span class="inline"><span class="inline-delimiter">$</span>kotlinVersion</span><span class="delimiter">&quot;</span></span>
-    kapt <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java:</span><span class="inline"><span class="inline-delimiter">$</span>projectVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+    kapt <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
 
-    kaptTest <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java:</span><span class="inline"><span class="inline-delimiter">$</span>projectVersion</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+    kaptTest <span class="string"><span class="delimiter">&quot;</span><span class="content">io.micronaut:inject-java</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
 }
 
 test {
@@ -12386,11 +12414,11 @@ compileTestKotlin {
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Add the <code>inject-java</code> dependency under the <code>kapt</code> scope, so classes in src/main are processed</td>
+<td>Add the <code>inject-java</code> dependency under the <code>kapt</code> scope, so classes in <code>src/main</code> are processed</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Add the <code>inject-java</code> dependency under the <code>kaptTest</code> scope, so classes in src/test are processed.</td>
+<td>Add the <code>inject-java</code> dependency under the <code>kaptTest</code> scope, so classes in <code>src/test</code> are processed.</td>
 </tr>
 </table>
 </div>
@@ -12399,7 +12427,7 @@ compileTestKotlin {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="bash">~ ./gradlew run</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew run</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12918,9 +12946,9 @@ Message deleted</code></pre>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/management/endpoint/stop/StopEndpoint.html">StopEndpoint</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/management/endpoint/stop/ServerStopEndpoint.html">ServerStopEndpoint</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>/stop</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shuts down the application server (see <a href="#stopEndpoint">StopEndpoint</a>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shuts down the application server (see <a href="#stopEndpoint">ServerStopEndpoint</a>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -13009,7 +13037,7 @@ Message deleted</code></pre>
 <h2 id="_customization">Customization</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The info endpoint consists of an info aggregator and any number of info sources. To add an info source, simply create a bean class that implements <a href="../api/io/micronaut/management/endpoint/info/source/InfoSource.html">InfoSource</a>.  If your info source needs to retrieve data from Java properties files, you can extend the <a href="../api/io/micronaut/management/endpoint/info/source/PropertiesInfoSource.html">PropertiesInfoSource</a> interface which provides a helper method for this purpose.</p>
+<p>The info endpoint consists of an info aggregator and any number of info sources. To add an info source, simply create a bean class that implements <a href="../api/io/micronaut/management/endpoint/info/InfoSource.html">InfoSource</a>.  If your info source needs to retrieve data from Java properties files, you can extend the <a href="../api/io/micronaut/management/endpoint/info/source/PropertiesInfoSource.html">PropertiesInfoSource</a> interface which provides a helper method for this purpose.</p>
 </div>
 <div class="paragraph">
 <p>All of the info source beans will be collected together with the info aggregator. To provide your own implementation of the info aggregator, create a class that implements <a href="../api/io/micronaut/management/endpoint/info/InfoAggregator.html">InfoAggregator</a> and register it as a bean. To ensure your implementation is used instead of the default, add the <a href="../api/io/micronaut/context/annotation/Replaces.html">@Replaces</a> annotation to your class with the value being the <a href="../api/io/micronaut/management/endpoint/info/impl/RxInfoAggregator.html">default implementation</a>.</p>
@@ -13032,7 +13060,7 @@ Message deleted</code></pre>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">info.demo.string = <span class="string"><span class="delimiter">&quot;</span><span class="content">demo string</span><span class="delimiter">&quot;</span></span>
 info.demo.number = <span class="integer">123</span>
-info.demo.map = [ <span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>, <span class="key">other_key</span>: <span class="integer">123</span>]</code></pre>
+info.demo.map = [<span class="key">key</span>: <span class="string"><span class="delimiter">'</span><span class="content">value</span><span class="delimiter">'</span></span>, <span class="key">other_key</span>: <span class="integer">123</span>]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13040,22 +13068,22 @@ info.demo.map = [ <span class="key">key</span>: <span class="string"><span class
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>{
-  "demo": {
-    "string": "demo string",
-    "number": 123,
-    "map": {
-      "key": "value",
-      "other_key": 123
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">demo</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">demo string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">number</span><span class="delimiter">&quot;</span></span>: <span class="integer">123</span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">map</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">key</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">other_key</span><span class="delimiter">&quot;</span></span>: <span class="integer">123</span>
     }
   }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_configuration_2">Configuration</h4>
 <div class="paragraph">
-<p>The configuration info source can be disabled using the <code>endpoints.info.git.enabled</code> property.</p>
+<p>The configuration info source can be disabled using the <code>endpoints.info.config.enabled</code> property.</p>
 </div>
 </div>
 </div>
@@ -13092,7 +13120,7 @@ info.demo.map = [ <span class="key">key</span>: <span class="string"><span class
 <p>To specify an alternate path/name of the properties file, you can supply a custom value in the <code>endpoints.info.build.location</code> property.</p>
 </div>
 <div class="paragraph">
-<p>The git info source can be disabled using the <code>endpoints.info.build.enabled</code> property.</p>
+<p>The build info source can be disabled using the <code>endpoints.info.build.enabled</code> property.</p>
 </div>
 </div>
 </div>
@@ -13217,14 +13245,14 @@ info.demo.map = [ <span class="key">key</span>: <span class="string"><span class
 
 
 <div class="paragraph">
-<p>The refresh endpoint will refresh the application state, causing all <a href="../apiio.micronaut.runtime.context.scope.Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
+<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
 </div>
 <div class="paragraph">
 <p>To execute the refresh endpoint, send a POST request to /refresh.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl -X POST http://localhost:8080/refresh</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl -X POST http://localhost:8080/refresh</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13232,7 +13260,7 @@ info.demo.map = [ <span class="key">key</span>: <span class="string"><span class
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>$ curl -X POST http://localhost:8080/refresh -H 'Content-Type: application/json' -d '{"force": true}'</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ curl -X POST http://localhost:8080/refresh -H 'Content-Type: application/json' -d '{&quot;force&quot;: true}'</code></pre>
 </div>
 </div>
 <div class="sect1">
@@ -13377,7 +13405,7 @@ By default, the stop endpoint is disabled and needs to be explicitly enabled to 
 </div>
 </div>
 <div class="paragraph">
-<p>Once you enable security, Micronaut returns HTTP Status Unauthorized ( 401 ) for any endpoint invocation.</p>
+<p>Once you enable security, Micronaut returns HTTP Status Unauthorized (401) for any endpoint invocation.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -13408,7 +13436,7 @@ By default, the stop endpoint is disabled and needs to be explicitly enabled to 
 
     <span class="annotation">@Override</span>
     <span class="directive">public</span> Publisher&lt;AuthenticationResponse&gt; authenticate(AuthenticationRequest authenticationRequest) {
-        <span class="keyword">if</span> ( authenticationRequest.getIdentity().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>) &amp;&amp; authenticationRequest.getSecret().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>) ) {
+        <span class="keyword">if</span> (authenticationRequest.getIdentity().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>) &amp;&amp; authenticationRequest.getSecret().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span>)) {
             <span class="keyword">return</span> Flowable.just(<span class="keyword">new</span> UserDetails(<span class="string"><span class="delimiter">&quot;</span><span class="content">user</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;&gt;()));
         }
         <span class="keyword">return</span> Flowable.just(<span class="keyword">new</span> AuthenticationFailed());
@@ -13477,7 +13505,7 @@ you can implement your own <a href="../api/io/micronaut/security/rules/SecurityR
 </div>
 <div class="paragraph">
 <p>In the previous code, the <a href="../apiio/micronaut/security/rules/IpPatternsRule.html">IpPatternsRule</a> rejects traffic not coming
-either 127.0.0.1 or 192.168.1.* range.</p>
+either <code>127.0.0.1</code> or <code>192.168.1.*</code> range.</p>
 </div>
 
 
@@ -13604,7 +13632,7 @@ and an optional HTTP Method</p>
 
 
 <div class="paragraph">
-<p>When you turn on security, <a href="#buildingEndpoints">Built-in endpoints</a> are secured depending on their sensitive value.</p>
+<p>When you turn on security, <a href="#providedEndpoints">Built-in endpoints</a> are secured depending on their sensitive value.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13705,7 +13733,7 @@ which attempts to validate them.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.basicAuth.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/BasicAuthTokenReader.html">BasicAuthTokenReader</a> is disabled by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/basicauth/BasicAuthTokenReader.html">BasicAuthTokenReader</a> is disabled by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.basicAuth.headerName</code></p></td>
@@ -13993,7 +14021,7 @@ JWT is an <a href="https://tools.ietf.org/html/rfc7519">IETF standard</a> which 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.jwt.bearer.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/reader/BearerTokenReader.html">BearerTokenReader</a> is enabled by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/security/token/jwt/bearer/BearerTokenReader.html">BearerTokenReader</a> is enabled by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.token.jwt.bearer.headerName</code></p></td>
@@ -14234,7 +14262,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0MjI5OTU5MjIsInN1YiI6Imppb
 
     RSAOAEPEncryptionConfiguration(<span class="annotation">@Value</span>(<span class="string"><span class="delimiter">'</span><span class="content">${pem.path}</span><span class="delimiter">'</span></span>) <span class="predefined-type">String</span> pemPath) {
         Optional&lt;<span class="predefined-type">KeyPair</span>&gt; keyPair = KeyPairProvider.keyPair(pemPath)
-        <span class="keyword">if</span> ( keyPair.isPresent() ) {
+        <span class="keyword">if</span> (keyPair.isPresent()) {
             <span class="local-variable">this</span>.rsaPublicKey = (<span class="predefined-type">RSAPublicKey</span>) keyPair.get().getPublic()
             <span class="local-variable">this</span>.rsaPrivateKey = (<span class="predefined-type">RSAPrivateKey</span>) keyPair.get().getPrivate()
         }
@@ -14433,7 +14461,7 @@ the JWT tokens are returned to the client as part of an OAuth 2.0 <a href="https
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.login.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true or false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code> or <code>false</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.login.path</code></p></td>
@@ -14490,7 +14518,7 @@ the JWT tokens are returned to the client as part of an OAuth 2.0 <a href="https
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.logout.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true or false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code> or <code>false</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.logout.path</code></p></td>
@@ -14567,7 +14595,7 @@ ease the refresh, you can enable <a href="../api/io/micronaut/security/token/jwt
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.oauth.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">true or false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>true</code> or <code>false</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>micronaut.security.endpoints.oauth.path</code></p></td>
@@ -14683,7 +14711,7 @@ See <a href="https://tools.ietf.org/html/rfc6749#section-10.4">section 10.4 of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14691,7 +14719,7 @@ See <a href="https://tools.ietf.org/html/rfc6749#section-10.4">section 10.4 of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-demo-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-demo-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14712,7 +14740,7 @@ See <a href="https://tools.ietf.org/html/rfc6749#section-10.4">section 10.4 of t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app example.my-demo-app</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app example.my-demo-app</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14762,10 +14790,10 @@ Throughout the user guide, references to CLI features/commands have been provide
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn
 | Starting interactive mode...
 | Enter a command name to run. Use TAB for completion:
-mn&gt;</pre>
+mn&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -14778,13 +14806,13 @@ mn&gt;</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; help
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; help
 Usage (optionals marked with *):'
 mn [target] [arguments]*'
 
 | Examples:
 $ mn create-app my-app
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14792,14 +14820,14 @@ $ mn create-app my-app
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; help create-app
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; help create-app
 | Command: create-app
 | Description:
 Creates an application
 
 | Usage:
 create-app [NAME]
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14807,7 +14835,7 @@ create-app [NAME]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; list-profiles
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; list-profiles
 | Available Profiles
 --------------------
 * function-aws - The function profile for AWS Lambda
@@ -14815,7 +14843,7 @@ create-app [NAME]
 * function - The function profile
 * federation - The federation profile
 * service - The service profile
-* base - The base profile</pre>
+* base - The base profile</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14823,7 +14851,7 @@ create-app [NAME]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; profile-info service
 Profile: service
 --------------------
 The service profile
@@ -14841,7 +14869,7 @@ Provided Features:
 * discovery-consul - Adds support for Service Discovery with Consul (https://www.consul.io)
 * hibernate-jpa - Adds support for Hibernate/JPA
 * mongo-gorm - Configures GORM for MongoDB for Groovy applications
-...</pre>
+...</code></pre>
 </div>
 </div>
 </div>
@@ -14955,13 +14983,13 @@ Provided Features:
 <div class="listingblock">
 <div class="title">Starting a Gradle project</div>
 <div class="content">
-<pre>&gt; ./gradlew run</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew run</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Starting a Maven project</div>
 <div class="content">
-<pre>&gt; ./mvnw compile exec:exec</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw compile exec:exec</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -14998,7 +15026,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features groovy, spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features groovy, spock</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15012,7 +15040,7 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-groovy-app -features kotlin, spek</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-groovy-app -features kotlin, spek</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15023,11 +15051,11 @@ The values in <code>micronaut-cli.yml</code> are used by the CLI for code genera
 <div class="sect2">
 <h3 id="_build_tool">Build Tool</h3>
 <div class="paragraph">
-<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via thw <code>build</code> flag:</p>
+<p>By default <code>create-app</code> will create a Gradle project, with a <code>build.gradle</code> file at the root of the project directory. To create an app using the Maven build tool, supply the appropriate option via the <code>build</code> flag:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; create-app my-maven-app -build maven</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; create-app my-maven-app -build maven</code></pre>
 </div>
 </div>
 </div>
@@ -15108,7 +15136,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-function hello-world -lang java -test spock</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-function hello-world -lang java -test spock</code></pre>
 </div>
 </div>
 </div>
@@ -15124,7 +15152,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./gradlew deploy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./gradlew deploy</code></pre>
 </div>
 </div>
 </div>
@@ -15135,7 +15163,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; ./mvnw package</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./mvnw package</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15228,7 +15256,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-project</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-project</code></pre>
 </div>
 </div>
 
@@ -15247,7 +15275,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-app my-demo-app -features mongo-reactive</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-app my-demo-app -features mongo-reactive</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15255,7 +15283,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn profile-info service
 Profile: service
 --------------------
 The service profile
@@ -15288,7 +15316,7 @@ Provided Features:
 * spock - Adds support for the Spock testing framework
 * groovy - Adds support for Groovy in the application
 * security-session - Adds support for Session based Authentication
-* tracing-zipkin - Adds support for distributed tracing with Zipkin (https://zipkin.io)</pre>
+* tracing-zipkin - Adds support for distributed tracing with Zipkin (https://zipkin.io)</code></pre>
 </div>
 </div>
 
@@ -15307,7 +15335,7 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>mn&gt; profile-info service
+<pre class="CodeRay highlight"><code data-lang="bash">mn&gt; profile-info service
 Profile: service
 --------------------
 The service profile
@@ -15322,7 +15350,7 @@ Provided Commands:
 
 Provided Features:
 --------------------
-...</pre>
+...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15381,8 +15409,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-bean EmailService
-| Rendered template Bean.java to destination src/main/java/example/EmailService.java</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-bean EmailService
+| Rendered template Bean.java to destination src/main/java/example/EmailService.java</code></pre>
 </div>
 </div>
 </div>
@@ -15420,8 +15448,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-job UpdateFeeds -lang groovy
-| Rendered template Job.groovy to destination src/main/groovy/example/UpdateFeedsJob.groovy</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-job UpdateFeeds -lang groovy
+| Rendered template Job.groovy to destination src/main/groovy/example/UpdateFeedsJob.groovy</code></pre>
 </div>
 </div>
 </div>
@@ -15467,9 +15495,9 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-controller Book
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-controller Book
 | Rendered template Controller.java to destination src/main/java/example/BookController.java
-| Rendered template ControllerTest.java to destination src/test/java/example/BookControllerTest.java</pre>
+| Rendered template ControllerTest.java to destination src/test/java/example/BookControllerTest.java</code></pre>
 </div>
 </div>
 </div>
@@ -15507,8 +15535,8 @@ Provided Features:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>&gt; mn create-client Book
-| Rendered template Client.java to destination src/main/java/example/BookClient.java</pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ mn create-client Book
+| Rendered template Client.java to destination src/main/java/example/BookClient.java</code></pre>
 </div>
 </div>
 </div>

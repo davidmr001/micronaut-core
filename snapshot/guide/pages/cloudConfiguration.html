@@ -196,6 +196,16 @@ function addJsClass() {
 <td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.cloudfoundry.org">Cloud Foundry</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.CLOUD_FOUNDRY)</code></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#AZURE">AZURE</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://azure.microsoft.com">Microsoft Azure</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.AZURE)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/context/env/Environment.html#IBM">IBM</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Running on <a href="https://www.ibm.com/cloud/">IBM Cloud</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>@Requires(env = Environment.IBM)</code></p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -271,7 +281,7 @@ Flowable.fromPublisher(
 </div>
 </div>
 <div class="paragraph">
-<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServiceInstance.html">EmbeddedServiceInstance</a> interface:</p>
+<p>To obtain metadata for the locally running server use the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a> interface:</p>
 </div>
 <div class="listingblock">
 <div class="title">Obtaining Metadata for a Local Server</div>
@@ -297,7 +307,7 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <p>As you can see, Micronaut features a robust system for externalizing and adapting configuration to the environment inspired by similar approaches found in Grails and Spring Boot.</p>
 </div>
 <div class="paragraph">
-<p>However, what if you want to Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
+<p>However, what if you want two Microservices to share configuration? Micronaut comes with built in APIs for doing distributed configuration.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="../api/io/micronaut/discovery/config/ConfigurationClient.html">ConfigurationClient</a> interface has a single method called <code>getPropertySources</code> that can be implemented to read and resolve configuration from distributed sources.</p>
@@ -354,17 +364,17 @@ ConvertibleValues&lt;<span class="predefined-type">String</span>&gt; metaData = 
 <div class="paragraph">
 <p>To enable distributed configuration, similar to Spring Boot and Grails, you need to create a <code>src/main/resources/bootstrap.yml</code> configuration file and configure Consul as well as enable the configuration client:</p>
 </div>
-<div class="listingblock yaml">
+<div class="listingblock">
 <div class="title">bootstrap.yml</div>
 <div class="content">
-<pre class="CodeRay highlight"><code>micronaut:
-    application:
-        name: hello-world
-    config-client:
-        enabled: true
-consul:
-    client:
-        defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"</code></pre>
+<pre class="CodeRay highlight"><code data-lang="yaml"><span class="key">micronaut</span>:
+    <span class="key">application</span>:
+        <span class="key">name</span>: <span class="string"><span class="content">hello-world</span></span>
+    <span class="key">config-client</span>:
+        <span class="key">enabled</span>: <span class="string"><span class="content">true</span></span>
+<span class="key">consul</span>:
+    <span class="key">client</span>:
+        <span class="key">defaultZone</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}</span><span class="delimiter">&quot;</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -495,7 +505,7 @@ EOF</code></pre>
 <h2 id="_storing_configuration_as_file_references">Storing Configuration as File References</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Another option popular option is to <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
+<p>Another option popular option is <a href="https://github.com/breser/git2consul">git2consul</a> which mirrors the contents of a Git repository to Consul&#8217;s Key/Value store.</p>
 </div>
 <div class="paragraph">
 <p>You can setup a Git repository that contains files like <code>application.yml</code>, <code>hello-world-test.json</code> etc. and the contents of these files are cloned to Consul.</p>

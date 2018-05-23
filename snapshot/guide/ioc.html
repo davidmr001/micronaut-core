@@ -223,7 +223,7 @@ function addJsClass() {
 <p>Micronaut implements the <a href="http://javax-inject.github.io/javax-inject/">JSR-330 (javax.inject) - Dependency Injection for Java</a> specification hence to use Micronaut you simply use the <a href="https://docs.oracle.com/javaee/6/api/javax/inject/package-summary.html">annotations provided by javax.inject</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following is a simply example:</p>
+<p>The following is a simple example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -348,7 +348,7 @@ println( vehicle.start() )</code></pre>
 <p>The <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> is a container object for all your bean definitions (it also implements <a href="../api/io/micronaut/context/BeanDefinitionRegistry.html">BeanDefinitionRegistry</a>).</p>
 </div>
 <div class="paragraph">
-<p>It is also the point of initialization for Micronaut. Generally speaking however, you don&#8217;t have to interact directly with the <code>BeanContext</code> API and can simply use <code>javax.inject</code> annotations and the annotations defined within <a href="../api/io/micronaut/context/annotation/index.html">io.micronaut.context.annotation</a> package for your dependency injection needs.</p>
+<p>It is also the point of initialization for Micronaut. Generally speaking however, you don&#8217;t have to interact directly with the <code>BeanContext</code> API and can simply use <code>javax.inject</code> annotations and the annotations defined within <a href="../api/io/micronaut/context/annotation/package-summary.html">io.micronaut.context.annotation</a> package for your dependency injection needs.</p>
 </div>
 
 
@@ -385,7 +385,7 @@ println( vehicle.start() )</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Optional&lt;Engine&gt;</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterable.html">java.util.Iterable</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html">java.lang.Iterable</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">An <code>Iterable</code> or subtype of <code>Iterable</code> (example <code>List</code>, <code>Collection</code> etc.)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iterable&lt;Engine&gt;</code></p></td>
 </tr>
@@ -1115,7 +1115,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <p>One significant difference between Micronaut&#8217;s Dependency Injection system and Spring is the way beans can be replaced.</p>
 </div>
 <div class="paragraph">
-<p>With Spring beans have names and you can effectively override another bean just be creating a bean with the same name regardless of the type of the bean. Spring is also has the notion of bean registration order, hence in Spring Boot you have <code>@AutoConfigureBefore</code> and <code>@AutoConfigureAfter</code> the control how beans override each other.</p>
+<p>With Spring beans have names and you can effectively override another bean just be creating a bean with the same name regardless of the type of the bean. Spring also has the notion of bean registration order, hence in Spring Boot you have <code>@AutoConfigureBefore</code> and <code>@AutoConfigureAfter</code> the control how beans override each other.</p>
 </div>
 <div class="paragraph">
 <p>This strategy leads to difficult to debug problems in cases where:</p>
@@ -1131,7 +1131,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 </ul>
 </div>
 <div class="paragraph">
-<p>To avoid these problems, the design of Micornaut DI has no concept of bean names or load order. Beans have a type and a <a href="../api/io/micronaut/context/Qualifier.html">Qualifier</a>. You cannot override a bean of a completely different type with another.</p>
+<p>To avoid these problems, the design of Micronaut DI has no concept of bean names or load order. Beans have a type and a <a href="../api/io/micronaut/context/Qualifier.html">Qualifier</a>. You cannot override a bean of a completely different type with another.</p>
 </div>
 <div class="paragraph">
 <p>However, one feature that the Spring way of doing things enables is that it allows overriding existing beans to customize behaviour.</p>
@@ -1415,7 +1415,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <div class="title">Lookup Bean Definitions by Stereotype</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">BeanContext</span> beanContext = ... <span class="comment">// obtain the bean context</span>
-Collection&lt;BeanDefinition definitions =
+Collection&lt;BeanDefinition&gt; definitions =
     beanContext.getBeanDefinitions(Qualfiers.byStereotype(Controller.class))
 
 <span class="keyword">for</span>(BeanDefinition definition : definitions) {

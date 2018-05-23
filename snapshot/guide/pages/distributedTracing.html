@@ -133,7 +133,7 @@ function addJsClass() {
 <p>When operating Microservices in production it can be challenging to troubleshoot interactions between Microservices in a distributed architecture.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://zipkin.io">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
+<p>To solve this problem a way to visualize interactions between Microservices in a distributed manner can be critical. Currently, there are various distributed tracing solutions, the most popular of which are <a href="https://zipkin.io">Zipkin</a> and <a href="https://www.jaegertracing.io/">Jaeger</a> both of which provide different levels of support for the <a href="http://opentracing.io">Open Tracing</a> API.</p>
 </div>
 <div class="paragraph">
 <p>Micronaut features integration with both Zipkin and Jaeger (via the Open Tracing API).</p>
@@ -221,7 +221,7 @@ function addJsClass() {
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
 <div class="paragraph">
-<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilters">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
+<p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilter">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
 </div>
 </div>
 </div>
@@ -310,7 +310,7 @@ Or alternatively if you have the Micronaut CLI installed you can configure Zipki
 <h2 id="_customizing_the_zipkin_sender">Customizing the Zipkin Sender</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>By default a <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
+<p>By default an <a href="../api/io/micronaut/tracing/brave/sender/HttpClientSender.html">HttpClientSender</a> that sends Spans asynchronously using Micronaut&#8217;s native HTTP client to <code><a href="http://localhost:9411/api/v2/spans" class="bare">http://localhost:9411/api/v2/spans</a></code> will be configured.</p>
 </div>
 <div class="paragraph">
 <p>It is unlikely that sending spans to localhost will be suitable for production deployment so you generally will want to configure the location of one or many Zipkin servers for production:</p>
@@ -380,7 +380,7 @@ In production, setting <code>TRACING_ZIPKIN_URLS</code> environment variable wit
 
 
 <div class="paragraph">
-<p><a href="https://www.jaegertracing.io">Jaeger</a> is a another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
+<p><a href="https://www.jaegertracing.io">Jaeger</a> is another distributed tracing system developed at Uber that is more or less the reference implementation for <a href="http://opentracing.io">Open Tracing</a>.</p>
 </div>
 <div class="sect1">
 <h2 id="_running_jaeger">Running Jaeger</h2>

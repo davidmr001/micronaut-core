@@ -127,7 +127,7 @@ function addJsClass() {
 <div class="ulist">
 <ul>
 <li>
-<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances</p>
+<p>In-Memory sessions - which you should combine with an a sticky sessions proxy if you plan to run multiple instances.</p>
 </li>
 <li>
 <p>Redis sessions - In this case <a href="https://redis.io">Redis</a> is used to store sessions and non-blocking I/O is used to read/write sessions to Redis.</p>
@@ -180,7 +180,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <p>How the <a href="../api/io/micronaut/session/Session.html">Session</a> is resolved can be configured with <a href="../api/io/micronaut/session/http/HttpSessionConfiguration.html">HttpSessionConfiguration</a>.</p>
 </div>
 <div class="paragraph">
-<p>By default sessions are resolved using a <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
+<p>By default sessions are resolved using an <a href="../api/io/micronaut/session/http/HttpSessionFilter.html">HttpSessionFilter</a> that looks up session identifiers via either an HTTP header (using the <code>Authorization-Info</code> or <code>X-Auth-Token</code> header values) or via a Cookie called <code>SESSION</code>.</p>
 </div>
 <div class="paragraph">
 <p>If you wish to disable either header resolution or cookie resolution you can via configuration in <code>application.yml</code>:</p>
@@ -222,7 +222,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 
     <span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/{name}</span><span class="delimiter">&quot;</span></span>)
     Cart addItem(Session session, <span class="annotation">@NotBlank</span> <span class="predefined-type">String</span> name) { <i class="conum" data-value="2"></i><b>(2)</b>
-        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(()-&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
+        Cart cart = session.get(ATTR_CART, Cart.class).orElseGet(() -&gt; { <i class="conum" data-value="3"></i><b>(3)</b>
             Cart newCart = <span class="keyword">new</span> Cart();
             session.put(ATTR_CART, newCart); <i class="conum" data-value="4"></i><b>(4)</b>
             <span class="keyword">return</span> newCart;
@@ -265,7 +265,7 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Post</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart/clear</span><span class="delimiter">&quot;</span></span>)
 <span class="type">void</span> clearCart(<span class="annotation">@Nullable</span> Session session) {
-    <span class="keyword">if</span>(session != <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (session != <span class="predefined-constant">null</span>) {
         session.remove(ATTR_CART);
     }
 }</code></pre>
@@ -288,12 +288,12 @@ compile <span class="string"><span class="delimiter">&quot;</span><span class="c
 <div class="listingblock">
 <div class="title">Retrieving the AUTHORIZATION_INFO header</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="key">when</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is retrieved</span><span class="delimiter">&quot;</span></span>
 HttpResponse&lt;Cart&gt; response = httpClient.exchange(HttpRequest.GET(<span class="string"><span class="delimiter">'</span><span class="content">/shopping/cart</span><span class="delimiter">'</span></span>), Cart) <i class="conum" data-value="1"></i><b>(1)</b>
                                         .blockingFirst()
 Cart cart = response.body()
 
-<span class="key">then</span>:<span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
+<span class="key">then</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">The shopping cart is present as well as a session id header</span><span class="delimiter">&quot;</span></span>
 response.header(HttpHeaders.AUTHORIZATION_INFO) != <span class="predefined-constant">null</span> <i class="conum" data-value="2"></i><b>(2)</b>
 cart != <span class="predefined-constant">null</span>
 cart.items.isEmpty()</code></pre>
@@ -352,7 +352,7 @@ cart = response.body()</code></pre>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Get</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">/cart</span><span class="delimiter">&quot;</span></span>)
 <span class="annotation">@SessionValue</span>(ATTR_CART) <i class="conum" data-value="1"></i><b>(1)</b>
 Cart viewCart(<span class="annotation">@SessionValue</span> <span class="annotation">@Nullable</span> Cart cart) { <i class="conum" data-value="2"></i><b>(2)</b>
-    <span class="keyword">if</span>(cart == <span class="predefined-constant">null</span>) {
+    <span class="keyword">if</span> (cart == <span class="predefined-constant">null</span>) {
         cart = <span class="keyword">new</span> Cart();
     }
     <span class="keyword">return</span> cart;
