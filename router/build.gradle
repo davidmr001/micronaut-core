@@ -1,7 +1,0 @@
-dependencies {
-    compileOnly dependencyVersion("groovy")
-    compile project(":inject")
-    compile project(":http")
-    compileOnly project(":inject-java")
-    testCompile project(":inject-groovy")
-}

@@ -1,3 +1,0 @@
-#io.micronaut.annotation.processing.DependencyInjectionAnnotationProcessor
-io.micronaut.annotation.processing.PackageConfigurationInjectProcessor
-io.micronaut.annotation.processing.BeanDefinitionInjectProcessor
