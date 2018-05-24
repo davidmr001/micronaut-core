@@ -4,7 +4,6 @@ target/
 .gradle/
 .idea/
 build/
-classes/
 out/
 *.db
 *.log
