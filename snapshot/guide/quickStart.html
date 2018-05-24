@@ -297,7 +297,7 @@ Hello World</code></pre>
 <h2 id="_configuring_eclipse_ide">Configuring Eclipse IDE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you have no choice and have to use Eclipse, it is recommended you import your Micronaut project into Eclipse using either <a href="https://projects.eclipse.org/projects/tools.buildship">Gradle BuildShip</a> for Gradle or <a href="http://www.eclipse.org/m2e/">M2Eclipse</a> for Maven.</p>
+<p>If you wish to use Eclipse IDE, it is recommended you import your Micronaut project into Eclipse using either <a href="https://projects.eclipse.org/projects/tools.buildship">Gradle BuildShip</a> for Gradle or <a href="http://www.eclipse.org/m2e/">M2Eclipse</a> for Maven.</p>
 </div>
 <div class="paragraph">
 <p>As of this writing, Eclipse has <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534501">incomplete support</a> for Java annotation processors, hence you will have to delegate to BuildShip or M2Eclipse for building and running tests.</p>
@@ -316,7 +316,7 @@ Hello World</code></pre>
 
 
 <div class="paragraph">
-<p>As mentioned previously, Micronaut is both an HTTP server and an HTTP client. A low-level HTTP client is provided out of the box which you can use to test the <code>HelloController</code> created in the previous section.</p>
+<p>As mentioned previously, Micronaut is both an <a href="#httpServer">HTTP server</a> and an <a href="#httpClient">HTTP client</a>. A <a href="#lowLevelHttpClient">low-level HTTP client</a> is provided out of the box which you can use to test the <code>HelloController</code> created in the previous section.</p>
 </div>
 <div class="paragraph">
 <p>For example, the following test is written using <a href="http://spockframework.org">Spock Framework</a>:</p>
@@ -366,7 +366,7 @@ Hello World</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to a low-level client, Micronaut features a high-level compile-time client, powered by the <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation.</p>
+<p>In addition to a low-level client, Micronaut features a <a href="#clientAnnotation">declarative, compile-time HTTP client</a>, powered by the <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation.</p>
 </div>
 <div class="paragraph">
 <p>To create a client, simply create an interface annotated with <code>@Client</code>. For example:</p>

@@ -1172,9 +1172,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <div class="listingblock">
 <div class="title">Using Trace Annotations</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">io.micronaut.tracing.annotation</span>.*;
-
-<span class="annotation">@Singleton</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Singleton</span>
 <span class="type">class</span> <span class="class">HelloService</span> {
 
     <span class="annotation">@NewSpan</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="1"></i><b>(1)</b>
@@ -1183,7 +1181,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
     }
 
     <span class="annotation">@ContinueSpan</span> <i class="conum" data-value="3"></i><b>(3)</b>
-    <span class="directive">public</span> <span class="predefined-type">String</span> greet(<span class="annotation">@SpanTag</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">greeting.message</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> greeting) { <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="directive">public</span> <span class="predefined-type">String</span> greet(<span class="annotation">@SpanTag</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello.greeting</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> greet) {
         <span class="keyword">return</span> greeting;
     }
 }</code></pre>
@@ -1193,32 +1191,26 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/NewSpan.html">@NewSpan</a> annotation is used to create a new span called <code>hello-world</code></td>
+<td>The <a href="../api/io/micronaut/tracing/annotation/NewSpan.html">@NewSpan</a> annotation is used to start a new span</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> annotations adds a tag called <code>person.name</code> with the name of the person</td>
+<td>You can use <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> to include arguments of methods as tags for the span</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/ContinueSpan.html">@ContinueSpan</a> annotation is used to continue an existing span</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> annotation is used again to add the greeting as a tag called <code>greeting.message</code></td>
+<td>The <a href="../api/io/micronaut/tracing/annotation/ContinueSpan.html">@ContinueSpan</a> annotation can be used to continue as existing span and incorporate additional tags using <code>@SpanTag</code></td>
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tracing_instrumentation">Tracing Instrumentation</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_tracing_instrumentation">Tracing Instrumentation</h4>
 <div class="paragraph">
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
 <div class="paragraph">
 <p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilter">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
+</div>
 </div>
 </div>
 </div>

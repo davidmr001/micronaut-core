@@ -122,7 +122,7 @@ function addJsClass() {
 <p>At this point, you may be wondering how Micronaut performs the above dependency injection without requiring reflection.</p>
 </div>
 <div class="paragraph">
-<p>The key is a set of AST transformations and annotation processors that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
+<p>The key is a set of AST transformations (fro Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
 </div>
 <div class="paragraph">
 <p>The ASM byte-code library is used to generate classes and because Micronaut knows ahead of time the injection points, there is no need to scan all of the methods, fields, constructors, etc. at runtime like other frameworks such as Spring do.</p>

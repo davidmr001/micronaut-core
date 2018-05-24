@@ -145,40 +145,37 @@ function addJsClass() {
                     <div class="toc-item" style="margin-left:0px"><a href="#staticResources"><strong>6.9</strong><span>Serving Static Resources</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#contentNegotiation"><strong>6.10</strong><span>Content Negotiation</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#errorHandling"><strong>6.10</strong><span>Error Handling</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#errorHandling"><strong>6.11</strong><span>Error Handling</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#formData"><strong>6.11</strong><span>Handling Form Data</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#formData"><strong>6.12</strong><span>Handling Form Data</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#uploads"><strong>6.12</strong><span>File Uploads</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#uploads"><strong>6.13</strong><span>File Uploads</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#transfers"><strong>6.13</strong><span>File Transfers</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#transfers"><strong>6.14</strong><span>File Transfers</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#sse"><strong>6.14</strong><span>Server Sent Events</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#sse"><strong>6.15</strong><span>Server Sent Events</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#filters"><strong>6.15</strong><span>HTTP Filters</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#filters"><strong>6.16</strong><span>HTTP Filters</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#sessions"><strong>6.16</strong><span>HTTP Sessions</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#sessions"><strong>6.17</strong><span>HTTP Sessions</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#serverConfiguration"><strong>6.17</strong><span>Configuring the HTTP Server</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#serverConfiguration"><strong>6.18</strong><span>Configuring the HTTP Server</span></a>
+                    <div class="toc-item" style="margin-left:10px"><a href="#threadPools"><strong>6.17.1</strong><span>Configuring Server Thread Pools</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#threadPools"><strong>6.18.1</strong><span>Configuring Server Thread Pools</span></a>
+                    <div class="toc-item" style="margin-left:10px"><a href="#cors"><strong>6.17.2</strong><span>Configuring CORS</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#cors"><strong>6.18.2</strong><span>Configuring CORS</span></a>
-                    </div>
-                    
-                    <div class="toc-item" style="margin-left:10px"><a href="#https"><strong>6.18.3</strong><span>Securing the Server with HTTPS</span></a>
+                    <div class="toc-item" style="margin-left:10px"><a href="#https"><strong>6.17.3</strong><span>Securing the Server with HTTPS</span></a>
                     </div>
                     
                 </div>
@@ -1503,21 +1500,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </div>
 
 
-<h2 id="contentNegotiation">6.10 Content Negotiation</h2>
-
-<div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/contentNegotiation.adoc"'>
-        <i class='fa fa-pencil-square-o'></i> Improve this doc
-    </button>
-</div>
-
-
-<div class="paragraph">
-<p><a href="https://github.com/micronaut-projects/micronaut-core/issues/84">TODO</a></p>
-</div>
-
-
-<h2 id="errorHandling">6.11 Error Handling</h2>
+<h2 id="errorHandling">6.10 Error Handling</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/errorHandling.adoc"'>
@@ -1552,7 +1535,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>An instance of <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> is returned which outputs the error in <a href="https://github.com/blongden/vnd.error">application/vnd.error+json</a>.</td>
+<td>An instance of <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> is returned.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -1561,12 +1544,12 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </table>
 </div>
 <div class="paragraph">
-<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally with the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation:</p>
+<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally you should use the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation with the <code>global</code> attribute set to <code>true</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Handling Global Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(global = <span class="predefined-constant">true</span>) <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; error(HttpRequest request, <span class="predefined-type">Throwable</span> e) {
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bad Things Happened: </span><span class="delimiter">&quot;</span></span> + e.getMessage()) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -1584,7 +1567,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all errors</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all errors</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -1610,7 +1593,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 <div class="listingblock">
 <div class="title">Handling Global HTTP Status Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND, global = <span class="predefined-constant">true</span>)
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; notFound(HttpRequest request) { <i class="conum" data-value="1"></i><b>(1)</b>
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page Not Found</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -1628,7 +1611,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all 404 responses</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all 404 responses</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -1652,7 +1635,7 @@ If an <code>@Error</code> annotation with the same parameter exists as global an
 </div>
 
 
-<h2 id="formData">6.12 Handling Form Data</h2>
+<h2 id="formData">6.11 Handling Form Data</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/formData.adoc"'>
@@ -1712,7 +1695,7 @@ To avoid denial of service attacks, collection types and arrays created during b
 </div>
 
 
-<h2 id="uploads">6.13 File Uploads</h2>
+<h2 id="uploads">6.12 File Uploads</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/uploads.adoc"'>
@@ -1932,7 +1915,7 @@ HttpResponse upload(Publisher&lt;Publisher&lt;PartData&gt;&gt; files)</code></pr
 </div>
 
 
-<h2 id="transfers">6.14 File Transfers</h2>
+<h2 id="transfers">6.13 File Transfers</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/transfers.adoc"'>
@@ -2012,7 +1995,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 </div>
 
 
-<h2 id="sse">6.15 Server Sent Events</h2>
+<h2 id="sse">6.14 Server Sent Events</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/sse.adoc"'>
@@ -2126,7 +2109,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 </div>
 
 
-<h2 id="filters">6.16 HTTP Filters</h2>
+<h2 id="filters">6.15 HTTP Filters</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/filters.adoc"'>
@@ -2312,7 +2295,7 @@ The examples use RxJava, however you can use any reactive framework that support
 </div>
 
 
-<h2 id="sessions">6.17 HTTP Sessions</h2>
+<h2 id="sessions">6.16 HTTP Sessions</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/sessions.adoc"'>
@@ -2676,7 +2659,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="serverConfiguration">6.18 Configuring the HTTP Server</h2>
+<h2 id="serverConfiguration">6.17 Configuring the HTTP Server</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration.adoc"'>
@@ -2710,7 +2693,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="threadPools">6.18.1 Configuring Server Thread Pools</h2>
+<h2 id="threadPools">6.17.1 Configuring Server Thread Pools</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/threadPools.adoc"'>
@@ -2765,7 +2748,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="cors">6.18.2 Configuring CORS</h2>
+<h2 id="cors">6.17.2 Configuring CORS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/cors.adoc"'>
@@ -2959,7 +2942,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="https">6.18.3 Securing the Server with HTTPS</h2>
+<h2 id="https">6.17.3 Securing the Server with HTTPS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/https.adoc"'>

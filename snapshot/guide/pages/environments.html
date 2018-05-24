@@ -135,7 +135,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 <p>The active environment names serve the purpose of allowing loading different configuration files depending on the environment and also using the <a href="../api/io/micronaut/context/annotation/Requires.html">@Requires</a> annotation to conditionally load beans or bean <a href="../api/io/micronaut/context/annotation/Configuration.html">@Configuration</a> packages.</p>
 </div>
 <div class="paragraph">
-<p>In addition, Micronaut will make its best effort to detect the current environment. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
+<p>In addition, Micronaut will attempt to detect the current environments. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
 </div>
 <div class="paragraph">
 <p>Additional active environments can be specified using the <code>micronaut.environments</code> system property or the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
@@ -147,7 +147,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 </div>
 </div>
 <div class="paragraph">
-<p>The above actives environments called <code>foo</code> and <code>bar</code>.</p>
+<p>The above activates environments called <code>foo</code> and <code>bar</code>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, the Cloud environment names are also detected. See the section on <a href="#cloudConfiguration">Cloud Configuration</a> for more information.</p>

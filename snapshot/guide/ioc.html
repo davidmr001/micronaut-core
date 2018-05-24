@@ -274,7 +274,7 @@ function addJsClass() {
 </table>
 </div>
 <div class="paragraph">
-<p>To perform dependency injection simply instantiate an instance of <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> and call the <code>run()</code> method as per the following example:</p>
+<p>To perform dependency injection simply run the  <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> using the <code>run()</code> method and lookup a bean using <code>getBean(Class)</code>, as per the following example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -322,7 +322,7 @@ println( vehicle.start() )</code></pre>
 <p>At this point, you may be wondering how Micronaut performs the above dependency injection without requiring reflection.</p>
 </div>
 <div class="paragraph">
-<p>The key is a set of AST transformations and annotation processors that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
+<p>The key is a set of AST transformations (fro Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
 </div>
 <div class="paragraph">
 <p>The ASM byte-code library is used to generate classes and because Micronaut knows ahead of time the injection points, there is no need to scan all of the methods, fields, constructors, etc. at runtime like other frameworks such as Spring do.</p>
@@ -418,7 +418,7 @@ println( vehicle.start() )</code></pre>
 
 
 <div class="paragraph">
-<p>The classic requirement of dependency injection is the interface and multiple possible implementations.</p>
+<p>If you have multiple possible implementations for a given interface that you want to inject, you need to use a qualifier.</p>
 </div>
 <div class="paragraph">
 <p>Once again Micronaut leverages JSR-303 and the <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Qualifier.html">Qualifier</a> and <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">Named</a> annotations to support this use case.</p>
@@ -493,6 +493,9 @@ println( vehicle.start() )</code></pre>
 <td>Calling the start method prints: <code>"Starting V8"</code></td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You can also declare <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">@Named</a> at the class level of a bean to explicitly define the name of the bean.</p>
 </div>
 </div>
 </div>

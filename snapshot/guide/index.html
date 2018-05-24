@@ -180,29 +180,27 @@
     
     <div class="toc-item" style="margin-left:10px"><a href="#staticResources"><strong>6.9</strong><span>Serving Static Resources</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#contentNegotiation"><strong>6.10</strong><span>Content Negotiation</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#errorHandling"><strong>6.10</strong><span>Error Handling</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#errorHandling"><strong>6.11</strong><span>Error Handling</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#formData"><strong>6.11</strong><span>Handling Form Data</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#formData"><strong>6.12</strong><span>Handling Form Data</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#uploads"><strong>6.12</strong><span>File Uploads</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#uploads"><strong>6.13</strong><span>File Uploads</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#transfers"><strong>6.13</strong><span>File Transfers</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#transfers"><strong>6.14</strong><span>File Transfers</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#sse"><strong>6.14</strong><span>Server Sent Events</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#sse"><strong>6.15</strong><span>Server Sent Events</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#filters"><strong>6.15</strong><span>HTTP Filters</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#filters"><strong>6.16</strong><span>HTTP Filters</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#sessions"><strong>6.16</strong><span>HTTP Sessions</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#sessions"><strong>6.17</strong><span>HTTP Sessions</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#serverConfiguration"><strong>6.17</strong><span>Configuring the HTTP Server</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#serverConfiguration"><strong>6.18</strong><span>Configuring the HTTP Server</span></a></div>
+    <div class="toc-item" style="margin-left:20px"><a href="#threadPools"><strong>6.17.1</strong><span>Configuring Server Thread Pools</span></a></div>
     
-    <div class="toc-item" style="margin-left:20px"><a href="#threadPools"><strong>6.18.1</strong><span>Configuring Server Thread Pools</span></a></div>
+    <div class="toc-item" style="margin-left:20px"><a href="#cors"><strong>6.17.2</strong><span>Configuring CORS</span></a></div>
     
-    <div class="toc-item" style="margin-left:20px"><a href="#cors"><strong>6.18.2</strong><span>Configuring CORS</span></a></div>
-    
-    <div class="toc-item" style="margin-left:20px"><a href="#https"><strong>6.18.3</strong><span>Securing the Server with HTTPS</span></a></div>
+    <div class="toc-item" style="margin-left:20px"><a href="#https"><strong>6.17.3</strong><span>Securing the Server with HTTPS</span></a></div>
     
     <div class="toc-item" style="margin-left:0px"><a href="#httpClient"><strong>7</strong><span>The HTTP Client</span></a></div>
     
@@ -645,7 +643,7 @@ Hello World</code></pre>
 <h2 id="_configuring_eclipse_ide">Configuring Eclipse IDE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you have no choice and have to use Eclipse, it is recommended you import your Micronaut project into Eclipse using either <a href="https://projects.eclipse.org/projects/tools.buildship">Gradle BuildShip</a> for Gradle or <a href="http://www.eclipse.org/m2e/">M2Eclipse</a> for Maven.</p>
+<p>If you wish to use Eclipse IDE, it is recommended you import your Micronaut project into Eclipse using either <a href="https://projects.eclipse.org/projects/tools.buildship">Gradle BuildShip</a> for Gradle or <a href="http://www.eclipse.org/m2e/">M2Eclipse</a> for Maven.</p>
 </div>
 <div class="paragraph">
 <p>As of this writing, Eclipse has <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534501">incomplete support</a> for Java annotation processors, hence you will have to delegate to BuildShip or M2Eclipse for building and running tests.</p>
@@ -664,7 +662,7 @@ Hello World</code></pre>
 
 
 <div class="paragraph">
-<p>As mentioned previously, Micronaut is both an HTTP server and an HTTP client. A low-level HTTP client is provided out of the box which you can use to test the <code>HelloController</code> created in the previous section.</p>
+<p>As mentioned previously, Micronaut is both an <a href="#httpServer">HTTP server</a> and an <a href="#httpClient">HTTP client</a>. A <a href="#lowLevelHttpClient">low-level HTTP client</a> is provided out of the box which you can use to test the <code>HelloController</code> created in the previous section.</p>
 </div>
 <div class="paragraph">
 <p>For example, the following test is written using <a href="http://spockframework.org">Spock Framework</a>:</p>
@@ -714,7 +712,7 @@ Hello World</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>In addition to a low-level client, Micronaut features a high-level compile-time client, powered by the <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation.</p>
+<p>In addition to a low-level client, Micronaut features a <a href="#clientAnnotation">declarative, compile-time HTTP client</a>, powered by the <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation.</p>
 </div>
 <div class="paragraph">
 <p>To create a client, simply create an interface annotated with <code>@Client</code>. For example:</p>
@@ -934,7 +932,7 @@ Hello World</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>To perform dependency injection simply instantiate an instance of <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> and call the <code>run()</code> method as per the following example:</p>
+<p>To perform dependency injection simply run the  <a href="../api/io/micronaut/context/BeanContext.html">BeanContext</a> using the <code>run()</code> method and lookup a bean using <code>getBean(Class)</code>, as per the following example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -982,7 +980,7 @@ println( vehicle.start() )</code></pre>
 <p>At this point, you may be wondering how Micronaut performs the above dependency injection without requiring reflection.</p>
 </div>
 <div class="paragraph">
-<p>The key is a set of AST transformations and annotation processors that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
+<p>The key is a set of AST transformations (fro Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
 </div>
 <div class="paragraph">
 <p>The ASM byte-code library is used to generate classes and because Micronaut knows ahead of time the injection points, there is no need to scan all of the methods, fields, constructors, etc. at runtime like other frameworks such as Spring do.</p>
@@ -1078,7 +1076,7 @@ println( vehicle.start() )</code></pre>
 
 
 <div class="paragraph">
-<p>The classic requirement of dependency injection is the interface and multiple possible implementations.</p>
+<p>If you have multiple possible implementations for a given interface that you want to inject, you need to use a qualifier.</p>
 </div>
 <div class="paragraph">
 <p>Once again Micronaut leverages JSR-303 and the <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Qualifier.html">Qualifier</a> and <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">Named</a> annotations to support this use case.</p>
@@ -1153,6 +1151,9 @@ println( vehicle.start() )</code></pre>
 <td>Calling the start method prints: <code>"Starting V8"</code></td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You can also declare <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">@Named</a> at the class level of a bean to explicitly define the name of the bean.</p>
 </div>
 </div>
 </div>
@@ -2249,7 +2250,7 @@ Micronaut <code>inject-java</code> dependency uses <a href="https://developer.an
 <p>Configuration can by default be provided in either Java properties, YAML, JSON or Groovy files. The convention is to search for a file called <code>application.yml</code>, <code>application.properties</code>, <code>application.json</code> or <code>application.groovy</code>.</p>
 </div>
 <div class="paragraph">
-<p>In addition, Micronaut will search for the system properties and environment variables for configuration allow the ability to conveniently override settings at the system property or environment variable level.</p>
+<p>In addition, just like Spring and Grails, Micronaut allows overriding any property via system properties or environment variables.</p>
 </div>
 <div class="paragraph">
 <p>Each source of configuration is modeled with the <a href="../api/io/micronaut/context/env/PropertySource.html">PropertySource</a> interface and the mechanism is extensible allowing the implementation of additional <a href="../api/io/micronaut/context/env/PropertySourceLoader.html">PropertySourceLoader</a> implementations.</p>
@@ -2282,7 +2283,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 <p>The active environment names serve the purpose of allowing loading different configuration files depending on the environment and also using the <a href="../api/io/micronaut/context/annotation/Requires.html">@Requires</a> annotation to conditionally load beans or bean <a href="../api/io/micronaut/context/annotation/Configuration.html">@Configuration</a> packages.</p>
 </div>
 <div class="paragraph">
-<p>In addition, Micronaut will make its best effort to detect the current environment. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
+<p>In addition, Micronaut will attempt to detect the current environments. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
 </div>
 <div class="paragraph">
 <p>Additional active environments can be specified using the <code>micronaut.environments</code> system property or the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
@@ -2294,7 +2295,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 </div>
 </div>
 <div class="paragraph">
-<p>The above actives environments called <code>foo</code> and <code>bar</code>.</p>
+<p>The above activates environments called <code>foo</code> and <code>bar</code>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, the Cloud environment names are also detected. See the section on <a href="#cloudConfiguration">Cloud Configuration</a> for more information.</p>
@@ -2366,19 +2367,6 @@ assertEquals(
 <p>Application-specific properties from <code>application.{extension}</code> (Either <code>.properties</code>, <code>.json</code>, <code>.yml</code> or <code>.groovy</code> property formats supported)</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>To use <code>application.yml</code> you will need to include <a href="http://mavenrepository.com/artifact/org.yaml/snakeyaml">SnakeYAML</a> as a <code>runtime</code> dependency.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    ...
-    ..
-    .
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.yaml:snakeyaml:1.19</span><span class="delimiter">'</span></span>
-}</code></pre>
-</div>
 </div>
 
 
@@ -2464,7 +2452,7 @@ assertEquals(
 <p>Like Spring Boot and Grails, you can create type safe configuration by creating classes that are annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is as efficient as possible with minimal impact on startup time.</p>
+<p>Micronaut, however, will produce a reflection free <code>@ConfigurationProperties</code> bean and will also at compile time calculate the property paths to evaluate, greatly improving the speed and efficiency of loading <code>@ConfigurationProperties</code>.</p>
 </div>
 <div class="paragraph">
 <p>An example of a configuration class can be seen below:</p>
@@ -2574,14 +2562,22 @@ println(vehicle.start())</code></pre>
 <div class="paragraph">
 <p>The above example prints: <code>"Ford Engine Starting V8 [rodLength=6.0]"</code></p>
 </div>
-<div class="sect1">
-<h2 id="_configuration_builder">Configuration Builder</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>Note for more complex configurations you can structure <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> beans through inheritance.</p>
+</div>
+<div class="paragraph">
+<p>For example creating a subclass of <code>EngineConfig</code> with <code>@ConfigurationProperties('bar')</code> will resolve all properties under the path <code>my.engine.bar</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuration_builder">Configuration Builder</h3>
+<div class="paragraph">
+<p>Many existing frameworks and tools already use builder-style classes to construct configuration.</p>
+</div>
 <div class="paragraph">
 <p>To support the ability for a builder style class to be populated with configuration values, the <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">@ConfigurationBuilder</a> annotation can be used. <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">ConfigurationBuilder</a> can be added to a field or method in a class annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>One or more method prefixes can be specified in the annotation to support builder methods like "withXxx" or "setXxx". If the builder methods have no prefix, assign an empty string to the parameter.</p>
+<p>Since there is no consistent way to define builders in the Java world. One or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
 </div>
 <div class="paragraph">
 <p>A configuration prefix can also be specified to tell Micronaut where to look for configuration values. By default, the builder methods will use the configuration prefix defined at the class level <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> annotation.</p>
@@ -2679,7 +2675,6 @@ println(vehicle.start())</code></pre>
 </div>
 <div class="paragraph">
 <p>The above example prints: <code>"Subaru Engine Starting V4 [rodLength=4.0]"</code></p>
-</div>
 </div>
 </div>
 
@@ -3069,7 +3064,6 @@ Micronaut AOP interceptors use no reflection which improves performance and redu
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">io.micronaut.context.annotation.Type</span>;
 <span class="keyword">import</span> <span class="include">io.micronaut.aop.Around</span>;
-<span class="keyword">import</span> <span class="include">io.micronaut.context.annotation.Type</span>;
 <span class="keyword">import</span> <span class="include">java.lang.annotation</span>.*;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">java.lang.annotation.RetentionPolicy.RUNTIME</span>;
 
@@ -5209,21 +5203,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </div>
 
 
-<h2 id="contentNegotiation">6.10 Content Negotiation</h2>
-
-<div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/contentNegotiation.adoc"'>
-        <i class='fa fa-pencil-square-o'></i> Improve this doc
-    </button>
-</div>
-
-
-<div class="paragraph">
-<p><a href="https://github.com/micronaut-projects/micronaut-core/issues/84">TODO</a></p>
-</div>
-
-
-<h2 id="errorHandling">6.11 Error Handling</h2>
+<h2 id="errorHandling">6.10 Error Handling</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/errorHandling.adoc"'>
@@ -5258,7 +5238,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>An instance of <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> is returned which outputs the error in <a href="https://github.com/blongden/vnd.error">application/vnd.error+json</a>.</td>
+<td>An instance of <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> is returned.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -5267,12 +5247,12 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </table>
 </div>
 <div class="paragraph">
-<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally with the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation:</p>
+<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally you should use the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation with the <code>global</code> attribute set to <code>true</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Handling Global Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(global = <span class="predefined-constant">true</span>) <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; error(HttpRequest request, <span class="predefined-type">Throwable</span> e) {
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bad Things Happened: </span><span class="delimiter">&quot;</span></span> + e.getMessage()) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -5290,7 +5270,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all errors</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all errors</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -5316,7 +5296,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 <div class="listingblock">
 <div class="title">Handling Global HTTP Status Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND, global = <span class="predefined-constant">true</span>)
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; notFound(HttpRequest request) { <i class="conum" data-value="1"></i><b>(1)</b>
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page Not Found</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -5334,7 +5314,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all 404 responses</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all 404 responses</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -5358,7 +5338,7 @@ If an <code>@Error</code> annotation with the same parameter exists as global an
 </div>
 
 
-<h2 id="formData">6.12 Handling Form Data</h2>
+<h2 id="formData">6.11 Handling Form Data</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/formData.adoc"'>
@@ -5418,7 +5398,7 @@ To avoid denial of service attacks, collection types and arrays created during b
 </div>
 
 
-<h2 id="uploads">6.13 File Uploads</h2>
+<h2 id="uploads">6.12 File Uploads</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/uploads.adoc"'>
@@ -5638,7 +5618,7 @@ HttpResponse upload(Publisher&lt;Publisher&lt;PartData&gt;&gt; files)</code></pr
 </div>
 
 
-<h2 id="transfers">6.14 File Transfers</h2>
+<h2 id="transfers">6.13 File Transfers</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/transfers.adoc"'>
@@ -5718,7 +5698,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 </div>
 
 
-<h2 id="sse">6.15 Server Sent Events</h2>
+<h2 id="sse">6.14 Server Sent Events</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/sse.adoc"'>
@@ -5832,7 +5812,7 @@ The <code>Content-Type</code> header of file responses will be calculated based 
 </div>
 
 
-<h2 id="filters">6.16 HTTP Filters</h2>
+<h2 id="filters">6.15 HTTP Filters</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/filters.adoc"'>
@@ -6018,7 +5998,7 @@ The examples use RxJava, however you can use any reactive framework that support
 </div>
 
 
-<h2 id="sessions">6.17 HTTP Sessions</h2>
+<h2 id="sessions">6.16 HTTP Sessions</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/sessions.adoc"'>
@@ -6382,7 +6362,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="serverConfiguration">6.18 Configuring the HTTP Server</h2>
+<h2 id="serverConfiguration">6.17 Configuring the HTTP Server</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration.adoc"'>
@@ -6416,7 +6396,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="threadPools">6.18.1 Configuring Server Thread Pools</h2>
+<h2 id="threadPools">6.17.1 Configuring Server Thread Pools</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/threadPools.adoc"'>
@@ -6471,7 +6451,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="cors">6.18.2 Configuring CORS</h2>
+<h2 id="cors">6.17.2 Configuring CORS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/cors.adoc"'>
@@ -6665,7 +6645,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="https">6.18.3 Securing the Server with HTTPS</h2>
+<h2 id="https">6.17.3 Securing the Server with HTTPS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/https.adoc"'>
@@ -9505,9 +9485,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <div class="listingblock">
 <div class="title">Using Trace Annotations</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">io.micronaut.tracing.annotation</span>.*;
-
-<span class="annotation">@Singleton</span>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Singleton</span>
 <span class="type">class</span> <span class="class">HelloService</span> {
 
     <span class="annotation">@NewSpan</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello-world</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="1"></i><b>(1)</b>
@@ -9516,7 +9494,7 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
     }
 
     <span class="annotation">@ContinueSpan</span> <i class="conum" data-value="3"></i><b>(3)</b>
-    <span class="directive">public</span> <span class="predefined-type">String</span> greet(<span class="annotation">@SpanTag</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">greeting.message</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> greeting) { <i class="conum" data-value="4"></i><b>(4)</b>
+    <span class="directive">public</span> <span class="predefined-type">String</span> greet(<span class="annotation">@SpanTag</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">hello.greeting</span><span class="delimiter">&quot;</span></span>) <span class="predefined-type">String</span> greet) {
         <span class="keyword">return</span> greeting;
     }
 }</code></pre>
@@ -9526,32 +9504,26 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/NewSpan.html">@NewSpan</a> annotation is used to create a new span called <code>hello-world</code></td>
+<td>The <a href="../api/io/micronaut/tracing/annotation/NewSpan.html">@NewSpan</a> annotation is used to start a new span</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> annotations adds a tag called <code>person.name</code> with the name of the person</td>
+<td>You can use <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> to include arguments of methods as tags for the span</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/ContinueSpan.html">@ContinueSpan</a> annotation is used to continue an existing span</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>The <a href="../api/io/micronaut/tracing/annotation/SpanTag.html">@SpanTag</a> annotation is used again to add the greeting as a tag called <code>greeting.message</code></td>
+<td>The <a href="../api/io/micronaut/tracing/annotation/ContinueSpan.html">@ContinueSpan</a> annotation can be used to continue as existing span and incorporate additional tags using <code>@SpanTag</code></td>
 </tr>
 </table>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_tracing_instrumentation">Tracing Instrumentation</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_tracing_instrumentation">Tracing Instrumentation</h4>
 <div class="paragraph">
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
 <div class="paragraph">
 <p>These instrumentations are found in the <a href="../api/io/micronaut/tracing/instrument/package-summary.html">io.micronaut.tracing.instrument</a> package and include HTTP <a href="#clientFilter">Client Filters</a> and <a href="#filters">Server Filters</a> to propagate the necessary headers via HTTP.</p>
+</div>
 </div>
 </div>
 </div>
@@ -11927,9 +11899,29 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 <div class="paragraph">
 <p>The major advantage here is that you pay a slight cost at compile time, but at runtime Micronaut is largely reflection-free, fast and consumes very little memory.</p>
 </div>
-<div class="sect1">
-<h2 id="_ide_considerations">IDE Considerations</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_using_micronaut_with_java_9">Using Micronaut with Java 9+</h3>
+<div class="paragraph">
+<p>Micronaut is built with Java 8, however works fine with Java 9/10 and above as well. The classes that Micronaut generates sit along side existing classes within the same package, hence do not violate anything regarding the Java module system.</p>
+</div>
+<div class="paragraph">
+<p>There are some considerations to take into account when using Java 9/10 with Micronaut.</p>
+</div>
+<div class="sect3">
+<h4 id="_the_javax_annotation_package">The javax.annotation package</h4>
+<div class="paragraph">
+<p>The <code>javax.annotation</code>, which includes <code>@PostConstruct</code>, <code>@PreDestroy</code> etc. is no longer part of the core JDK but instead a module. If you run under Java 9+ you will need to import the module or add the dependency to your classpath:</p>
+</div>
+<div class="listingblock">
+<div class="title">Adding the <code>javax.annotation</code> dependency</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">compile <span class="string"><span class="delimiter">'</span><span class="content">javax.annotation:javax.annotation-api:1.3.2</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ide_considerations">IDE Considerations</h3>
 <div class="paragraph">
 <p>You can use any IDE to develop Micronaut, if you depend on your configured build tool (Gradle or Maven) to build the application.</p>
 </div>
@@ -11946,7 +11938,6 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 </div>
 <div class="paragraph">
 <p>As of this writing, Eclipse has <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534501">incomplete support</a> for Java annotation processors, hence you will have to delegate to BuildShip or M2Eclipse for building and running tests.</p>
-</div>
 </div>
 </div>
 <div class="sect1">

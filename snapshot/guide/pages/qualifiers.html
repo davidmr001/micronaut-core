@@ -119,7 +119,7 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>The classic requirement of dependency injection is the interface and multiple possible implementations.</p>
+<p>If you have multiple possible implementations for a given interface that you want to inject, you need to use a qualifier.</p>
 </div>
 <div class="paragraph">
 <p>Once again Micronaut leverages JSR-303 and the <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Qualifier.html">Qualifier</a> and <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">Named</a> annotations to support this use case.</p>
@@ -194,6 +194,9 @@ function addJsClass() {
 <td>Calling the start method prints: <code>"Starting V8"</code></td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>You can also declare <a href="https://docs.oracle.com/javaee/6/api/javax/inject/Named.html">@Named</a> at the class level of a bean to explicitly define the name of the bean.</p>
 </div>
 </div>
 </div>

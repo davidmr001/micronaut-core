@@ -151,7 +151,7 @@ function addJsClass() {
 <p>Configuration can by default be provided in either Java properties, YAML, JSON or Groovy files. The convention is to search for a file called <code>application.yml</code>, <code>application.properties</code>, <code>application.json</code> or <code>application.groovy</code>.</p>
 </div>
 <div class="paragraph">
-<p>In addition, Micronaut will search for the system properties and environment variables for configuration allow the ability to conveniently override settings at the system property or environment variable level.</p>
+<p>In addition, just like Spring and Grails, Micronaut allows overriding any property via system properties or environment variables.</p>
 </div>
 <div class="paragraph">
 <p>Each source of configuration is modeled with the <a href="../api/io/micronaut/context/env/PropertySource.html">PropertySource</a> interface and the mechanism is extensible allowing the implementation of additional <a href="../api/io/micronaut/context/env/PropertySourceLoader.html">PropertySourceLoader</a> implementations.</p>
@@ -184,7 +184,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 <p>The active environment names serve the purpose of allowing loading different configuration files depending on the environment and also using the <a href="../api/io/micronaut/context/annotation/Requires.html">@Requires</a> annotation to conditionally load beans or bean <a href="../api/io/micronaut/context/annotation/Configuration.html">@Configuration</a> packages.</p>
 </div>
 <div class="paragraph">
-<p>In addition, Micronaut will make its best effort to detect the current environment. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
+<p>In addition, Micronaut will attempt to detect the current environments. For example within a Spock or JUnit test the <a href="../api/io/micronaut/context/env/Environment.html#TEST">TEST</a> environment will be automatically active.</p>
 </div>
 <div class="paragraph">
 <p>Additional active environments can be specified using the <code>micronaut.environments</code> system property or the <code>MICRONAUT_ENVIRONMENTS</code> environment variable. These can be specified as a comma separated list. For example:</p>
@@ -196,7 +196,7 @@ assertTrue(environment.getActiveNames().contains(<span class="string"><span clas
 </div>
 </div>
 <div class="paragraph">
-<p>The above actives environments called <code>foo</code> and <code>bar</code>.</p>
+<p>The above activates environments called <code>foo</code> and <code>bar</code>.</p>
 </div>
 <div class="paragraph">
 <p>Finally, the Cloud environment names are also detected. See the section on <a href="#cloudConfiguration">Cloud Configuration</a> for more information.</p>
@@ -268,19 +268,6 @@ assertEquals(
 <p>Application-specific properties from <code>application.{extension}</code> (Either <code>.properties</code>, <code>.json</code>, <code>.yml</code> or <code>.groovy</code> property formats supported)</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>To use <code>application.yml</code> you will need to include <a href="http://mavenrepository.com/artifact/org.yaml/snakeyaml">SnakeYAML</a> as a <code>runtime</code> dependency.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
-    ...
-    ..
-    .
-    runtime <span class="string"><span class="delimiter">'</span><span class="content">org.yaml:snakeyaml:1.19</span><span class="delimiter">'</span></span>
-}</code></pre>
-</div>
 </div>
 
 
@@ -366,7 +353,7 @@ assertEquals(
 <p>Like Spring Boot and Grails, you can create type safe configuration by creating classes that are annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Unlike the aforementioned frameworks, however, Micronaut uses ASM to generate a class that avoids the use of reflection and dynamic parsing so that loading the configuration is as efficient as possible with minimal impact on startup time.</p>
+<p>Micronaut, however, will produce a reflection free <code>@ConfigurationProperties</code> bean and will also at compile time calculate the property paths to evaluate, greatly improving the speed and efficiency of loading <code>@ConfigurationProperties</code>.</p>
 </div>
 <div class="paragraph">
 <p>An example of a configuration class can be seen below:</p>
@@ -476,14 +463,22 @@ println(vehicle.start())</code></pre>
 <div class="paragraph">
 <p>The above example prints: <code>"Ford Engine Starting V8 [rodLength=6.0]"</code></p>
 </div>
-<div class="sect1">
-<h2 id="_configuration_builder">Configuration Builder</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>Note for more complex configurations you can structure <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> beans through inheritance.</p>
+</div>
+<div class="paragraph">
+<p>For example creating a subclass of <code>EngineConfig</code> with <code>@ConfigurationProperties('bar')</code> will resolve all properties under the path <code>my.engine.bar</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuration_builder">Configuration Builder</h3>
+<div class="paragraph">
+<p>Many existing frameworks and tools already use builder-style classes to construct configuration.</p>
+</div>
 <div class="paragraph">
 <p>To support the ability for a builder style class to be populated with configuration values, the <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">@ConfigurationBuilder</a> annotation can be used. <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">ConfigurationBuilder</a> can be added to a field or method in a class annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>One or more method prefixes can be specified in the annotation to support builder methods like "withXxx" or "setXxx". If the builder methods have no prefix, assign an empty string to the parameter.</p>
+<p>Since there is no consistent way to define builders in the Java world. One or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
 </div>
 <div class="paragraph">
 <p>A configuration prefix can also be specified to tell Micronaut where to look for configuration values. By default, the builder methods will use the configuration prefix defined at the class level <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> annotation.</p>
@@ -581,7 +576,6 @@ println(vehicle.start())</code></pre>
 </div>
 <div class="paragraph">
 <p>The above example prints: <code>"Subaru Engine Starting V4 [rodLength=4.0]"</code></p>
-</div>
 </div>
 </div>
 

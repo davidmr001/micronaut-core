@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>6.11 Error Handling 1.0.0-SNAPSHOT</title>
+    <title>6.10 Error Handling 1.0.0-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -100,7 +100,7 @@ function addJsClass() {
 
 
                 <div class="project">
-                    <h1>6.11 Error Handling</h1>
+                    <h1>6.10 Error Handling</h1>
 
                     <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
                 </div>
@@ -109,7 +109,7 @@ function addJsClass() {
 
                 
 
-<h2 id="errorHandling">6.11 Error Handling</h2>
+<h2 id="errorHandling">6.10 Error Handling</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/errorHandling.adoc"'>
@@ -144,7 +144,7 @@ function addJsClass() {
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>An instance of <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> is returned which outputs the error in <a href="https://github.com/blongden/vnd.error">application/vnd.error+json</a>.</td>
+<td>An instance of <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> is returned.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -153,12 +153,12 @@ function addJsClass() {
 </table>
 </div>
 <div class="paragraph">
-<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally with the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation:</p>
+<p>Note that the previous example will only handle errors thrown from the declaring controller. To handle errors globally you should use the <a href="../api/io/micronaut/http/annotation/Error.html">Error</a> annotation with the <code>global</code> attribute set to <code>true</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Handling Global Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(global = <span class="predefined-constant">true</span>) <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; error(HttpRequest request, <span class="predefined-type">Throwable</span> e) {
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Bad Things Happened: </span><span class="delimiter">&quot;</span></span> + e.getMessage()) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -176,7 +176,7 @@ function addJsClass() {
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all errors</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all errors</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -202,7 +202,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 <div class="listingblock">
 <div class="title">Handling Global HTTP Status Errors</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND)
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Error</span>(status = HttpStatus.NOT_FOUND, global = <span class="predefined-constant">true</span>)
 <span class="directive">public</span> HttpResponse&lt;JsonError&gt; notFound(HttpRequest request) { <i class="conum" data-value="1"></i><b>(1)</b>
     JsonError error = <span class="keyword">new</span> JsonError(<span class="string"><span class="delimiter">&quot;</span><span class="content">Page Not Found</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="2"></i><b>(2)</b>
             .link(Link.SELF, Link.of(request.getUri()));
@@ -220,7 +220,7 @@ You can also specify an exception type to the <a href="../api/io/micronaut/http/
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A <a href="../api/io/micronaut/http/hateos/VndError.html">VndError</a> instance is returned for all 404 responses</td>
+<td>A <a href="../api/io/micronaut/http/hateos/JsonError.html">JsonError</a> instance is returned for all 404 responses</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
