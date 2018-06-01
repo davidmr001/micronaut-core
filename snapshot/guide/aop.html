@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>5 Aspect Oriented Programming 1.0.0-SNAPSHOT</title>
+    <title>5 Aspect Oriented Programming 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>5 Aspect Oriented Programming</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -346,7 +352,7 @@ Since Micronaut is compile time, generally the advice should be packaged in a de
 <h2 id="_customizing_proxy_generation">Customizing Proxy Generation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The default behaviour of the <a href="../api/io/micronaut/aop/Around.html">Around</a> annotation is generate a proxy at compile time that is a subclass of the class being proxied. In other words, in the previous example a compile time subclass of the <code>NotNullExample</code> class will be produced where methods that are proxied are decorated with interceptor handling and the original behaviour is invoked via a call to <code>super</code>.</p>
+<p>The default behaviour of the <a href="../api/io/micronaut/aop/Around.html">Around</a> annotation is to generate a proxy at compile time that is a subclass of the class being proxied. In other words, in the previous example a compile time subclass of the <code>NotNullExample</code> class will be produced where methods that are proxied are decorated with interceptor handling and the original behaviour is invoked via a call to <code>super</code>.</p>
 </div>
 <div class="paragraph">
 <p>This behaviour is more efficient as only one instance of the bean is required, however depending on the use case you are trying to implement you may wish to alter this behaviour and the <code>@Around</code> annotation supports various attributes that allow you to alter this behaviour including:</p>
@@ -948,7 +954,7 @@ Remember that the scope of the bean has an impact on behaviour. a <code>@Singlet
 </div>
 </div>
 <div class="paragraph">
-<p>The above example will run the task every Tuesday morning at 10:15AM.</p>
+<p>The above example will run the task every Monday morning at 10:15AM.</p>
 </div>
 </div>
 </div>

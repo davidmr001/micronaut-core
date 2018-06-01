@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>3 Inversion of Control 1.0.0-SNAPSHOT</title>
+    <title>3 Inversion of Control 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>3 Inversion of Control</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -157,7 +163,10 @@ function addJsClass() {
                     <div class="toc-item" style="margin-left:0px"><a href="#annotationMetadata"><strong>3.13</strong><span>Bean Annotation Metadata</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#android"><strong>3.14</strong><span>Android Support</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#springBeans"><strong>3.14</strong><span>Micronaut Beans And Spring</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0px"><a href="#android"><strong>3.15</strong><span>Android Support</span></a>
                     </div>
                     
                 </div>
@@ -322,7 +331,7 @@ println( vehicle.start() )</code></pre>
 <p>At this point, you may be wondering how Micronaut performs the above dependency injection without requiring reflection.</p>
 </div>
 <div class="paragraph">
-<p>The key is a set of AST transformations (fro Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
+<p>The key is a set of AST transformations (for Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
 </div>
 <div class="paragraph">
 <p>The ASM byte-code library is used to generate classes and because Micronaut knows ahead of time the injection points, there is no need to scan all of the methods, fields, constructors, etc. at runtime like other frameworks such as Spring do.</p>
@@ -710,7 +719,7 @@ println( vehicle.start() )</code></pre>
 <p><code>/refresh</code> endpoint.</p>
 </li>
 <li>
-<p>Publication of a <code>RefreshEvent</code>.</p>
+<p>Publication of a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a>.</p>
 </li>
 </ul>
 </div>
@@ -751,7 +760,7 @@ println( vehicle.start() )</code></pre>
 <p>If you invoke the <code>latestForecast()</code> twice, you will see identical responses such as <code>"Scattered Clouds 01/Feb/18 10:29.199"</code>.</p>
 </div>
 <div class="paragraph">
-<p>When the <code>/refresh</code> endpoint is invoked or a <a href="../api/io/micronaut/runtime/context/scope/RefreshEvent.html">RefreshEvent</a> is published then the instance is invalidated and a new instance is created the next time the object is requested. For example:</p>
+<p>When the <code>/refresh</code> endpoint is invoked or a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> is published then the instance is invalidated and a new instance is created the next time the object is requested. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1419,7 +1428,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">BeanContext</span> beanContext = ... <span class="comment">// obtain the bean context</span>
 Collection&lt;BeanDefinition&gt; definitions =
-    beanContext.getBeanDefinitions(Qualfiers.byStereotype(Controller.class))
+    beanContext.getBeanDefinitions(Qualifiers.byStereotype(Controller.class))
 
 <span class="keyword">for</span>(BeanDefinition definition : definitions) {
     Controller controllerAnn = definition.getAnnotation(Controller.class);
@@ -1435,7 +1444,41 @@ Collection&lt;BeanDefinition&gt; definitions =
 </div>
 
 
-<h2 id="android">3.14 Android Support</h2>
+<h2 id="springBeans">3.14 Micronaut Beans And Spring</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/ioc/springBeans.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The <a href="../api/io/micronaut/spring/beans/MicronautBeanProcessor.html">MicronautBeanProcessor</a>
+class is a <code>BeanFactoryPostProcessor</code> which will add Micronaut beans to a
+Spring Application Context.  An instance of <code>MicronautBeanProcessor</code> should
+be added to the Spring Application Context.  <code>MicronautBeanProcessor</code> requires
+a constructor parameter which represents the stereotype annotation for
+the Micronaut beans which should be added the Spring Application Context.  The
+processor may be used in any Spring application.  As an example, a Grails 3
+application could take advantage of <code>MicronautBeanProcessor</code> to add all of the
+Micronaut HTTP Client beans to the Spring Application Context with something
+like the folowing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// grails-app/conf/spring/resources.groovy</span>
+<span class="keyword">import</span> <span class="include">io.micronaut.spring.beans.MicronautBeanProcessor</span>
+<span class="keyword">import</span> <span class="include">io.micronaut.http.client.Client</span>
+
+beans = {
+    httpClientBeanProcessor MicronautBeanProcessor, Client
+}</code></pre>
+</div>
+</div>
+
+
+<h2 id="android">3.15 Android Support</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/ioc/android.adoc"'>
@@ -1464,8 +1507,8 @@ Collection&lt;BeanDefinition&gt; definitions =
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    annotationProcessor "io.micronaut:inject-java:1.0.0-SNAPSHOT"
-    compileOnly "io.micronaut:inject-java:1.0.0-SNAPSHOT"
+    annotationProcessor "io.micronaut:inject-java:1.0.0.BUILD-SNAPSHOT"
+    compileOnly "io.micronaut:inject-java:1.0.0.BUILD-SNAPSHOT"
     ...
 }</code></pre>
 </div>

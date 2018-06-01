@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>6 The HTTP Server 1.0.0-SNAPSHOT</title>
+    <title>6 The HTTP Server 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>6 The HTTP Server</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -166,16 +172,19 @@ function addJsClass() {
                     <div class="toc-item" style="margin-left:0px"><a href="#sessions"><strong>6.16</strong><span>HTTP Sessions</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:0px"><a href="#serverConfiguration"><strong>6.17</strong><span>Configuring the HTTP Server</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#serverEvents"><strong>6.17</strong><span>Server Events</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#threadPools"><strong>6.17.1</strong><span>Configuring Server Thread Pools</span></a>
+                    <div class="toc-item" style="margin-left:0px"><a href="#serverConfiguration"><strong>6.18</strong><span>Configuring the HTTP Server</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#cors"><strong>6.17.2</strong><span>Configuring CORS</span></a>
+                    <div class="toc-item" style="margin-left:10px"><a href="#threadPools"><strong>6.18.1</strong><span>Configuring Server Thread Pools</span></a>
                     </div>
                     
-                    <div class="toc-item" style="margin-left:10px"><a href="#https"><strong>6.17.3</strong><span>Securing the Server with HTTPS</span></a>
+                    <div class="toc-item" style="margin-left:10px"><a href="#cors"><strong>6.18.2</strong><span>Configuring CORS</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:10px"><a href="#https"><strong>6.18.3</strong><span>Securing the Server with HTTPS</span></a>
                     </div>
                     
                 </div>
@@ -1474,7 +1483,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tbody>
 </table>
 <div class="paragraph">
-<p>Here is what an example YML configuration might look like:</p>
+<p>Here is what an example YAML configuration might look like (note that the <code>router</code> declaration must be at the top-level of the file and not nested under any other items):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2659,7 +2668,82 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="serverConfiguration">6.17 Configuring the HTTP Server</h2>
+<h2 id="serverEvents">6.17 Server Events</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverEvents.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The HTTP server will emit a number of <a href="#events">Bean Events</a>, defined in the <a href="../api/io/micronaut/runtime/server/event/package-summary.html">io.micronaut.runtime.server.event</a> package, that you can write listeners for. The following table summarizes those events:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Server Events</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Event</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted when the server completes startup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/runtime/server/event/ServerShutdownEvent.html">ServerShutdownEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted when the server shuts down</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/discovery/event/ServiceStartedEvent.html">ServiceStartedEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted after all <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a> listeners have been executed and exposes the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/discovery/event/ServiceShutdownEvent.html">ServiceShutdownEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted after all <a href="../api/io/micronaut/runtime/server/event/ServerShutdownEvent.html">ServerShutdownEvent</a> listeners have been executed and exposes the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you do significant work within a listener for a <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a> this will slow down you startup time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following example defines a <a href="../api/io/micronaut/context/event/ApplicationEventListener.html">ApplicationEventListener</a> that listens for <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listening for Server Startup Events</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">io.micronaut.context.event.ApplicationEventListener</span>;
+...
+<span class="annotation">@Singleton</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">StartupListener</span> <span class="directive">implements</span> ApplicationEventListener&lt;ServerStartupEvent&gt; {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onApplicationEvent(ServerStartupEvent event) {
+        <span class="comment">// logic here</span>
+        ...
+    }
+}</code></pre>
+</div>
+</div>
+
+
+<h2 id="serverConfiguration">6.18 Configuring the HTTP Server</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration.adoc"'>
@@ -2669,10 +2753,10 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 
 
 <div class="paragraph">
-<p>The HTTP server features a number of configuration options you may wish to tweak. Defined in the <a href="../api/io/micronaut/http/server/netty/configuration/NettyHttpServerConfiguration.html">NettyHttpServerConfiguration</a> configuration class, which extends <a href="../api/io/micronaut/http/server/HttpServerConfiguration.html">HttpServerConfiguration</a>.</p>
+<p>The HTTP server features a number of configuration options you may wish to tweak. They are defined in the <a href="../api/io/micronaut/http/server/netty/configuration/NettyHttpServerConfiguration.html">NettyHttpServerConfiguration</a> configuration class, which extends <a href="../api/io/micronaut/http/server/HttpServerConfiguration.html">HttpServerConfiguration</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows how tweak configuration options for the server via <code>application.yml</code>:</p>
+<p>The following example shows how to tweak configuration options for the server via <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Configuring HTTP server settings</div>
@@ -2693,7 +2777,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="threadPools">6.17.1 Configuring Server Thread Pools</h2>
+<h2 id="threadPools">6.18.1 Configuring Server Thread Pools</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/threadPools.adoc"'>
@@ -2748,7 +2832,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="cors">6.17.2 Configuring CORS</h2>
+<h2 id="cors">6.18.2 Configuring CORS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/cors.adoc"'>
@@ -2942,7 +3026,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="https">6.17.3 Securing the Server with HTTPS</h2>
+<h2 id="https">6.18.3 Securing the Server with HTTPS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/https.adoc"'>

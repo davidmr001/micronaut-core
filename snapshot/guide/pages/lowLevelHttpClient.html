@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>7.1 Using the Low-Level HTTP Client 1.0.0-SNAPSHOT</title>
+    <title>7.1 Using the Low-Level HTTP Client 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>7.1 Using the Low-Level HTTP Client</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -168,6 +174,14 @@ function addJsClass() {
 </div>
 <div class="paragraph">
 <p>The above example will inject a client that targets the Twitter API.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">@Client(&quot;\${myapp.api.twitter.url}&quot;) @Inject httpClient: RxHttpClient</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above Kotlin example will inject a client that targets the Twitter API using a configuration path. Note the required escaping (backslash) on <code>"\${path.to.config}"</code> which is required due to Kotlin string interpolation.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation is also a custom scope that will manage the creation of <a href="../api/io/micronaut/http/client/HttpClient.html">HttpClient</a> instances and ensure they are shutdown when the application shuts down.</p>

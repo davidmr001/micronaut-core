@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>4.4 Configuration Properties 1.0.0-SNAPSHOT</title>
+    <title>4.4 Configuration Properties 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>4.4 Configuration Properties</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -238,8 +244,9 @@ println(vehicle.start())</code></pre>
 <div class="paragraph">
 <p>For example creating a subclass of <code>EngineConfig</code> with <code>@ConfigurationProperties('bar')</code> will resolve all properties under the path <code>my.engine.bar</code>.</p>
 </div>
-<div class="sect2">
-<h3 id="_configuration_builder">Configuration Builder</h3>
+<div class="sect1">
+<h2 id="_configuration_builder">Configuration Builder</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Many existing frameworks and tools already use builder-style classes to construct configuration.</p>
 </div>
@@ -247,7 +254,7 @@ println(vehicle.start())</code></pre>
 <p>To support the ability for a builder style class to be populated with configuration values, the <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">@ConfigurationBuilder</a> annotation can be used. <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">ConfigurationBuilder</a> can be added to a field or method in a class annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Since there is no consistent way to define builders in the Java world. One or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
+<p>Since there is no consistent way to define builders in the Java world, one or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
 </div>
 <div class="paragraph">
 <p>A configuration prefix can also be specified to tell Micronaut where to look for configuration values. By default, the builder methods will use the configuration prefix defined at the class level <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> annotation.</p>
@@ -345,6 +352,7 @@ println(vehicle.start())</code></pre>
 </div>
 <div class="paragraph">
 <p>The above example prints: <code>"Subaru Engine Starting V4 [rodLength=4.0]"</code></p>
+</div>
 </div>
 </div>
 

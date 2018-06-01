@@ -58,6 +58,10 @@
                         
                         <div class="toc-item" style="margin-left:0"><a href="#cli"><strong>14</strong><span>Micronaut CLI</span></a></div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="#faq"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a></div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="#problems"><strong>16</strong><span>Common Problems</span></a></div>
+                        
                     </div>
                 </div>
             </li>
@@ -78,13 +82,15 @@
     
     <div class="toc-item" style="margin-left:0px"><a href="#quickStart"><strong>2</strong><span>Quick Start</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#creatingServer"><strong>2.1</strong><span>Creating a Server Application</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#buildCLI"><strong>2.1</strong><span>Build/Install the CLI</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#ideSetup"><strong>2.2</strong><span>Setting up an IDE</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#creatingServer"><strong>2.2</strong><span>Creating a Server Application</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#creatingClient"><strong>2.3</strong><span>Creating a Client</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#ideSetup"><strong>2.3</strong><span>Setting up an IDE</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#deployingApp"><strong>2.4</strong><span>Deploying the Application</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#creatingClient"><strong>2.4</strong><span>Creating a Client</span></a></div>
+    
+    <div class="toc-item" style="margin-left:10px"><a href="#deployingApp"><strong>2.5</strong><span>Deploying the Application</span></a></div>
     
     <div class="toc-item" style="margin-left:0px"><a href="#ioc"><strong>3</strong><span>Inversion of Control</span></a></div>
     
@@ -120,7 +126,9 @@
     
     <div class="toc-item" style="margin-left:10px"><a href="#annotationMetadata"><strong>3.13</strong><span>Bean Annotation Metadata</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#android"><strong>3.14</strong><span>Android Support</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#springBeans"><strong>3.14</strong><span>Micronaut Beans And Spring</span></a></div>
+    
+    <div class="toc-item" style="margin-left:10px"><a href="#android"><strong>3.15</strong><span>Android Support</span></a></div>
     
     <div class="toc-item" style="margin-left:0px"><a href="#config"><strong>4</strong><span>Application Configuration</span></a></div>
     
@@ -194,13 +202,15 @@
     
     <div class="toc-item" style="margin-left:10px"><a href="#sessions"><strong>6.16</strong><span>HTTP Sessions</span></a></div>
     
-    <div class="toc-item" style="margin-left:10px"><a href="#serverConfiguration"><strong>6.17</strong><span>Configuring the HTTP Server</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#serverEvents"><strong>6.17</strong><span>Server Events</span></a></div>
     
-    <div class="toc-item" style="margin-left:20px"><a href="#threadPools"><strong>6.17.1</strong><span>Configuring Server Thread Pools</span></a></div>
+    <div class="toc-item" style="margin-left:10px"><a href="#serverConfiguration"><strong>6.18</strong><span>Configuring the HTTP Server</span></a></div>
     
-    <div class="toc-item" style="margin-left:20px"><a href="#cors"><strong>6.17.2</strong><span>Configuring CORS</span></a></div>
+    <div class="toc-item" style="margin-left:20px"><a href="#threadPools"><strong>6.18.1</strong><span>Configuring Server Thread Pools</span></a></div>
     
-    <div class="toc-item" style="margin-left:20px"><a href="#https"><strong>6.17.3</strong><span>Securing the Server with HTTPS</span></a></div>
+    <div class="toc-item" style="margin-left:20px"><a href="#cors"><strong>6.18.2</strong><span>Configuring CORS</span></a></div>
+    
+    <div class="toc-item" style="margin-left:20px"><a href="#https"><strong>6.18.3</strong><span>Securing the Server with HTTPS</span></a></div>
     
     <div class="toc-item" style="margin-left:0px"><a href="#httpClient"><strong>7</strong><span>The HTTP Client</span></a></div>
     
@@ -384,6 +394,10 @@
     
     <div class="toc-item" style="margin-left:10px"><a href="#commands"><strong>14.4</strong><span>Commands</span></a></div>
     
+    <div class="toc-item" style="margin-left:0px"><a href="#faq"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a></div>
+    
+    <div class="toc-item" style="margin-left:0px"><a href="#problems"><strong>16</strong><span>Common Problems</span></a></div>
+    
     <div style="clear:both" ></div>
 </div>
 
@@ -392,7 +406,7 @@
                     <h1>Micronaut</h1>
                     <p></p>
                     <p>Natively Cloud Native</p>
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
                 
 
@@ -459,7 +473,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Whilst frameworks like Spring and Grails were never designed to run in scenarios such as as functions on a Server-less platform, or on Android or as a low memory footprint microservice; Micronaut on the other hand is designed to be suitable for all of these scenarios.</p>
+<p>Whilst frameworks like Spring and Grails were never designed to run in scenarios such as functions on a Server-less platform, or on Android or as a low memory footprint microservice; Micronaut on the other hand is designed to be suitable for all of these scenarios.</p>
 </div>
 <div class="paragraph">
 <p>The way this is achieved is through a series of Java annotation processors, that are usable on any JVM language that supports them, and an HTTP Server and Client built on Netty.</p>
@@ -492,7 +506,69 @@
 </div>
 
 
-<h2 id="creatingServer">2.1 Creating a Server Application</h2>
+<h2 id="buildCLI">2.1 Build/Install the CLI</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/quickStart/buildCLI.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>If you have not installed Micronaut on your local machine, you can build the distribution from source to use the CLI.</p>
+</div>
+<div class="paragraph">
+<p>Clone the repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; git clone git@github.com:micronaut-projects/micronaut-core.git</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>cd</code> into the <code>micronaut-core</code> directory and run the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; ./gradlew publishToMavenLocal</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will publish the CLI and core libraries to your local Maven cache.</p>
+</div>
+<div class="paragraph">
+<p>In your shell profile (<code>~/.bash_profile</code> if you are using the Bash shell), export the <code>MICRONAUT_HOME</code> directory and add the CLI path to your <code>PATH</code>:</p>
+</div>
+<div class="listingblock">
+<div class="title">bash_profile/.bashrc</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sh">export MICRONAUT_HOME=~/path/to/micronaut-core
+export PATH=&quot;$PATH:$MICRONAUT_HOME/cli/build/bin&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Reload your terminal or <code>source</code> your shell profile with <code>source</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; source ~/.bash_profile</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should now be able to run the Micronaut CLI.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&gt; mn
+| Starting interactive mode...
+| Enter a command name to run. Use TAB for completion:
+mn&gt;</pre>
+</div>
+</div>
+
+
+<h2 id="creatingServer">2.2 Creating a Server Application</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/quickStart/creatingServer.adoc"'>
@@ -591,7 +667,7 @@ Hello World</code></pre>
 </div>
 
 
-<h2 id="ideSetup">2.2 Setting up an IDE</h2>
+<h2 id="ideSetup">2.3 Setting up an IDE</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/quickStart/ideSetup.adoc"'>
@@ -652,7 +728,7 @@ Hello World</code></pre>
 </div>
 
 
-<h2 id="creatingClient">2.3 Creating a Client</h2>
+<h2 id="creatingClient">2.4 Creating a Client</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/quickStart/creatingClient.adoc"'>
@@ -798,7 +874,7 @@ Hello World</code></pre>
 </div>
 
 
-<h2 id="deployingApp">2.4 Deploying the Application</h2>
+<h2 id="deployingApp">2.5 Deploying the Application</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/quickStart/deployingApp.adoc"'>
@@ -980,7 +1056,7 @@ println( vehicle.start() )</code></pre>
 <p>At this point, you may be wondering how Micronaut performs the above dependency injection without requiring reflection.</p>
 </div>
 <div class="paragraph">
-<p>The key is a set of AST transformations (fro Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
+<p>The key is a set of AST transformations (for Groovy) and annotation processors (for Java) that generate classes that implement the <a href="../api/io/micronaut/inject/BeanDefinition.html">BeanDefinition</a> interface.</p>
 </div>
 <div class="paragraph">
 <p>The ASM byte-code library is used to generate classes and because Micronaut knows ahead of time the injection points, there is no need to scan all of the methods, fields, constructors, etc. at runtime like other frameworks such as Spring do.</p>
@@ -1368,7 +1444,7 @@ println( vehicle.start() )</code></pre>
 <p><code>/refresh</code> endpoint.</p>
 </li>
 <li>
-<p>Publication of a <code>RefreshEvent</code>.</p>
+<p>Publication of a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a>.</p>
 </li>
 </ul>
 </div>
@@ -1409,7 +1485,7 @@ println( vehicle.start() )</code></pre>
 <p>If you invoke the <code>latestForecast()</code> twice, you will see identical responses such as <code>"Scattered Clouds 01/Feb/18 10:29.199"</code>.</p>
 </div>
 <div class="paragraph">
-<p>When the <code>/refresh</code> endpoint is invoked or a <a href="../api/io/micronaut/runtime/context/scope/RefreshEvent.html">RefreshEvent</a> is published then the instance is invalidated and a new instance is created the next time the object is requested. For example:</p>
+<p>When the <code>/refresh</code> endpoint is invoked or a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> is published then the instance is invalidated and a new instance is created the next time the object is requested. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2077,7 +2153,7 @@ If you take this approach, then you should not invoke other methods annotated wi
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">BeanContext</span> beanContext = ... <span class="comment">// obtain the bean context</span>
 Collection&lt;BeanDefinition&gt; definitions =
-    beanContext.getBeanDefinitions(Qualfiers.byStereotype(Controller.class))
+    beanContext.getBeanDefinitions(Qualifiers.byStereotype(Controller.class))
 
 <span class="keyword">for</span>(BeanDefinition definition : definitions) {
     Controller controllerAnn = definition.getAnnotation(Controller.class);
@@ -2093,7 +2169,41 @@ Collection&lt;BeanDefinition&gt; definitions =
 </div>
 
 
-<h2 id="android">3.14 Android Support</h2>
+<h2 id="springBeans">3.14 Micronaut Beans And Spring</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/ioc/springBeans.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The <a href="../api/io/micronaut/spring/beans/MicronautBeanProcessor.html">MicronautBeanProcessor</a>
+class is a <code>BeanFactoryPostProcessor</code> which will add Micronaut beans to a
+Spring Application Context.  An instance of <code>MicronautBeanProcessor</code> should
+be added to the Spring Application Context.  <code>MicronautBeanProcessor</code> requires
+a constructor parameter which represents the stereotype annotation for
+the Micronaut beans which should be added the Spring Application Context.  The
+processor may be used in any Spring application.  As an example, a Grails 3
+application could take advantage of <code>MicronautBeanProcessor</code> to add all of the
+Micronaut HTTP Client beans to the Spring Application Context with something
+like the folowing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy"><span class="comment">// grails-app/conf/spring/resources.groovy</span>
+<span class="keyword">import</span> <span class="include">io.micronaut.spring.beans.MicronautBeanProcessor</span>
+<span class="keyword">import</span> <span class="include">io.micronaut.http.client.Client</span>
+
+beans = {
+    httpClientBeanProcessor MicronautBeanProcessor, Client
+}</code></pre>
+</div>
+</div>
+
+
+<h2 id="android">3.15 Android Support</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/ioc/android.adoc"'>
@@ -2122,8 +2232,8 @@ Collection&lt;BeanDefinition&gt; definitions =
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">dependencies {
     ...
-    annotationProcessor "io.micronaut:inject-java:1.0.0-SNAPSHOT"
-    compileOnly "io.micronaut:inject-java:1.0.0-SNAPSHOT"
+    annotationProcessor "io.micronaut:inject-java:1.0.0.BUILD-SNAPSHOT"
+    compileOnly "io.micronaut:inject-java:1.0.0.BUILD-SNAPSHOT"
     ...
 }</code></pre>
 </div>
@@ -2568,8 +2678,9 @@ println(vehicle.start())</code></pre>
 <div class="paragraph">
 <p>For example creating a subclass of <code>EngineConfig</code> with <code>@ConfigurationProperties('bar')</code> will resolve all properties under the path <code>my.engine.bar</code>.</p>
 </div>
-<div class="sect2">
-<h3 id="_configuration_builder">Configuration Builder</h3>
+<div class="sect1">
+<h2 id="_configuration_builder">Configuration Builder</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Many existing frameworks and tools already use builder-style classes to construct configuration.</p>
 </div>
@@ -2577,7 +2688,7 @@ println(vehicle.start())</code></pre>
 <p>To support the ability for a builder style class to be populated with configuration values, the <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">@ConfigurationBuilder</a> annotation can be used. <a href="../api/io/micronaut/context/annotation/ConfigurationBuilder.html">ConfigurationBuilder</a> can be added to a field or method in a class annotated with <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a>.</p>
 </div>
 <div class="paragraph">
-<p>Since there is no consistent way to define builders in the Java world. One or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
+<p>Since there is no consistent way to define builders in the Java world, one or more method prefixes can be specified in the annotation to support builder methods like <code>withXxx</code> or <code>setXxx</code>. If the builder methods have no prefix, assign an empty string to the parameter.</p>
 </div>
 <div class="paragraph">
 <p>A configuration prefix can also be specified to tell Micronaut where to look for configuration values. By default, the builder methods will use the configuration prefix defined at the class level <a href="../api/io/micronaut/context/annotation/ConfigurationProperties.html">@ConfigurationProperties</a> annotation.</p>
@@ -2675,6 +2786,7 @@ println(vehicle.start())</code></pre>
 </div>
 <div class="paragraph">
 <p>The above example prints: <code>"Subaru Engine Starting V4 [rodLength=4.0]"</code></p>
+</div>
 </div>
 </div>
 
@@ -3151,7 +3263,7 @@ Since Micronaut is compile time, generally the advice should be packaged in a de
 <h2 id="_customizing_proxy_generation">Customizing Proxy Generation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The default behaviour of the <a href="../api/io/micronaut/aop/Around.html">Around</a> annotation is generate a proxy at compile time that is a subclass of the class being proxied. In other words, in the previous example a compile time subclass of the <code>NotNullExample</code> class will be produced where methods that are proxied are decorated with interceptor handling and the original behaviour is invoked via a call to <code>super</code>.</p>
+<p>The default behaviour of the <a href="../api/io/micronaut/aop/Around.html">Around</a> annotation is to generate a proxy at compile time that is a subclass of the class being proxied. In other words, in the previous example a compile time subclass of the <code>NotNullExample</code> class will be produced where methods that are proxied are decorated with interceptor handling and the original behaviour is invoked via a call to <code>super</code>.</p>
 </div>
 <div class="paragraph">
 <p>This behaviour is more efficient as only one instance of the bean is required, however depending on the use case you are trying to implement you may wish to alter this behaviour and the <code>@Around</code> annotation supports various attributes that allow you to alter this behaviour including:</p>
@@ -3753,7 +3865,7 @@ Remember that the scope of the bean has an impact on behaviour. a <code>@Singlet
 </div>
 </div>
 <div class="paragraph">
-<p>The above example will run the task every Tuesday morning at 10:15AM.</p>
+<p>The above example will run the task every Monday morning at 10:15AM.</p>
 </div>
 </div>
 </div>
@@ -5177,7 +5289,7 @@ The output produced by Jackson can be customized in a variety of manners, from d
 </tbody>
 </table>
 <div class="paragraph">
-<p>Here is what an example YML configuration might look like:</p>
+<p>Here is what an example YAML configuration might look like (note that the <code>router</code> declaration must be at the top-level of the file and not nested under any other items):</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -6362,7 +6474,82 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="serverConfiguration">6.17 Configuring the HTTP Server</h2>
+<h2 id="serverEvents">6.17 Server Events</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverEvents.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The HTTP server will emit a number of <a href="#events">Bean Events</a>, defined in the <a href="../api/io/micronaut/runtime/server/event/package-summary.html">io.micronaut.runtime.server.event</a> package, that you can write listeners for. The following table summarizes those events:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Server Events</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Event</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted when the server completes startup</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/runtime/server/event/ServerShutdownEvent.html">ServerShutdownEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted when the server shuts down</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/discovery/event/ServiceStartedEvent.html">ServiceStartedEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted after all <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a> listeners have been executed and exposes the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="../api/io/micronaut/discovery/event/ServiceShutdownEvent.html">ServiceShutdownEvent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emitted after all <a href="../api/io/micronaut/runtime/server/event/ServerShutdownEvent.html">ServerShutdownEvent</a> listeners have been executed and exposes the <a href="../api/io/micronaut/runtime/server/EmbeddedServerInstance.html">EmbeddedServerInstance</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+If you do significant work within a listener for a <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a> this will slow down you startup time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following example defines a <a href="../api/io/micronaut/context/event/ApplicationEventListener.html">ApplicationEventListener</a> that listens for <a href="../api/io/micronaut/runtime/server/event/ServerStartupEvent.html">ServerStartupEvent</a>:</p>
+</div>
+<div class="listingblock">
+<div class="title">Listening for Server Startup Events</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">io.micronaut.context.event.ApplicationEventListener</span>;
+...
+<span class="annotation">@Singleton</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">StartupListener</span> <span class="directive">implements</span> ApplicationEventListener&lt;ServerStartupEvent&gt; {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> onApplicationEvent(ServerStartupEvent event) {
+        <span class="comment">// logic here</span>
+        ...
+    }
+}</code></pre>
+</div>
+</div>
+
+
+<h2 id="serverConfiguration">6.18 Configuring the HTTP Server</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration.adoc"'>
@@ -6372,10 +6559,10 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 
 
 <div class="paragraph">
-<p>The HTTP server features a number of configuration options you may wish to tweak. Defined in the <a href="../api/io/micronaut/http/server/netty/configuration/NettyHttpServerConfiguration.html">NettyHttpServerConfiguration</a> configuration class, which extends <a href="../api/io/micronaut/http/server/HttpServerConfiguration.html">HttpServerConfiguration</a>.</p>
+<p>The HTTP server features a number of configuration options you may wish to tweak. They are defined in the <a href="../api/io/micronaut/http/server/netty/configuration/NettyHttpServerConfiguration.html">NettyHttpServerConfiguration</a> configuration class, which extends <a href="../api/io/micronaut/http/server/HttpServerConfiguration.html">HttpServerConfiguration</a>.</p>
 </div>
 <div class="paragraph">
-<p>The following example shows how tweak configuration options for the server via <code>application.yml</code>:</p>
+<p>The following example shows how to tweak configuration options for the server via <code>application.yml</code>:</p>
 </div>
 <div class="listingblock">
 <div class="title">Configuring HTTP server settings</div>
@@ -6396,7 +6583,7 @@ The <a href="../api/io/micronaut/configuration/lettuce/session/RedisSessionStore
 </div>
 
 
-<h2 id="threadPools">6.17.1 Configuring Server Thread Pools</h2>
+<h2 id="threadPools">6.18.1 Configuring Server Thread Pools</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/threadPools.adoc"'>
@@ -6451,7 +6638,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="cors">6.17.2 Configuring CORS</h2>
+<h2 id="cors">6.18.2 Configuring CORS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/cors.adoc"'>
@@ -6645,7 +6832,7 @@ The default value is the value of the system property <code>io.netty.eventLoopTh
 </div>
 
 
-<h2 id="https">6.17.3 Securing the Server with HTTPS</h2>
+<h2 id="https">6.18.3 Securing the Server with HTTPS</h2>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/httpServer/serverConfiguration/https.adoc"'>
@@ -6954,6 +7141,14 @@ Regardless whether you choose to use Micronaut&#8217;s HTTP server, you may wish
 </div>
 <div class="paragraph">
 <p>The above example will inject a client that targets the Twitter API.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="kotlin">@Client(&quot;\${myapp.api.twitter.url}&quot;) @Inject httpClient: RxHttpClient</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above Kotlin example will inject a client that targets the Twitter API using a configuration path. Note the required escaping (backslash) on <code>"\${path.to.config}"</code> which is required due to Kotlin string interpolation.</p>
 </div>
 <div class="paragraph">
 <p>The <a href="../api/io/micronaut/http/client/Client.html">Client</a> annotation is also a custom scope that will manage the creation of <a href="../api/io/micronaut/http/client/HttpClient.html">HttpClient</a> instances and ensure they are shutdown when the application shuts down.</p>
@@ -9516,8 +9711,8 @@ As of this writing the Docker images for Eureka are significantly out-of-date so
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_tracing_instrumentation">Tracing Instrumentation</h4>
+<div class="sect2">
+<h3 id="_tracing_instrumentation">Tracing Instrumentation</h3>
 <div class="paragraph">
 <p>In addition to explicit tracing tags, Micronaut includes a number of instrumentations to ensure that the Span context is propagated between threads and across Microservice boundaries.</p>
 </div>
@@ -11899,16 +12094,17 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 <div class="paragraph">
 <p>The major advantage here is that you pay a slight cost at compile time, but at runtime Micronaut is largely reflection-free, fast and consumes very little memory.</p>
 </div>
-<div class="sect2">
-<h3 id="_using_micronaut_with_java_9">Using Micronaut with Java 9+</h3>
+<div class="sect1">
+<h2 id="_using_micronaut_with_java_9">Using Micronaut with Java 9+</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Micronaut is built with Java 8, however works fine with Java 9/10 and above as well. The classes that Micronaut generates sit along side existing classes within the same package, hence do not violate anything regarding the Java module system.</p>
 </div>
 <div class="paragraph">
 <p>There are some considerations to take into account when using Java 9/10 with Micronaut.</p>
 </div>
-<div class="sect3">
-<h4 id="_the_javax_annotation_package">The javax.annotation package</h4>
+<div class="sect2">
+<h3 id="_the_javax_annotation_package">The javax.annotation package</h3>
 <div class="paragraph">
 <p>The <code>javax.annotation</code>, which includes <code>@PostConstruct</code>, <code>@PreDestroy</code> etc. is no longer part of the core JDK but instead a module. If you run under Java 9+ you will need to import the module or add the dependency to your classpath:</p>
 </div>
@@ -11920,8 +12116,10 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_ide_considerations">IDE Considerations</h3>
+</div>
+<div class="sect1">
+<h2 id="_ide_considerations">IDE Considerations</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can use any IDE to develop Micronaut, if you depend on your configured build tool (Gradle or Maven) to build the application.</p>
 </div>
@@ -11938,6 +12136,7 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 </div>
 <div class="paragraph">
 <p>As of this writing, Eclipse has <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534501">incomplete support</a> for Java annotation processors, hence you will have to delegate to BuildShip or M2Eclipse for building and running tests.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -12037,7 +12236,7 @@ Theoretically any language that supports a way to analyze the AST at compile tim
 <h2 id="_groovy_support_in_the_cli">Groovy Support in the CLI</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="#cli">Command Line Interface</a> for Micronaut also includes special support for Micronaut. To create Groovy application use the <code>groovy</code> feature. For example:</p>
+<p>The <a href="#cli">Command Line Interface</a> for Micronaut also includes special support for Groovy. To create Groovy application use the <code>groovy</code> feature. For example:</p>
 </div>
 <div class="listingblock">
 <div class="title">Create a Micronaut Groovy application</div>
@@ -12327,7 +12526,7 @@ mn&gt;</code></pre>
 
 
 <div class="paragraph">
-<p>Support for Kotlin in Micronaut is built upon the <a href="https://kotlinlang.org/docs/reference/kapt.html">Kapt</a> compiler plugin, which includes support for Java annotation processors. To use Kotlin in your Micronaut application, you will simply need to add the proper dependencies to configure and run kapt on your <code>kt</code> source files. Kapt will create Java "stub" classes for each of your Kotlin classes, which can then by processed by Micronaut&#8217;s Java annotation processor. The stubs are not included in the final compiled application.</p>
+<p>Support for Kotlin in Micronaut is built upon the <a href="https://kotlinlang.org/docs/reference/kapt.html">Kapt</a> compiler plugin, which includes support for Java annotation processors. To use Kotlin in your Micronaut application, you will simply need to add the proper dependencies to configure and run kapt on your <code>kt</code> source files. Kapt will create Java "stub" classes for each of your Kotlin classes, which can then be processed by Micronaut&#8217;s Java annotation processor. The stubs are not included in the final compiled application.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -13236,7 +13435,7 @@ info.demo.map = [<span class="key">key</span>: <span class="string"><span class=
 
 
 <div class="paragraph">
-<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
+<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> in the Application Context.</p>
 </div>
 <div class="paragraph">
 <p>To execute the refresh endpoint, send a POST request to /refresh.</p>
@@ -13287,7 +13486,7 @@ info.demo.map = [<span class="key">key</span>: <span class="string"><span class=
 <p>The routes endpoint returns information about URIs available to be called for your application. By default the data returned includes the URI, allowed method, content types produced, and information about the method that would be executed.</p>
 </div>
 <div class="paragraph">
-<p>To execute the beans endpoint, send a GET request to /routes.</p>
+<p>To execute the routes endpoint, send a GET request to /routes.</p>
 </div>
 <div class="sect1">
 <h2 id="_configuration">Configuration</h2>
@@ -15092,7 +15291,7 @@ Currently AWS Lambda is the only supported cloud provider for Micronaut function
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>test</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Language to use for the function (one of <code>java</code>, <code>groovy</code>, <code>kotlin</code> - default is <code>java</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test framework to use for the function (one of <code>junit</code>, <code>spock</code> - default is <code>junit</code>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-test spock</code></p></td>
 </tr>
 <tr>
@@ -15297,7 +15496,7 @@ Provided Features:
 * hibernate-gorm - Adds support for GORM persistence framework
 * java - Adds support for Java in the application
 * kotlin - Adds support for Kotlin in the application
-* spek - Adds support for the Spek testing framewokr
+* spek - Adds support for the Spek testing framework
 * redis-lettuce - Configures the Lettuce driver for Redis
 * jdbc-hikari - Configures SQL DataSource instances using Hikari Connection Pool
 * jdbc-tomcat - Configures SQL DataSource instances using Tomcat Connection Pool
@@ -15531,6 +15730,110 @@ Provided Features:
 </div>
 </div>
 </div>
+</div>
+</div>
+
+
+<h1 id="faq">15 Frequently Asked Questions (FAQ)</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/faq.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The following section covers frequently asked questions that you may find yourself asking while considering to use or using Micronaut.</p>
+</div>
+<div class="sect3">
+<h4 id="_does_micronaut_modify_my_byte_code">Does Micronaut modify my byte code?</h4>
+<div class="paragraph">
+<p>No. Your classes are your classes. Micronaut does not transform classes or modify the Java byte code you write. Micronaut at compile will produce an additional set of classes that sit next to your original untouched classes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_does_micronaut_support_scala">Does Micronaut support Scala?</h4>
+<div class="paragraph">
+<p>Micronaut supports any JVM language that supports the Annotation Processor API. Scala currently does not support this API. However, Groovy also doesn&#8217;t support this API and special support has been built that processes the Groovy AST. It may be technically possible to support Scala future if a similar module to <code>inject-groovy</code> is built, but as of this writing Scala is not supported.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_can_micronaut_be_used_for_purposes_other_than_microservices">Can Micronaut be used for purposes other than Microservices?</h4>
+<div class="paragraph">
+<p>Yes. Micronaut is very modular and you can choose to use just the Dependency Injection and AOP implementation if you want simply by including only the <code>inject-java</code> (or <code>inject-groovy</code> for Groovy) dependency in your application.</p>
+</div>
+<div class="paragraph">
+<p>In fact Micronaut&#8217;s support for <a href="#serverlessFunctions">Serverless Computing</a> uses this exact approach.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_what_are_the_advantages_of_micronaut_s_dependency_injection_and_aop_implementation">What are the advantages of Micronaut&#8217;s Dependency Injection and AOP implementation?</h4>
+<div class="paragraph">
+<p>Micronaut processes your classes at compile time and produces all metadata at compile time. This eliminates the need for reflection, cached reflective metadata and the requirement to analyze your classes at runtime all of which leads to slower startup performance and greater memory consumption.</p>
+</div>
+<div class="paragraph">
+<p>In addition, Micronaut will build AOP proxies at compile time that are completely reflection free, which improves performances, reduces stack trace sizes and reduces memory consumption.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_does_micronaut_have_its_own_consul_and_eureka_client_implementations">Why does Micronaut have its own Consul and Eureka client implementations?</h4>
+<div class="paragraph">
+<p>The majority of Consul and Eureka clients that exist are blocking and include a mountain of external dependencies that inflate your JAR files.</p>
+</div>
+<div class="paragraph">
+<p>Micronaut&#8217;s <a href="../api/io/micronaut/discovery/DiscoveryClient.html">DiscoveryClient</a> uses Micronaut&#8217;s native HTTP client thus greatly reducing the need for external dependencies and providing a reactive API onto both discovery servers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_am_i_encountering_a_nosuchmethoderror_occurs_loading_my_beans_groovy">Why am I encountering a NoSuchMethodError occurs loading my beans (Groovy)?</h4>
+<div class="paragraph">
+<p>Groovy by default imports the <code>groovy.lang</code> package which includes a class called <code>@Singleton</code> that is an AST transformation that makes your class a singleton (adding a private constructor and static retrieval method). This annotation is easily confused with the <code>javax.inject.Singleton</code> annotation used to define singleton beans in Micronaut. Make sure you are using the correct annotation in your Groovy classes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_why_is_it_taking_much_longer_than_it_should_to_start_the_application">Why is it taking much longer than it should to start the application</h4>
+
+</div>
+
+
+<h1 id="problems">16 Common Problems</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-core/edit/master/src/main/docs/guide/problems.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>The following section covers common problems folks stumble upon when using Micronaut.</p>
+</div>
+<div class="sect3">
+<h4 id="_dependency_injection_is_not_working">Dependency injection is not working</h4>
+<div class="paragraph">
+<p>The most common reason that Dependency Injection fails to work is when you either don&#8217;t have the appropriate annotation processor configured or your IDE is incorrectly configured. See the section on <a href="#languageSupport">Language Support</a> for how to get setup in your language.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_a_nosuchmethoderror_occurs_loading_beans_groovy">A NoSuchMethodError occurs loading beans (Groovy)</h4>
+<div class="paragraph">
+<p>Groovy by default imports the <code>groovy.lang</code> package which includes a class called <code>@Singleton</code> that is an AST transformation that makes your class a singleton (adding a private constructor and static retrieval method). This annotation is easily confused with the <code>javax.inject.Singleton</code> annotation used to define singleton beans in Micronaut. Make sure you are using the correct annotation in your Groovy classes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_it_is_taking_much_longer_to_start_my_application_than_it_should_macos">It is taking much longer to start my application than it should (MacOS)</h4>
+<div class="paragraph">
+<p>This is likely due to a bug in MacOS that has to do with executions of <code>java.net.InetAddress.getLocalHost()</code> causing a long delay. The solution is to edit your <code>/etc/hosts</code> file to add an entry that contains your host name. To find your host name, simply enter <code>hostname</code> in the terminal and the value will be output. Then edit your <code>/etc/hosts</code> file to add or change entries like the example below, replacing <code>&lt;hostname&gt;</code> with your host name.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>127.0.0.1       localhost &lt;hostname&gt;
+::1             localhost &lt;hostname&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To learn more about this issue, see this <a href="https://stackoverflow.com/a/39698914/1264846">stackoverflow answer</a></p>
 </div>
 </div>
 

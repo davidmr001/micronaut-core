@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>12.2.4 The Refresh Endpoint 1.0.0-SNAPSHOT</title>
+    <title>12.2.4 The Refresh Endpoint 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>12.2.4 The Refresh Endpoint</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -119,7 +125,7 @@ function addJsClass() {
 
 
 <div class="paragraph">
-<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <code>RefreshEvent</code> in the Application Context.</p>
+<p>The refresh endpoint will refresh the application state, causing all <a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> beans in the context to be destroyed and reinstantiated upon further requests. This is accomplished by publishing a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> in the Application Context.</p>
 </div>
 <div class="paragraph">
 <p>To execute the refresh endpoint, send a POST request to /refresh.</p>

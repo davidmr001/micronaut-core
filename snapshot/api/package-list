@@ -235,6 +235,7 @@ io.micronaut.scheduling.annotation
 io.micronaut.scheduling.cron
 io.micronaut.scheduling.exceptions
 io.micronaut.scheduling.executor
+io.micronaut.scheduling.instrument
 io.micronaut.scheduling.processor
 io.micronaut.security
 io.micronaut.security.authentication
@@ -275,6 +276,7 @@ io.micronaut.session.annotation
 io.micronaut.session.binder
 io.micronaut.session.event
 io.micronaut.session.http
+io.micronaut.spring.beans
 io.micronaut.spring.core.env
 io.micronaut.spring.core.event
 io.micronaut.spring.tx.annotation

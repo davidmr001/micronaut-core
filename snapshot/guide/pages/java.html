@@ -2,7 +2,7 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>11.1 Micronaut for Java 1.0.0-SNAPSHOT</title>
+    <title>11.1 Micronaut for Java 1.0.0.BUILD-SNAPSHOT</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
     <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
@@ -71,6 +71,12 @@ function addJsClass() {
                         <div class="toc-item" style="margin-left:0"><a href="../../guide/cli.html"><strong>14</strong><span>Micronaut CLI</span></a>
                         </div>
                         
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/faq.html"><strong>15</strong><span>Frequently Asked Questions (FAQ)</span></a>
+                        </div>
+                        
+                        <div class="toc-item" style="margin-left:0"><a href="../../guide/problems.html"><strong>16</strong><span>Common Problems</span></a>
+                        </div>
+                        
                     </div>
                 </div>
             </li>
@@ -102,7 +108,7 @@ function addJsClass() {
                 <div class="project">
                     <h1>11.1 Micronaut for Java</h1>
 
-                    <p><strong>Version:</strong> 1.0.0-SNAPSHOT</p>
+                    <p><strong>Version:</strong> 1.0.0.BUILD-SNAPSHOT</p>
                 </div>
 
                 
@@ -124,16 +130,17 @@ function addJsClass() {
 <div class="paragraph">
 <p>The major advantage here is that you pay a slight cost at compile time, but at runtime Micronaut is largely reflection-free, fast and consumes very little memory.</p>
 </div>
-<div class="sect2">
-<h3 id="_using_micronaut_with_java_9">Using Micronaut with Java 9+</h3>
+<div class="sect1">
+<h2 id="_using_micronaut_with_java_9">Using Micronaut with Java 9+</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Micronaut is built with Java 8, however works fine with Java 9/10 and above as well. The classes that Micronaut generates sit along side existing classes within the same package, hence do not violate anything regarding the Java module system.</p>
 </div>
 <div class="paragraph">
 <p>There are some considerations to take into account when using Java 9/10 with Micronaut.</p>
 </div>
-<div class="sect3">
-<h4 id="_the_javax_annotation_package">The javax.annotation package</h4>
+<div class="sect2">
+<h3 id="_the_javax_annotation_package">The javax.annotation package</h3>
 <div class="paragraph">
 <p>The <code>javax.annotation</code>, which includes <code>@PostConstruct</code>, <code>@PreDestroy</code> etc. is no longer part of the core JDK but instead a module. If you run under Java 9+ you will need to import the module or add the dependency to your classpath:</p>
 </div>
@@ -145,8 +152,10 @@ function addJsClass() {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_ide_considerations">IDE Considerations</h3>
+</div>
+<div class="sect1">
+<h2 id="_ide_considerations">IDE Considerations</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>You can use any IDE to develop Micronaut, if you depend on your configured build tool (Gradle or Maven) to build the application.</p>
 </div>
@@ -163,6 +172,7 @@ function addJsClass() {
 </div>
 <div class="paragraph">
 <p>As of this writing, Eclipse has <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=534501">incomplete support</a> for Java annotation processors, hence you will have to delegate to BuildShip or M2Eclipse for building and running tests.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
